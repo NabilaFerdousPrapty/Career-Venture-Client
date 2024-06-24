@@ -1,5 +1,6 @@
 import  { useState } from 'react';
-
+import logo from '../../../assets/logo2w.png'
+import { Link } from 'react-router-dom';
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -9,10 +10,9 @@ function Navbar() {
             <div className="container px-6 py-4 mx-auto">
                 <div className="lg:flex lg:items-center lg:justify-between">
                     <div className="flex items-center justify-between">
-                        <a href="#">
-                            <img className="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" />
-                        </a>
-
+                        <Link>
+                            <img src={logo} alt="logo" className="w-auto h-24" />
+                        </Link>
                         {/* Mobile menu button */}
                         <div className="flex lg:hidden">
                             <button onClick={() => setIsOpen(!isOpen)} type="button" className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
