@@ -5,6 +5,10 @@ import {
   } from "react-router-dom";
 import MainLayout from '../Layouts/MainLayout';
 import Home from '../Pages/Home/Home';
+import BootCamps from './../Pages/BootCamps/BootCamps';
+import Mentors from '../Pages/Mentors/Mentors';
+import Openings from './../Pages/Openings/Openings';
+import Resources from '../Pages/Resources/Resources';
   const router = createBrowserRouter([
     {
       path: "/",
@@ -13,6 +17,19 @@ import Home from '../Pages/Home/Home';
         {
           path:'/',
           element:<Home/>
+        },{
+          path:'/bootCamps',
+          element:<BootCamps/>
+        },{
+          path:'/mentors',
+          element:<Mentors/>,
+
+        },{
+          path:'/openings',
+          element:<Openings/>
+        },{
+          path:'/resources',
+          element:<Resources/>
         }
       ]
     },
