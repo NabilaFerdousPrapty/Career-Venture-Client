@@ -79,16 +79,7 @@ function Navbar() {
               >
                 Home
               </Link>
-              <Link
-                to="/openings"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
-                  isActiveLink("/openings")
-                    ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                    : ""
-                } `}
-              >
-                Openings
-              </Link>
+              
               <Link
                 to="/bootCamps"
                 className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
@@ -108,6 +99,16 @@ function Navbar() {
                 } `}
               >
                 Mentors
+              </Link>
+              <Link
+                to="/openings"
+                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
+                  isActiveLink("/openings")
+                    ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
+                    : ""
+                } `}
+              >
+                Openings
               </Link>
               <Link
                 to="/dashBoard"
@@ -155,20 +156,14 @@ function Navbar() {
 
               <button
                 type="button"
-                className="flex items-center focus:outline-none"
-                aria-label="toggle profile dropdown"
+                className="flex items-center focus:outline-none btn bg-[#ad8a54]"
+              
               >
-                <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-                  <img
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                    className="object-cover w-full h-full"
-                    alt="avatar"
-                  />
-                </div>
+                 <Link to="/login"> 
+                 Login
+                 </Link>
 
-                <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
-                  Khatab wedaa
-                </h3>
+              
               </button>
             </div>
           </div>
