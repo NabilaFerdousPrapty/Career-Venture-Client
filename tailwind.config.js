@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      play: ['Playwrite NZ', 'cursive'],
+    },
     extend: {},
   },
   plugins: [
