@@ -9,6 +9,8 @@ import BootCamps from './../Pages/BootCamps/BootCamps';
 import Mentors from '../Pages/Mentors/Mentors';
 import Openings from './../Pages/Openings/Openings';
 import Resources from '../Pages/Resources/Resources';
+import Login from '../Pages/Login/Login';
+import SignUp from '../Pages/SignUp/SignUp';
   const router = createBrowserRouter([
     {
       path: "/",
@@ -32,7 +34,16 @@ import Resources from '../Pages/Resources/Resources';
           element:<Resources/>
         }
       ]
+
     },
+    {
+      path: "/login",
+      element:<Login/>
+
+    },{
+      path:'/signUp',
+      element:<SignUp/>
+    }
   ]);
 
 export default router;
