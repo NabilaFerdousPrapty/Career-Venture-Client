@@ -11,7 +11,7 @@ function Navbar() {
   return (
     // eslint-disable-next-line react/no-unknown-property
     <nav className="relative  shadow " x-data="{ isOpen: false }">
-      <div className="container px-6 py-4 mx-auto">
+      <div className="container px-6 py-1 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
             <Link>

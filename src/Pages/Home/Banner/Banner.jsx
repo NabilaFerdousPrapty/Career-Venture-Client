@@ -27,7 +27,7 @@ const Banner = () => {
       >
         <SwiperSlide>
           <div
-            className="rounded-md h-screen"
+            className="rounded-md h-screen border-2 border-amber-400"
             style={{
               backgroundImage: `url('https://i.ibb.co/QX06fch/laptop-coffee-cup-wooden-table-front-window-with-city-view.jpg'),
       linear-gradient(to right, rgba(20, 0, 0, 0.5), rgba(0, 0, 0, 0))`,
@@ -36,11 +36,11 @@ const Banner = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-700 text-gray-700  ">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-700 text-gray-900  ">
               <h1 className="lg:text-4xl text-2xl font-bold lg:my-5">
                 Discover Your Dream Career
               </h1>
-              <p className="lg:text-xl text-sm">
+              <p className="lg:text-xl text-sm text-slate-900 font-semibold">
                 Explore thousands of job opportunities tailored to your skills
                 and interests.
               </p>
@@ -56,7 +56,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="rounded-md h-screen"
+            className="rounded-md h-screen border-2 border-amber-400"
             style={{
               position: "relative",
               backgroundImage: `url('https://i.ibb.co/XWb9Bdn/high-angle-desktop-with-laptop-copy-space.jpg')`,
@@ -85,7 +85,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="rounded-md h-screen"
+            className="rounded-md h-screen border-2 border-amber-400"
             style={{
               position: "relative",
               backgroundImage: `url('https://i.ibb.co/fnGp5Vx/personal-accessories-coffee-cup-earphone-eyeglasses-keyboard-black-background.jpg')`,
@@ -114,7 +114,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="rounded-md h-screen"
+            className="rounded-md h-screen border-2 border-amber-400"
             style={{
               position: "relative",
               backgroundImage: `url('https://i.ibb.co/Wyws7nX/flat-lay-desktop-with-agenda-magnifying-glass.jpg')`,
@@ -143,7 +143,7 @@ const Banner = () => {
 
         <SwiperSlide>
           <div
-            className="rounded-md h-screen"
+            className="rounded-md h-screen border-2 border-amber-400"
             style={{
               position: "relative",
               backgroundImage: `url('https://i.ibb.co/k6FfPsF/laptop-eyeglasses-mouse-diary-pen-pot-plant-black-background.jpg')`,
