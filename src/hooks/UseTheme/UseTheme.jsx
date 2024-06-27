@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
-
-const UseTheme = ({children}) => {
-    const [theme, setTheme] = useState('light');
-    
 
 
+const UseTheme = () => {
     return (
         <div>
             

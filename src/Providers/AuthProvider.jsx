@@ -41,22 +41,15 @@ const AuthProvider = ({children}) => {
         if (currentUser) {
             const userInfo = { email: currentUser?.email }
             //get token and store it in client side
-            axiosCommon.post('/jwt', userInfo)
-                .then((response) => {
-                    if (response?.data?.token) {
-                        localStorage.setItem('access-token', response.data.token)
-                    }
-                })
-        } else {
-            //remove token
-            localStorage.removeItem('access-token')
-        }
+          
+               
+        } 
         setLoading(false)
     })
     return () => {
         return unsubscribed()
     };
-}, [axiosCommon])
+}, [])
 
   const authInfo = {
    user,
