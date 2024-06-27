@@ -4,8 +4,8 @@ import { FaCheckCircle } from 'react-icons/fa';
 const Features = () => {
     return (
         <div className='my-5 mt-9'>
-            <div className='text-center my-2 font-play '>
-            <h1 className="lg:text-5xl my-5 md:text-3xl text-2xl ">
+            <div className='text-center my-2  '>
+            <h1 className="lg:text-5xl my-5 md:text-3xl text-2xl font-play">
                 The Features and Benefits of Our Platform
             </h1>
             <p className="lg:text-lg md:text-base text-sm">

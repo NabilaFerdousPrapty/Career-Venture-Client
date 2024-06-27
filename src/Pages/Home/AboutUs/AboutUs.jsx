@@ -10,7 +10,7 @@ const AboutUs = () => {
               <div className="lg:flex lg:items-center">
                 <div className="w-full space-y-12 lg:w-1/2 ">
                   <div>
-                    <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
+                    <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white font-play">
                       About Us
                     </h1>
                     <div className="mt-2">
@@ -121,7 +121,7 @@ const AboutUs = () => {
               </div>
               <hr className="my-12 border-gray-200 dark:border-gray-700" />
               <div className="text-center">
-                <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white ">
+                <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white font-play">
                   Join Us{" "}
                 </h1>
                 <div className="mt-2">
