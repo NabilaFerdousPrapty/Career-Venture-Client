@@ -36,8 +36,8 @@ const Banner = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-700 text-gray-900  ">
-              <h1 className="lg:text-4xl text-2xl font-bold lg:my-5">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-700 text-gray-900  ">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
                 Discover Your Dream Career
               </h1>
               <p className="lg:text-xl text-sm text-slate-900 font-semibold">
@@ -46,7 +46,7 @@ const Banner = () => {
               </p>
               <Link
                 to="/bootCamps"
-                className="bg-white text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
+                className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Get Started
               </Link>
@@ -65,8 +65,8 @@ const Banner = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-300">
-              <h1 className="lg:text-4xl text-2xl font-bold lg:my-5">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent lg:p-6 p-2 rounded-2xl border-2 border-amber-300">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
                 Upskill for the Future
               </h1>
               <p className="lg:text-xl text-sm">
@@ -75,7 +75,7 @@ const Banner = () => {
               </p>
               <Link
                 to="/bootCamps"
-                className="bg-white text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
+                className="bg-white text-sm md:text-base text-black px-3 py-1 md:px-4 md:py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Learn More
               </Link>
@@ -94,8 +94,8 @@ const Banner = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-400">
-              <h1 className="lg:text-4xl text-2xl font-bold lg:my-5">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
                 Connect with Experts
               </h1>
               <p className="lg:text-xl text-sm">
@@ -104,7 +104,7 @@ const Banner = () => {
               </p>
               <Link
                 to="/bootCamps"
-                className="bg-white text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
+                className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Find Mentors
               </Link>
@@ -123,8 +123,8 @@ const Banner = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-400">
-              <h1 className="lg:text-4xl text-2xl font-bold lg:my-5">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
                 Personalized Career Paths
               </h1>
               <p className="lg:text-xl text-sm">
@@ -133,7 +133,7 @@ const Banner = () => {
               </p>
               <Link
                 to="/bootCamps"
-                className="bg-white text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
+                className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Explore Now
               </Link>
@@ -152,8 +152,8 @@ const Banner = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent p-6 rounded-2xl border-2 border-amber-400">
-              <h1 className="lg:text-4xl text-2xl font-bold lg:my-5">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
                 Land Your Dream Job
               </h1>
               <p className="lg:text-xl text-sm">
@@ -162,7 +162,7 @@ const Banner = () => {
               </p>
               <Link
                 to="/bootCamps"
-                className="bg-white text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
+                className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Apply Now
               </Link>

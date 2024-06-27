@@ -5,10 +5,10 @@ const Features = () => {
     return (
         <div className='my-5 mt-9'>
             <div className='text-center my-2 font-play '>
-            <h1 className="text-5xl my-5">
+            <h1 className="lg:text-5xl my-5 md:text-3xl text-2xl ">
                 The Features and Benefits of Our Platform
             </h1>
-            <p className="text-lg">
+            <p className="lg:text-lg md:text-base text-sm">
                 Discover the advantages of using our platform to advance your career.
             </p>
             </div>
@@ -38,8 +38,9 @@ const Features = () => {
 			</div>
 		</div>
 		<div className="lg:w-1/2 xl:w-3/5 bg-amber-100">
-			<div className="flex items-center justify-center p-1 md:p-2 lg:p-5">
+			<div className="flex items-center justify-center p-1 md:p-2 lg:p-5 relative">
 				<img src="https://i.ibb.co/1mGw8LQ/office-supplies.jpg" alt="" className="rounded-lg shadow-lg bg-gray-500 aspect-video sm:min-h-96" />
+				<img src="https://i.ibb.co/bzQxCXy/black-white-portrait-digital-nomads.jpg" alt="" className='absolute w-1/4 left-1/3 top-2/4 rounded-2xl' />
 			</div>
 		</div>
 	</div>
