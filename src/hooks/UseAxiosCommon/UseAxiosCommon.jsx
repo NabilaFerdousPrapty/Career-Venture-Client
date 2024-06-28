@@ -1,11 +1,11 @@
-import React from 'react';
+import axios from "axios";
+
+const axiosCommon=axios.create({
+    baseURL:import.meta.env.VITE_API_URL,
+});
 
 const UseAxiosCommon = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return axiosCommon;
 };
 
 export default UseAxiosCommon;
