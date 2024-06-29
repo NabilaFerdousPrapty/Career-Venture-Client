@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import logo from '../../assets/logo2w.png'
 
 const SignUp = () => {
     const {
@@ -14,27 +15,28 @@ const SignUp = () => {
 
       }
   return (
-    <div className=" flex justify-between items-center">
+    <div className=" flex justify-between items-center h-screen">
     
-    <div className="max-w-5xl w-screen flex justify-center h-screen  mx-auto py-6 rounded-2xl  shadow-lg bg-[#1c2940]">
-        <div className="hidden bg-cover lg:block lg:w-2/5" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80')" }}
+    <div className="max-w-7xl w-screen flex justify-center   mx-auto py-6 rounded-2xl  shadow-lg bg-[#1c2940] my-2 max-h-screen">
+        <div className="hidden bg-cover lg:block lg:w-3/5 bg-center rounded-2xl" style={{ backgroundImage: "url('https://i.ibb.co/1JkWSXn/5378405-removebg-preview.png')" }}
         >
         </div>
 
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div className="w-full">
-                <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
+                <img src={logo} alt="" className="h-20 w-auto mx-auto" />
+                <h1 className="text-xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
                     Get your free account now.
                 </h1>
 
-                <p className="mt-4 text-gray-500 dark:text-gray-400">
+                <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm">
                     Let’s get you all set up so you can verify your personal account and begin setting up your profile.
                 </p>
 
               
 
                 <form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200"> Name</label>
                         <input type="text"
                            {...register("name", { required: true })}
@@ -42,7 +44,7 @@ const SignUp = () => {
                         {errors.name && <span>This field is required</span>}
                     </div>
 
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
                         <input type="email" 
                          {...register("email", { required: true })}
@@ -50,7 +52,7 @@ const SignUp = () => {
                          {errors.email && <span>This field is required</span>}
                     </div>
 
-                    <div className="col-span-2">
+                    <div className="md:col-span-2">
                         <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Photo</label>
                         <input type="file"
                          {...register("photo", { required: true })}
@@ -78,7 +80,8 @@ const SignUp = () => {
                         {errors.confirmPassword && <span>This field is required</span>}
                     </div>
 
-                    <button type="submit"
+                   <div>
+                   <button type="submit"
                         className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                         <span>Sign Up </span>
 
@@ -88,8 +91,10 @@ const SignUp = () => {
                                 clip-rule="evenodd" />
                         </svg>
                     </button>
+                   </div>
                 </form>
             </div>
+          
         </div>
     </div>
 
