@@ -1,10 +1,19 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm()
+    
+      const onSubmit = (data) => console.log(data)
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
-    <div className="flex justify-center min-h-screen">
+    <div className="flex justify-center min-h-screen max-w-5xl">
         <div className="hidden bg-cover lg:block lg:w-2/5" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80')" }}
         >
         </div>
