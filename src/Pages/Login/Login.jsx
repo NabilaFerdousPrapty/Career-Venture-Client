@@ -2,14 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { useForm } from 'react-hook-form';
+import UseAuth from '../../hooks/UseAuth/UseAuth';
 const Login = () => {
+    const { signInWithEmail}=UseAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
       } = useForm()
     
-      const onSubmit = (data) => console.log(data)
+      const onSubmit = (data) =>{
+        const {email,password}=data;
+        signInWithEmail(email,password)
+        
+    
+      }
     return (
         <div className='flex justify-between items-center h-screen rounded-2xl'>
             <div className="flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1c2940] lg:max-w-6xl ">
