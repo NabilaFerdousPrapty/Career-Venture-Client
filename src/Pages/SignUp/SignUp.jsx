@@ -14,6 +14,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const navigate=useNavigate();
+  const axiosCommon=UseAxiosCommon();
   const { signInWithGoogle,updateUserProfile,createUser,setUser}=UseAuth();
 
   const onSubmit = (data) => {
@@ -90,17 +91,38 @@ const SignUp = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // console.log(user);
-        setUser(user);
-        navigate('/')
+        
+        const userInfo={
+          name:user.displayName,
+          email:user.email,
+          role:'member',
+        }
+        axiosCommon.post('/users',userInfo)
+        .then((res)=>{
+          // console.log(res.data)
+          if (res.data.insertedId) {
+            Swal.fire({
+              icon: "success",
+              title: "Congratulation",
+              text: "Your account has been created successfully!",
+            });
+            reset();
+            navigate(location?.state ? location.state : "/")
+          }
+        }
+        )
+      
+        // ...
       })
       .catch((error) => {
+        const errorCode = error.code;
         const errorMessage = error.message;
+        reset();
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
+          icon: 'error',
+          title: 'Login Failed',
           text: errorMessage,
-        });
+        })
       });
   }
   return (

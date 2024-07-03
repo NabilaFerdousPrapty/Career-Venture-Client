@@ -13,7 +13,8 @@ const Login = () => {
     
       const onSubmit = (data) =>{
         const {email,password}=data;
-        signInWithEmail(email,password)
+        signInWithEmail(email,password);
+
         
     
       }
