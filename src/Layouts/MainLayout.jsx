@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Home from "../Pages/Home/Home";
 import Footer from "../Pages/Shared/Footer/Footer";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { CircleLoader, RingLoader } from "react-spinners";
+import { CircleLoader,} from "react-spinners";
 
 const MainLayout = () => {
   const [loading, setLoading] = useState(true);
@@ -11,7 +10,7 @@ const MainLayout = () => {
  useEffect(() => {
    const timer = setTimeout(() => {
      setLoading(false);
-   }, 1500); 
+   }, 3000); 
 
    return () => clearTimeout(timer);
  }, []);
