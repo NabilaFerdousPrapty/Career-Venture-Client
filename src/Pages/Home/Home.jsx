@@ -6,7 +6,7 @@ import Testimonial from "./Testimonials/Testimonal";
 
 const Home = () => {
     return (
-        <div>
+        <div className="overflow-x-hidden">
            <Banner/>
            <AboutUs/>
            <Features/>
