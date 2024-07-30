@@ -4,7 +4,8 @@ import logo from '../../assets/logo.png'
 import { useForm } from 'react-hook-form';
 import UseAuth from '../../hooks/UseAuth/UseAuth';
 const Login = () => {
-    const { signInWithEmail}=UseAuth();
+
+    const { signInWithEmail,signInWithGoogle}=UseAuth();
     const {
         register,
         handleSubmit,
@@ -17,6 +18,45 @@ const Login = () => {
 
         
     
+      }
+      const handleGoogleSignIn = () => {
+        signInWithGoogle()
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            
+            const userInfo={
+              name:user.displayName,
+              email:user.email,
+              role:'member',
+            }
+            axiosCommon.post('/users',userInfo)
+            .then((res)=>{
+              // console.log(res.data)
+              if (res.data.insertedId) {
+                Swal.fire({
+                  icon: "success",
+                  title: "Congratulation",
+                  text: "Your account has been created successfully!",
+                });
+               
+                navigate(location?.state ? location.state : "/")
+              }
+            }
+            )
+          
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            reset();
+            Swal.fire({
+              icon: 'error',
+              title: 'Login Failed',
+              text: errorMessage,
+            })
+          });
       }
     return (
         <div className='flex justify-between items-center h-screen rounded-2xl'>
@@ -39,8 +79,8 @@ const Login = () => {
                         Welcome back!
                     </p>
 
-                    <a
-                        href="#"
+                    <button
+                        onClick={handleGoogleSignIn}
                         className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
                     >
                         <div className="px-4 py-2">
@@ -67,7 +107,7 @@ const Login = () => {
                         <span className="w-5/6 px-4 py-3 font-bold text-center">
                             Sign in with Google
                         </span>
-                    </a>
+                    </button>
 
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
