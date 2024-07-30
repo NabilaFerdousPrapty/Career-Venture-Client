@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { useForm } from 'react-hook-form';
 import UseAuth from '../../hooks/UseAuth/UseAuth';
+import UseAxiosCommon from '../../hooks/UseAxiosCommon/UseAxiosCommon';
+import Swal from 'sweetalert2';
 const Login = () => {
 
     const { signInWithEmail,signInWithGoogle}=UseAuth();
@@ -19,6 +21,8 @@ const Login = () => {
         
     
       }
+      const navigate=useNavigate();
+      const axiosCommon=UseAxiosCommon();
       const handleGoogleSignIn = () => {
         signInWithGoogle()
           .then((userCredential) => {
@@ -81,7 +85,7 @@ const Login = () => {
 
                     <button
                         onClick={handleGoogleSignIn}
-                        className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                        className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 w-full "
                     >
                         <div className="px-4 py-2">
                             <svg className="w-6 h-6" viewBox="0 0 40 40">
