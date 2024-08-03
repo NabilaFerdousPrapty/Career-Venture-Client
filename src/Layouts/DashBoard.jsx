@@ -2,9 +2,9 @@ import { Link, Outlet } from "react-router-dom";
 import logo from "../../assets/images/logo (2).png";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
-import useAuth from "../../hooks/UseAuth";
-import UseRole from "../../hooks/UseRole";
-import { FaHome } from "react-icons/fa";
+import UseRole from "../hooks/UseRole/UseRole";
+
+
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -511,7 +511,7 @@ const Dashboard = () => {
       </Link>
     </ul>
   );
-  const { user, logout } = useAuth();
+  const { user, logout } = UseAuth();
   console.log(user);
   const [role, isLoading, refetch] = UseRole(user?.email);
   console.log(user.email);
