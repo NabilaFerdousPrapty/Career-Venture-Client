@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { useForm } from 'react-hook-form';
@@ -54,7 +53,7 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            reset();
+            
             Swal.fire({
               icon: 'error',
               title: 'Login Failed',
