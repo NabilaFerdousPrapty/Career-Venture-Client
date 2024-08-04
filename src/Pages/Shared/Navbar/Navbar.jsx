@@ -1,9 +1,13 @@
 import { useState } from "react";
 import logo from "../../../assets/logo2w.png";
 import { Link, useLocation } from "react-router-dom";
+import UseAuth from "../../../hooks/UseAuth/UseAuth";
 function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const {
+    user
+  }=UseAuth();
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
@@ -110,7 +114,8 @@ function Navbar() {
               >
                 Openings
               </Link>
-              <Link
+            {
+              user && (  <Link
                 to="/dashBoard"
                 className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
                     isActiveLink("/dashBoard")
@@ -120,7 +125,8 @@ function Navbar() {
                 }
               >
                 Dashboard
-              </Link>
+              </Link>)
+            }
               <Link
                 to="/resources"
                 className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${

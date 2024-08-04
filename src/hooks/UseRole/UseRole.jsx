@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import UseAxiosCommon from "./UseAxiosCommon";
+import UseAxiosCommon from "../UseAxiosCommon/UseAxiosCommon";
+
 
 const UseRole = (email) => {
     const axiosCommon = UseAxiosCommon();

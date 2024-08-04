@@ -1,8 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
-import logo from "../../assets/images/logo (2).png";
+import logo from "../assets/logo2w.png";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
+import UseAuth from "../hooks/UseAuth/UseAuth";
 
 
 const Dashboard = () => {
