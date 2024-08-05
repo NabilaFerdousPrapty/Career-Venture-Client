@@ -12,6 +12,7 @@ import Resources from '../Pages/Resources/Resources';
 import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../Layouts/DashBoard';
+import DashboardHome from '../Pages/DashboardHome/DashboardHome';
   const router = createBrowserRouter([
     {
       path: "/",
@@ -38,7 +39,13 @@ import Dashboard from '../Layouts/DashBoard';
 
     },{
       path:'/dashboard',
-      element:<Dashboard/>
+      element:<Dashboard/>,
+      children:[
+        {
+          path:'/',
+          element:<DashboardHome/>
+        }
+      ]
 
     },
     {
