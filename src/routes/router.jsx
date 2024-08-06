@@ -42,7 +42,7 @@ import DashboardHome from '../Pages/DashboardHome/DashboardHome';
       element:<Dashboard/>,
       children:[
         {
-          path:'/',
+          path:'home',
           element:<DashboardHome/>
         }
       ]
