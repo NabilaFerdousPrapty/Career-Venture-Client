@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/logo2w.png";
 import Swal from "sweetalert2";
@@ -17,9 +17,12 @@ const SignUp = () => {
   const axiosCommon=UseAxiosCommon();
   const { signInWithGoogle,updateUserProfile,createUser,setUser}=UseAuth();
 
-  const onSubmit = (data) => {
-    const regex =/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/;
-    const { name, email, photo, password, confirmPassword } = data;
+  const [imageData, setImageData] = useState(null);
+
+  const onSubmit = async (data) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/;
+    const { name, email, password, confirmPassword } = data;
+
     if (password !== confirmPassword) {
       Swal.fire({
         icon: "error",
@@ -29,62 +32,77 @@ const SignUp = () => {
       reset();
       return;
     }
-    if(password.length<6){
+
+    if (password.length < 6) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Password must be at least 6 characters",
       });
-        reset();
+      reset();
       return;
     }
-    if (regex.test(data.password)) {
-        createUser(data.email, data.password)
-          .then((userCredential) => {
-            updateUserProfile(data.name, data.photo)
-            setUser(userCredential.user)
-            const userInfo={
-              name:data.name,
-              email:data.email,
-              role:'member',
-              
-            }
-            UseAxiosCommon.post('/users',userInfo)
-            .then((res)=>{
-              // console.log(res.data)
-              if (res.data.insertedId) {
-                Swal.fire({
-                  icon: "success",
-                  title: "Congratulation",
-                  text: "Your account has been created successfully!",
+
+    if (regex.test(password)) {
+      // Proceed with user creation
+      createUser(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          updateUserProfile(name, imageData)
+            .then(() => {
+              setUser(user);
+              const userInfo = {
+                name: name,
+                email: email,
+                role: 'member',
+                photo: imageData, // Save image data (base64 or URL)
+              };
+
+              axiosCommon.post('/users', userInfo)
+                .then((res) => {
+                  if (res.data.insertedId) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Congratulations",
+                      text: "Your account has been created successfully!",
+                    });
+                    reset();
+                    navigate('/');
+                  }
                 });
-                reset();
-                navigate('/')
-              }
             })
-  
-            
-            
-            
-          })
-          .catch((error) => {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: error.message,
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.message,
+              });
+              reset();
+              return;
             });
-            reset();
-            return;
-          });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!",
         });
-        reset();
-        return;
-      }
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character!",
+      });
+      reset();
+      return;
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImageData(reader.result); // Base64 image data
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -213,6 +231,10 @@ const SignUp = () => {
                 <input
                   type="file"
                   {...register("photo", { required: true })}
+                  id="photo"
+                  
+                  accept="image/*"
+                  onChange={handleFileChange}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.photo && <span>This field is required</span>}

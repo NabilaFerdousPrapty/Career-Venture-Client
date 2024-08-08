@@ -15,7 +15,17 @@ const Login = () => {
     
       const onSubmit = (data) =>{
         const {email,password}=data;
-        signInWithEmail(email,password);
+        signInWithEmail(email,password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Success',
+            text: `Welcome back ${user.displayName}!`,
+          });
+          
+          navigate( '/');
+        })
 
         
     
