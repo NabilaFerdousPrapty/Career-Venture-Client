@@ -11,7 +11,8 @@ function Navbar() {
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
-
+  console.log(user);
+  
   return (
     // eslint-disable-next-line react/no-unknown-property
     <nav className="relative  shadow " x-data="{ isOpen: false }">

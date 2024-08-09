@@ -44,43 +44,51 @@ const SignUp = () => {
     }
 
     if (regex.test(password)) {
-      // Proceed with user creation
-      createUser(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          updateUserProfile(name, imageData)
-            .then(() => {
-              setUser(user);
-              const userInfo = {
-                name: name,
-                email: email,
-                role: 'member',
-                photo: imageData, // Save image data (base64 or URL)
-              };
+      try {
+        // Upload image to imgbb
+        const imageResponse = await axiosCommon.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`, {
+          image: imageData 
 
-              axiosCommon.post('/users', userInfo)
-                .then((res) => {
-                  if (res.data.insertedId) {
-                    Swal.fire({
-                      icon: "success",
-                      title: "Congratulations",
-                      text: "Your account has been created successfully!",
-                    });
-                    reset();
-                    navigate('/');
-                  }
-                });
-            })
-            .catch((error) => {
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: error.message,
-              });
-              reset();
-              return;
-            });
         });
+
+        if (imageResponse.status === 200) {
+          const imageUrl = imageResponse.data.data.display_url;
+
+          // Proceed with user creation
+          const userCredential = await createUser(email, password);
+          const user = userCredential.user;
+
+          await updateUserProfile(name, imageUrl);
+          setUser(user);
+
+          const userInfo = {
+            name: name,
+            email: email,
+            role: 'member',
+            photo: imageUrl,
+          };
+
+          const res = await axiosCommon.post('/users', userInfo);
+          if (res.data.insertedId) {
+            Swal.fire({
+              icon: "success",
+              title: "Congratulations",
+              text: "Your account has been created successfully!",
+            });
+            reset();
+            navigate('/');
+          }
+        } else {
+          throw new Error('Image upload failed');
+        }
+      } catch (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+        reset();
+      }
     } else {
       Swal.fire({
         icon: "error",
@@ -104,6 +112,7 @@ const SignUp = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((userCredential) => {
