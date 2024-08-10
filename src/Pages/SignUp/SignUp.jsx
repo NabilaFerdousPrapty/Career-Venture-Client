@@ -17,101 +17,78 @@ const SignUp = () => {
   const axiosCommon=UseAxiosCommon();
   const { signInWithGoogle,updateUserProfile,createUser,setUser}=UseAuth();
 
-  const [imageData, setImageData] = useState(null);
+
 
   const onSubmit = async (data) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/;
     const { name, email, password, confirmPassword } = data;
-
+  
+    // Check password and other fields as before
     if (password !== confirmPassword) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Password does not match",
-      });
+      Swal.fire({icon: "error", title: "Oops...", text: "Password does not match"});
       reset();
       return;
     }
-
+  
     if (password.length < 6) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Password must be at least 6 characters",
-      });
+      Swal.fire({icon: "error", title: "Oops...", text: "Password must be at least 6 characters"});
       reset();
       return;
     }
-
-    if (regex.test(password)) {
-      try {
-        // Upload image to imgbb
-        const imageResponse = await axiosCommon.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`, {
-          image: imageData 
-
-        });
-
-        if (imageResponse.status === 200) {
-          const imageUrl = imageResponse.data.data.display_url;
-
-          // Proceed with user creation
-          const userCredential = await createUser(email, password);
+  
+    if (!regex.test(password)) {
+      Swal.fire({icon: "error", title: "Oops...", text: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character!"});
+      reset();
+      return;
+    }
+  
+    
+    const formData = new FormData();
+    formData.append('image', data.photo[0]);
+    console.log(data.photo);
+    
+  
+    try {
+      const response = await axiosCommon.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`, formData);
+      const imageUrl = response.data.data.display_url;
+  
+      // Proceed with user creation
+      createUser(email, password)
+        .then((userCredential) => {
           const user = userCredential.user;
-
-          await updateUserProfile(name, imageUrl);
-          setUser(user);
-
-          const userInfo = {
-            name: name,
-            email: email,
-            role: 'member',
-            photo: imageUrl,
-          };
-
-          const res = await axiosCommon.post('/users', userInfo);
-          if (res.data.insertedId) {
-            Swal.fire({
-              icon: "success",
-              title: "Congratulations",
-              text: "Your account has been created successfully!",
+          updateUserProfile(name, imageUrl)
+            .then(() => {
+              setUser(user);
+              const userInfo = {
+                name,
+                email,
+                role: 'member',
+                photo: imageUrl, // Store URL from the API response
+              };
+  
+              axiosCommon.post('/users', userInfo)
+                .then((res) => {
+                  if (res.data.insertedId) {
+                    Swal.fire({icon: "success", title: "Congratulations", text: "Your account has been created successfully!"});
+                    reset();
+                    navigate('/');
+                  }
+                });
+            })
+            .catch((error) => {
+              Swal.fire({icon: "error", title: "Oops...", text: error.message});
+              reset();
+              return;
             });
-            reset();
-            navigate('/');
-          }
-        } else {
-          throw new Error('Image upload failed');
-        }
-      } catch (error) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: error.message,
         });
-        reset();
-      }
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character!",
-      });
+    } catch (error) {
+      Swal.fire({icon: "error", title: "Oops...", text: error.message});
       reset();
-      return;
     }
   };
+  
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImageData(reader.result); // Base64 image data
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
+ 
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -241,9 +218,9 @@ const SignUp = () => {
                   type="file"
                   {...register("photo", { required: true })}
                   id="photo"
+                  name="photo"
                   
-                  accept="image/*"
-                  onChange={handleFileChange}
+                 
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.photo && <span>This field is required</span>}
