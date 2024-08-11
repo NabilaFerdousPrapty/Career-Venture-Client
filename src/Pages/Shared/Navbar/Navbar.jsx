@@ -161,17 +161,26 @@ function Navbar() {
                 </svg>
               </button>
 
-              <button
-                type="button"
-                className="flex items-center focus:outline-none btn bg-[#ad8a54]"
-              
-              >
-                 <Link to="/login"> 
-                 Login
-                 </Link>
+              {
+  user ? (
+    <Link
+      to="/profile"
+      className="border-2 border-[#ad8a54] rounded-full p-1"
+    >
+      <img src={user.photoURL} alt="" className="w-8 h-8" />
+    </Link>
+  ) : (
+    <button
+      type="button"
+      className="flex items-center focus:outline-none btn bg-[#ad8a54]"
+    >
+      <Link to="/login" className="text-white">
+        Login
+      </Link>
+    </button>
+  )
+}
 
-              
-              </button>
             </div>
           </div>
         </div>

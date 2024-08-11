@@ -10,48 +10,44 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-     reset,
+    reset,
     formState: { errors },
   } = useForm();
-  const navigate=useNavigate();
-  const axiosCommon=UseAxiosCommon();
-  const { signInWithGoogle,updateUserProfile,createUser,setUser}=UseAuth();
-
-
+  const navigate = useNavigate();
+  const axiosCommon = UseAxiosCommon();
+  const { signInWithGoogle, updateUserProfile, createUser, setUser } = UseAuth();
 
   const onSubmit = async (data) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,}$/;
     const { name, email, password, confirmPassword } = data;
-  
+
     // Check password and other fields as before
     if (password !== confirmPassword) {
-      Swal.fire({icon: "error", title: "Oops...", text: "Password does not match"});
+      Swal.fire({ icon: "error", title: "Oops...", text: "Password does not match" });
       reset();
       return;
     }
-  
+
     if (password.length < 6) {
-      Swal.fire({icon: "error", title: "Oops...", text: "Password must be at least 6 characters"});
+      Swal.fire({ icon: "error", title: "Oops...", text: "Password must be at least 6 characters" });
       reset();
       return;
     }
-  
+
     if (!regex.test(password)) {
-      Swal.fire({icon: "error", title: "Oops...", text: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character!"});
+      Swal.fire({ icon: "error", title: "Oops...", text: "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character!" });
       reset();
       return;
     }
-  
-    
+
     const formData = new FormData();
     formData.append('image', data.photo[0]);
     console.log(data.photo);
-    
-  
+
     try {
       const response = await axiosCommon.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`, formData);
       const imageUrl = response.data.data.display_url;
-  
+
       // Proceed with user creation
       createUser(email, password)
         .then((userCredential) => {
@@ -65,30 +61,35 @@ const SignUp = () => {
                 role: 'member',
                 photo: imageUrl, // Store URL from the API response
               };
-  
+
               axiosCommon.post('/users', userInfo)
                 .then((res) => {
                   if (res.data.insertedId) {
-                    Swal.fire({icon: "success", title: "Congratulations", text: "Your account has been created successfully!"});
+                    Swal.fire({ icon: "success", title: "Congratulations", text: "Your account has been created successfully!" });
                     reset();
                     navigate('/');
                   }
                 });
             })
             .catch((error) => {
-              Swal.fire({icon: "error", title: "Oops...", text: error.message});
+              Swal.fire({ icon: "error", title: "Oops...", text: error.message });
               reset();
               return;
             });
+        })
+        .catch((error) => {
+          if (error.code === "auth/email-already-in-use") {
+            Swal.fire({ icon: "error", title: "Oops...", text: "This email is already in use." });
+          } else {
+            Swal.fire({ icon: "error", title: "Oops...", text: error.message });
+          }
+          reset();
         });
     } catch (error) {
-      Swal.fire({icon: "error", title: "Oops...", text: error.message});
+      Swal.fire({ icon: "error", title: "Oops...", text: error.message });
       reset();
     }
   };
-  
-
- 
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -99,7 +100,7 @@ const SignUp = () => {
           email: user.email,
           role: 'member',
         };
-  
+
         axiosCommon.post('/users', userInfo)
           .then((res) => {
             if (res.data.insertedId) {
@@ -126,7 +127,7 @@ const SignUp = () => {
         });
       });
   };
-  
+
   return (
     <div className=" flex justify-between items-center  mx-1">
       <div className="max-w-7xl w-screen flex justify-center   mx-auto rounded-2xl  shadow-lg bg-[#1c2940]  ">
