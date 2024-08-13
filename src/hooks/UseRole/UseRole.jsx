@@ -19,8 +19,20 @@ const UseRole = (email) => {
         },
     });
 
-    const { data: isTrainer, isPending: isTrainerLoading } = useQuery({
-        queryKey: ['isTrainer', email],
+    const { data: isMentor, isPending: isMentorLoading } = useQuery({
+        queryKey: ['isMentor', email],
+        queryFn: async () => {
+            try {
+                const response = await axiosCommon.get(`/users/trainer/${email}`);
+                return response.data?.trainer;
+            } catch (error) {
+                console.error("Error fetching trainer role:", error);
+                return false; // Return false in case of error
+            }
+        },
+    });
+    const { data: isMember, isPending: isMemberLoading } = useQuery({
+        queryKey: ['isMentor', email],
         queryFn: async () => {
             try {
                 const response = await axiosCommon.get(`/users/trainer/${email}`);
@@ -32,11 +44,12 @@ const UseRole = (email) => {
         },
     });
 
-    const isLoading = isAdminLoading || isTrainerLoading;
+    const isLoading = isAdminLoading || isMentorLoading || isMemberLoading;
 
     const role = {
         isAdmin: isAdmin ,
-        isTrainer: isTrainer,
+        isMentor: isMentor,
+        isMember: isMember
         
     };
 

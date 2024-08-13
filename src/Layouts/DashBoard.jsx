@@ -517,8 +517,8 @@ const Dashboard = () => {
   const [role, isLoading, refetch] = UseRole(user?.email);
   console.log(user.email);
   console.log(role.isAdmin);
-  console.log(role.isAgent);
-  console.log(role.isUser);
+  console.log(role.isMentor);
+  console.log(role.isMember);
 
   return (
     <div className="h-screen flex">
@@ -543,10 +543,10 @@ const Dashboard = () => {
             </li>
           </nav>
           {role.isAdmin && renderAdminLinks()}
-          {role.isAgent && renderAgentLinks()}
-          {role.isUser && renderUserLinks()}
+          {role.isMentor && renderAgentLinks()}
+          {role.isMember && renderUserLinks()}
           {
-            !role.isAgent && !role.isAdmin && !role.isUser && 
+            !role.isMentor && !role.isAdmin && !role.isMember && 
             <div>
               <h1>
                 You are not approved by the admin please wait for approval
