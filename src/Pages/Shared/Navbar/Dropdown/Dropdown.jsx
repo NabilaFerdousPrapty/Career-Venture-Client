@@ -15,18 +15,16 @@ const {user, setUser,LogOut} = UseAuth();
       {/* Dropdown toggle button */}
       <button
         onClick={toggleDropdown}
-        className="relative z-10 flex items-center  text-sm   border border-transparent rounded- focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring  focus:outline-none"
+        className="relative z-10 flex items-center  text-sm   border border-transparent rounded-full focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring  focus:outline-none"
       >
         <span className="">
           <img
-            className="object-cover w-auto h-8 rounded-full"
+            className="object-cover w-auto h-10 rounded-full"
             src={user?.photoURL || 'https://i.ibb.co/M7Zxxsm/770fb75f5e81e4c2dbe8934f246aeeab.jpg'}
             alt="jane doe"
           />
         </span>
-        <svg className="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z" fill="currentColor"></path>
-        </svg>
+       
       </button>
 
       {/* Dropdown menu */}
