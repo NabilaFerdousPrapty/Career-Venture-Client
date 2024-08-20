@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../../assets/logo2w.png";
 import { Link, useLocation } from "react-router-dom";
 import UseAuth from "../../../hooks/UseAuth/UseAuth";
+import Dropdown from "./Dropdown/Dropdown";
 function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -163,12 +164,7 @@ function Navbar() {
 
               {
   user ? (
-    <Link
-      to="/profile"
-      className="border-2 border-[#ad8a54] rounded-full p-1"
-    >
-      <img src={user.photoURL} alt="" className="w-8 h-8" />
-    </Link>
+    <Dropdown />
   ) : (
     <button
       type="button"

@@ -3,7 +3,7 @@ import logo from "../assets/logo2w.png";
 import { useState } from "react";
 import { GiHamburger } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
-import UseAuth from "../hooks/UseAuth/UseAuth";
+import UseAuth from './../hooks/UseAuth/UseAuth';
 
 
 const Dashboard = () => {
