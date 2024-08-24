@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import logo from "../assets/logo2w.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GiHamburger } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from './../hooks/UseAuth/UseAuth';
@@ -8,7 +8,15 @@ import UseAuth from './../hooks/UseAuth/UseAuth';
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [loader, setLoading] = useState(true);
+  // console.log(loading);
+ useEffect(() => {
+   const timer = setTimeout(() => {
+     setLoading(false);
+   }, 3000); 
 
+   return () => clearTimeout(timer);
+ }, []);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -348,7 +356,7 @@ const Dashboard = () => {
     </ul>
   );
 
-  const renderUserLinks = () => (
+  const renderMemberLinks = () => (
     <ul className="pt-2 pb-4 space-y-1 text-xl gap-4">
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -512,7 +520,7 @@ const Dashboard = () => {
       </Link>
     </ul>
   );
-  const { user, logout } = UseAuth();
+  const { user, logout ,loading} = UseAuth();
   console.log(user);
   const [role, isLoading, refetch] = UseRole(user?.email);
   console.log(user.email);
@@ -521,7 +529,10 @@ const Dashboard = () => {
   console.log(role.isMember);
 
   return (
-    <div className="h-screen flex">
+    <div>
+     {
+      loading ? <div>Loading...</div> : (
+        <div className="h-screen flex">
       <div
         className={`fixed top-0 bg-gray-950 left-0 h-full w-64  p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -544,7 +555,7 @@ const Dashboard = () => {
           </nav>
           {role.isAdmin && renderAdminLinks()}
           {role.isMentor && renderAgentLinks()}
-          {role.isMember && renderUserLinks()}
+          {role.isMember && renderMemberLinks()}
           {
             !role.isMentor && !role.isAdmin && !role.isMember && 
             <div>
@@ -618,6 +629,8 @@ const Dashboard = () => {
           <Outlet />
         </div>
       </div>
+    </div>)
+     } 
     </div>
   );
 };

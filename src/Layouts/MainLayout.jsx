@@ -6,7 +6,7 @@ import { CircleLoader,} from "react-spinners";
 
 const MainLayout = () => {
   const [loading, setLoading] = useState(true);
-  console.log(loading);
+  // console.log(loading);
  useEffect(() => {
    const timer = setTimeout(() => {
      setLoading(false);
