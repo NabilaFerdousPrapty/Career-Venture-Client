@@ -531,7 +531,9 @@ const Dashboard = () => {
   return (
     <div>
      {
-      loading ? <div>Loading...</div> : (
+      loading ? <div>
+        <h1>Loading...</h1>
+      </div> : (
         <div className="h-screen flex">
       <div
         className={`fixed top-0 bg-gray-950 left-0 h-full w-64  p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform ${
