@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { GiHamburger } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from './../hooks/UseAuth/UseAuth';
+import { BiLoaderCircle } from "react-icons/bi";
+import { CgLoadbarSound } from "react-icons/cg";
 
 
 const Dashboard = () => {
@@ -13,7 +15,7 @@ const Dashboard = () => {
  useEffect(() => {
    const timer = setTimeout(() => {
      setLoading(false);
-   }, 3000); 
+   }, 1000); 
 
    return () => clearTimeout(timer);
  }, []);
@@ -523,16 +525,16 @@ const Dashboard = () => {
   const { user, logout ,loading} = UseAuth();
   console.log(user);
   const [role, isLoading, refetch] = UseRole(user?.email);
-  console.log(user.email);
-  console.log(role.isAdmin);
-  console.log(role.isMentor);
-  console.log(role.isMember);
+  // console.log(user.email);
+  // console.log(role.isAdmin);
+  // console.log(role.isMentor);
+  // console.log(role.isMember);
 
   return (
     <div>
      {
-      loading ? <div>
-        <h1>Loading...</h1>
+      loader ? <div className="h-screen flex justify-center items-center">
+        <CgLoadbarSound className="text-7xl"></CgLoadbarSound>
       </div> : (
         <div className="h-screen flex">
       <div

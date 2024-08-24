@@ -23,8 +23,8 @@ const UseRole = (email) => {
         queryKey: ['isMentor', email],
         queryFn: async () => {
             try {
-                const response = await axiosCommon.get(`/users/trainer/${email}`);
-                return response.data?.trainer;
+                const response = await axiosCommon.get(`/users/mentor/${email}`);
+                return response.data?.mentor;
             } catch (error) {
                 console.error("Error fetching trainer role:", error);
                 return false; // Return false in case of error
