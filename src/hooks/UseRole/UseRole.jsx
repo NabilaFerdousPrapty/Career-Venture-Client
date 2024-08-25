@@ -4,20 +4,21 @@ import UseAxiosCommon from "../UseAxiosCommon/UseAxiosCommon";
 
 const UseRole = (email) => {
     const axiosCommon = UseAxiosCommon();
-    // console.log(email);
+    console.log(email);
 
-    const { data: isAdmin, isPending: isAdminLoading,refetch } = useQuery({
+    const { data: isAdmin, isLoading: isAdminLoading, refetch } = useQuery({
         queryKey: ['isAdmin', email],
         queryFn: async () => {
             try {
                 const response = await axiosCommon.get(`/users/admin/${email}`);
-                return response.data?.admin;
+                return response.data?.admin; 
             } catch (error) {
                 console.error("Error fetching admin role:", error);
-                return false; // Return false in case of error
+                return false;
             }
         },
     });
+    
 
     const { data: isMentor, isPending: isMentorLoading } = useQuery({
         queryKey: ['isMentor', email],
@@ -32,11 +33,11 @@ const UseRole = (email) => {
         },
     });
     const { data: isMember, isPending: isMemberLoading } = useQuery({
-        queryKey: ['isMentor', email],
+        queryKey: ['isMember', email],
         queryFn: async () => {
             try {
-                const response = await axiosCommon.get(`/users/trainer/${email}`);
-                return response.data?.trainer;
+                const response = await axiosCommon.get(`/users/member/${email}`);
+                return response.data?.member;
             } catch (error) {
                 console.error("Error fetching trainer role:", error);
                 return false; // Return false in case of error
@@ -52,6 +53,8 @@ const UseRole = (email) => {
         isMember: isMember
         
     };
+    console.log(role);
+    
 
     return [role, isLoading, refetch];
 };
