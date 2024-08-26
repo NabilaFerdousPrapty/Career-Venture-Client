@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo2w.png";
 import { useEffect, useState } from "react";
 import { GiHamburger } from "react-icons/gi";
@@ -6,6 +6,7 @@ import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from './../hooks/UseAuth/UseAuth';
 import { BiLoaderCircle } from "react-icons/bi";
 import { CgLoadbarSound } from "react-icons/cg";
+import Swal from "sweetalert2";
 
 
 const Dashboard = () => {
@@ -522,14 +523,25 @@ const Dashboard = () => {
       </Link>
     </ul>
   );
-  const { user, logout ,loading} = UseAuth();
+  const { user, LogOut ,loading} = UseAuth();
   console.log(user);
   const [role, isLoading, refetch] = UseRole(user?.email);
+  const navigate=useNavigate();
   // console.log(user.email);
   // console.log(role.isAdmin);
   // console.log(role.isMentor);
   // console.log(role.isMember);
+const handleLogout=()=>{
+  LogOut();
+  Swal.fire({
+    icon: 'success',
+    title: 'Logout',
+    text: 'You have been logged out successfully',
+  });
+  navigate('/login');
 
+
+}
   return (
     <div>
      {
@@ -596,9 +608,9 @@ const Dashboard = () => {
                 </span>
               </a>
 
-              <Link
-                to={"/logout"}
-                href="#"
+              <button
+                
+                onClick={handleLogout}
                 className="text-gray-500 transition-colors duration-200 rotate-180 dark:text-gray-400 rtl:rotate-0 hover:text-blue-500 dark:hover:text-blue-400"
               >
                 <svg
@@ -615,7 +627,7 @@ const Dashboard = () => {
                     d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
                   />
                 </svg>
-              </Link>
+              </button>
             </div>
           </Link>
         </div>

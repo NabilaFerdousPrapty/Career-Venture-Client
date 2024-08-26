@@ -50,17 +50,23 @@ const Login = () => {
                     title: "Congratulations",
                     text: "Your account has been created successfully!",
                   });
-                  reset();
+                 
                   navigate(location?.state ? location.state : "/");
                 }
               })
               .catch((error) => {
                 console.error('Error creating user:', error);
               });
+              Swal.fire({
+                icon: 'success',
+                title: 'Login Success',
+                text: `Welcome back ${user.displayName}!`,
+              });
+              navigate('/');
           })
           .catch((error) => {
             const errorMessage = error.message;
-            reset();
+            console.error('Error signing in with Google:', errorMessage);
             Swal.fire({
               icon: 'error',
               title: 'Login Failed',

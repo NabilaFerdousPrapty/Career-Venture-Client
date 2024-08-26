@@ -11,9 +11,13 @@ const UseRole = (email) => {
         queryFn: async () => {
             try {
                 const response = await axiosCommon.get(`/users/admin/${email}`);
-                console.log(response);
-                
-                return response.data?.role; 
+                // console.log(response);
+                if (response.data?.role === "admin") {
+                    return true;
+                    
+                }
+                return false
+                ; 
             } catch (error) {
                 console.error("Error fetching admin role:", error);
                 return false;
@@ -27,9 +31,11 @@ const UseRole = (email) => {
         queryFn: async () => {
             try {
                 const response = await axiosCommon.get(`/users/mentor/${email}`);
-                console.log(response);
+                if (response.data?.role === "mentor") {
+                    return true;
                 
-                return response.data?.role;
+                }
+                return false;
             } catch (error) {
                 console.error("Error fetching trainer role:", error);
                 return false; // Return false in case of error
@@ -39,14 +45,15 @@ const UseRole = (email) => {
     const { data: isMember, isPending: isMemberLoading } = useQuery({
         queryKey: ['isMember', email],
         queryFn: async () => {
-            if (!email) {
-                console.error("Email is undefined");
-                return false;
-            }
+           
             try {
                 const response = await axiosCommon.get(`/users/member/${email}`);
                 console.log(response);
-                return response.data?.role;
+                if (response.data?.role === "member") {
+                    return true;
+                    
+                }
+                return false;
             } catch (error) {
                 console.error("Error fetching member role:", error);
                 return false;
