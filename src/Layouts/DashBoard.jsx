@@ -7,7 +7,8 @@ import UseAuth from './../hooks/UseAuth/UseAuth';
 import { BiLoaderCircle } from "react-icons/bi";
 import { CgLoadbarSound } from "react-icons/cg";
 import Swal from "sweetalert2";
-
+import {  CSSProperties } from "react";
+import { BounceLoader } from "react-spinners";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -542,11 +543,19 @@ const handleLogout=()=>{
 
 
 }
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
+let [color, setColor] = useState("#d19945");
   return (
     <div>
      {
       loader ? <div className="h-screen flex justify-center items-center">
-        <CgLoadbarSound className="text-7xl"></CgLoadbarSound>
+       <BounceLoader color={color} size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"   cssOverride={override} />
       </div> : (
         <div className="h-screen flex">
       <div
