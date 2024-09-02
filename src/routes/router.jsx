@@ -13,6 +13,7 @@ import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../Layouts/DashBoard';
 import DashboardHome from '../Pages/DashboardHome/DashboardHome';
+import ErrorPage from '../Pages/Error/ErrorPage';
   const router = createBrowserRouter([
     {
       path: "/",
@@ -34,8 +35,10 @@ import DashboardHome from '../Pages/DashboardHome/DashboardHome';
         },{
           path:'/resources',
           element:<Resources/>
-        }
-      ]
+        },
+      ],
+      errorElement:<ErrorPage/>
+
 
     },{
       path:'/dashboard',
@@ -45,8 +48,9 @@ import DashboardHome from '../Pages/DashboardHome/DashboardHome';
           path:'home',
           element:<DashboardHome/>
         }
-      ]
-
+      ],
+      errorElement:<ErrorPage/>
+      
     },
     {
       path: "/login",

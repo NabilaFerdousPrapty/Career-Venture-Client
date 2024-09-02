@@ -34,7 +34,7 @@ const BootCamps = () => {
           <img
             src={bootCamp.classImage}
             alt={bootCamp.name}
-            className="object-cover w-full h-48"
+            className="object-cover w-full h-60"
           />
           <div className="lg:p-4 p-1 flex flex-col flex-grow items-center">
             <h2 className="text-2xl font-bold mb-2">{bootCamp.name}</h2>
