@@ -1,6 +1,4 @@
-Here's the updated README file with the live link:
 
-```markdown
 # Career Venture
 
 **Career Venture** is a platform designed for learning and job opportunities. It provides resources for career growth, skill development, and job finding.
@@ -51,4 +49,4 @@ Feel free to contribute to the project by submitting issues or pull requests!
 ## License
 
 This project is licensed under the MIT License.
-```
+
