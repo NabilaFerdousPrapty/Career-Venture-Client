@@ -39,9 +39,9 @@ const BootCamps = () => {
           <div className="lg:p-4 p-1 flex flex-col flex-grow items-center">
             <h2 className="text-2xl font-bold mb-2">{bootCamp.name}</h2>
             <p className="text-sm text-gray-600 mb-4">{bootCamp.description.slice(0, 80)}....</p>
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-col justify-between items-center mb-4">
               <span className="text-lg font-semibold">Duration: {bootCamp.duration}</span>
-              <span className="text-lg font-semibold">Price: ${bootCamp.price}</span>
+              <span className="text-lg font-semibold">Price: <span className="text-2xl">৳</span>{bootCamp.price}</span>
             </div>
             <p className="text-sm text-gray-600 mb-4">Location: {bootCamp.location}</p>
             <div className="flex items-center mb-4">
