@@ -72,7 +72,7 @@ const BootCamps = () => {
             </div>
             {/* "Learn more" button at the bottom */}
             <div className="mt-auto w-full">
-              <Link to={'/LearnAboutBootCamp'}>
+              <Link to={`/LearnAboutBootCamp/${bootCamp?._id}`}>
                 <button
                   type="button"
                   className="flex items-center justify-center w-full p-3 font-semibold tracking-wide bg-[#ad8a54] text-gray-50 rounded-xl"

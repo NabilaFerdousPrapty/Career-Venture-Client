@@ -14,6 +14,11 @@ import SignUp from '../Pages/SignUp/SignUp';
 import Dashboard from '../Layouts/DashBoard';
 import DashboardHome from '../Pages/DashboardHome/DashboardHome';
 import ErrorPage from '../Pages/Error/ErrorPage';
+import BootCampDetails from '../Pages/BootCamps/BootCampDetails/BootCampDetails';
+import { axiosSecure } from './../hooks/UseAxiosSecure/UseAxiosSecure';
+import UseAxiosCommon from '../hooks/UseAxiosCommon/UseAxiosCommon';
+const axiosCommon = UseAxiosCommon();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -35,7 +40,19 @@ import ErrorPage from '../Pages/Error/ErrorPage';
         },{
           path:'/resources',
           element:<Resources/>
-        },
+        },{
+          path:'/LearnAboutBootCamp/:id',
+          element:<BootCampDetails/>,
+          loader: async ({ params }) => {
+            try {
+              const response = await axiosCommon.get(`/LearnAboutBootCamp/${params.id}`);
+              return response.data;
+            } catch (error) {
+              console.error('Error loading item:', error);
+              throw new Error('Failed to load item data');
+            }
+          }
+        }
       ],
       errorElement:<ErrorPage/>
 

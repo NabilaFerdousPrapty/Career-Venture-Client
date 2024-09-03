@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import useAuth from "./UseAuth";
+import UseAuth from "../UseAuth/UseAuth";
 
 export const axiosSecure = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -10,7 +10,7 @@ export const axiosSecure = axios.create({
 });
 const UseAxiosSecure = () => {
     const navigate = useNavigate();
-    const { LogOut } = useAuth();
+    const { LogOut } = UseAuth();
 
     useEffect(() => {
         axiosSecure.interceptors.request.use(function (config) {
