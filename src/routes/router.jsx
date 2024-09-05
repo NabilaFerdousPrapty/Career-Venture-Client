@@ -17,6 +17,7 @@ import ErrorPage from '../Pages/Error/ErrorPage';
 import BootCampDetails from '../Pages/BootCamps/BootCampDetails/BootCampDetails';
 import { axiosSecure } from './../hooks/UseAxiosSecure/UseAxiosSecure';
 import UseAxiosCommon from '../hooks/UseAxiosCommon/UseAxiosCommon';
+import AllMentors from '../Pages/AllMentors/AllMentors';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -52,6 +53,9 @@ const axiosCommon = UseAxiosCommon();
               throw new Error('Failed to load item data');
             }
           }
+        },{
+          path:'allMentors',
+          element:<AllMentors/>
         }
       ],
       errorElement:<ErrorPage/>
