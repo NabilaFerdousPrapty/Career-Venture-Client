@@ -20,7 +20,7 @@ const BootCamps = () => {
   console.log("Error:", error);
   console.log("Data:", bootCamps);
 
-  if (isLoading) return <div><ClockLoader /></div>;
+  if (isLoading) return <div className="h-screen flex justify-center items-center"><ClockLoader /></div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
