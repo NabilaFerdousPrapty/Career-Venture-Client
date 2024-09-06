@@ -2,6 +2,7 @@ import React from "react";
 import UseAxiosCommon from "../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { ClockLoader } from "react-spinners";
 
 const BootCamps = () => {
   const axiosCommon = UseAxiosCommon();
@@ -19,7 +20,7 @@ const BootCamps = () => {
   console.log("Error:", error);
   console.log("Data:", bootCamps);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div><ClockLoader /></div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
