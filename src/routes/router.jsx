@@ -17,6 +17,7 @@ import ErrorPage from '../Pages/Error/ErrorPage';
 import BootCampDetails from '../Pages/BootCamps/BootCampDetails/BootCampDetails';
 import { axiosSecure } from './../hooks/UseAxiosSecure/UseAxiosSecure';
 import UseAxiosCommon from '../hooks/UseAxiosCommon/UseAxiosCommon';
+import PrivateRoute from './Private/PrivateRoute';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -42,7 +43,10 @@ const axiosCommon = UseAxiosCommon();
           element:<Resources/>
         },{
           path:'/LearnAboutBootCamp/:id',
-          element:<BootCampDetails/>,
+          element:<PrivateRoute>
+            <BootCampDetails/>
+          </PrivateRoute>
+          ,
           loader: async ({ params }) => {
             try {
               const response = await axiosCommon.get(`/LearnAboutBootCamp/${params.id}`);
@@ -59,7 +63,9 @@ const axiosCommon = UseAxiosCommon();
 
     },{
       path:'/dashboard',
-      element:<Dashboard/>,
+      element:<PrivateRoute>
+        <Dashboard/>
+      </PrivateRoute>,
       children:[
         {
           path:'home',
