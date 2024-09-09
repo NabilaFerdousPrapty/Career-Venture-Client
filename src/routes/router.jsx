@@ -63,9 +63,9 @@ const axiosCommon = UseAxiosCommon();
 
     },{
       path:'/dashboard',
-      element:<PrivateRoute>
+      element:
         <Dashboard/>
-      </PrivateRoute>,
+     ,
       children:[
         {
           path:'home',

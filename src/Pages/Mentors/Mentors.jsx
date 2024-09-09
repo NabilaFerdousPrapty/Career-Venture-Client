@@ -42,14 +42,14 @@ const Mentors = () => {
           <p className="mt-3 text-sm text-gray-400">No credit card required</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10  ">
           {mentors.map((mentor) => (
             <div
               key={mentor._id}
-              className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+              className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 h-[700px] border-2 border-amber-400"
             >
               <img
-                className="object-cover object-center w-full h80"
+                className=" object-center w-full h-80"
                 src={mentor.profile_image || "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"}
                 alt={mentor.name}
               />

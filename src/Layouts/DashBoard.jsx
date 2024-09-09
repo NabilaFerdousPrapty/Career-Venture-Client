@@ -4,10 +4,7 @@ import { useEffect, useState } from "react";
 import { GiHamburger } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from './../hooks/UseAuth/UseAuth';
-import { BiLoaderCircle } from "react-icons/bi";
-import { CgLoadbarSound } from "react-icons/cg";
 import Swal from "sweetalert2";
-import {  CSSProperties } from "react";
 import { BounceLoader } from "react-spinners";
 
 const Dashboard = () => {
@@ -528,10 +525,10 @@ const Dashboard = () => {
   console.log(user);
   const [role, isLoading, refetch] = UseRole(user?.email);
   const navigate=useNavigate();
-  // console.log(user.email);
-  // console.log(role.isAdmin);
-  // console.log(role.isMentor);
-  // console.log(role.isMember);
+  console.log(user.email);
+  console.log(role.isAdmin);
+  console.log(role.isMentor);
+  console.log(role.isMember);
 const handleLogout=()=>{
   LogOut();
   Swal.fire({
