@@ -4,7 +4,7 @@ import UseAxiosCommon from "../UseAxiosCommon/UseAxiosCommon";
 
 const UseRole = (email) => {
     const axiosCommon = UseAxiosCommon();
-    console.log(email);
+    // console.log(email);
 
     const { data: isAdmin, isLoading: isAdminLoading, refetch } = useQuery({
         queryKey: ['isAdmin', email],
@@ -48,7 +48,7 @@ const UseRole = (email) => {
            
             try {
                 const response = await axiosCommon.get(`/users/member/${email}`);
-                console.log(response);
+                // console.log(response);
                 if (response.data?.role === "member") {
                     return true;
                     
@@ -69,7 +69,7 @@ const UseRole = (email) => {
         isMember: isMember
         
     };
-    console.log(role);
+    // console.log(role);
     
 
     return [role, isLoading, refetch];

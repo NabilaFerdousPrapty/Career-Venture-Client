@@ -70,7 +70,7 @@ const axiosCommon = UseAxiosCommon();
      ,
       children:[
         {
-          path:'/dashboard/home',
+          path:'home',
           element:<DashboardHome/>
         }
       ],

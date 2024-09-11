@@ -26,9 +26,9 @@ const Dashboard = () => {
   const renderAdminLinks = () => (
     <ul className="pt-2 pb-4 space-y-3 ">
       <Link
-        to={"/home"}
+        to={"home"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">Home</span>
       </Link>
@@ -36,7 +36,7 @@ const Dashboard = () => {
       <Link
         to={"/manage-users"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">User Management</span>
       </Link>
@@ -44,21 +44,21 @@ const Dashboard = () => {
       <Link
         to={"/overview"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">Overview</span>
       </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">Transaction Overview</span>
       </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">Reports</span>
       </Link>
@@ -73,11 +73,11 @@ const Dashboard = () => {
     </ul>
   );
 
-  const renderAgentLinks = () => (
+  const renderMentorLinks = () => (
     <ul className="pt-2 pb-4 space-y-1 text-lg gap-4">
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">Home</span>
       </Link>
@@ -85,31 +85,37 @@ const Dashboard = () => {
       <Link
         to={"/manage-users"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
-        <span className="mx-2 text-sm font-medium">Cash in Request</span>
+        <span className="mx-2 text-sm font-medium">
+          Insert new bootcamp
+        </span>
       </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
-        <span className="mx-2 text-sm font-medium">Cash out Request</span>
+        <span className="mx-2 text-sm font-medium">
+          Insert new resources
+        </span>
       </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+       
       >
-        <span className="mx-2 text-sm font-medium">Balance</span>
+        <span className="mx-2 text-sm font-medium">
+          Insert new openings
+        </span>
       </Link>
 
       <Link
         to={"/overview"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
-        <span className="mx-2 text-sm font-medium">Overview</span>
+        <span className="mx-2 text-sm font-medium">All booked courses</span>
       </Link>
 
       <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
@@ -126,7 +132,7 @@ const Dashboard = () => {
     <ul className="pt-2 pb-4 space-y-1 text-xl gap-4">
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
         <span className="mx-2 text-sm font-medium">Home</span>
       </Link>
@@ -134,33 +140,41 @@ const Dashboard = () => {
       <Link
         to={"/cash-in"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
-        <span className="mx-2 text-sm font-medium">Cash in</span>
+        <span className="mx-2 text-sm font-medium">
+          Booked Bootcamps
+        </span>
       </Link>
 
       <Link
         to={"/cash-out"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+       
       >
-        <span className="mx-2 text-sm font-medium">Cash out</span>
+        <span className="mx-2 text-sm font-medium">
+          Applied Openings status
+        </span>
       </Link>
 
       <Link
         to={"/send-money"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
-        <span className="mx-2 text-sm font-medium">Send Money</span>
+        <span className="mx-2 text-sm font-medium">
+          Votes on resources
+        </span>
       </Link>
 
       <Link
         to={"/balance"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        href="#"
+        
       >
-        <span className="mx-2 text-sm font-medium">Balance</span>
+        <span className="mx-2 text-sm font-medium">
+          Transaction History
+        </span>
       </Link>
 
       <Link
@@ -171,7 +185,9 @@ const Dashboard = () => {
       </Link>
 
       <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
-        <span className="mx-2 text-sm font-medium">Transaction History</span>
+        <span className="mx-2 text-sm font-medium">
+          Be a mentor
+        </span>
       </Link>
     </ul>
   );
@@ -234,7 +250,7 @@ const Dashboard = () => {
                 </li>
               </nav>
               {role.isAdmin && renderAdminLinks()}
-              {role.isMentor && renderAgentLinks()}
+              {role.isMentor && renderMentorLinks()}
               {role.isMember && renderMemberLinks()}
               {!role.isMentor && !role.isAdmin && !role.isMember && (
                 <div>
@@ -264,7 +280,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="flex items-center justify-between mt-6">
-                  <a href="#" className="flex items-center gap-x-2">
+                  <a className="flex items-center gap-x-2">
                     <span className="text-xs font-medium text-gray-700 dark:text-gray-200">
                       {user?.email}
                     </span>
