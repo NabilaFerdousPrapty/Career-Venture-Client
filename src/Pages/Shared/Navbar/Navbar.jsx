@@ -118,7 +118,7 @@ function Navbar() {
               </Link>
             {
               user && (  <Link
-                to="/dashBoard"
+                to="/dashBoard/home"
                 className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
                     isActiveLink("/dashBoard")
                         ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
