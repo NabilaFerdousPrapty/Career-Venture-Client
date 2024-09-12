@@ -1,11 +1,10 @@
-import React from 'react';
+
+import Hero from './Hero/Hero';
 
 const Resources = () => {
     return (
         <div>
-            <h1>
-                Resources
-            </h1>
+            <Hero/>
         </div>
     );
 };
