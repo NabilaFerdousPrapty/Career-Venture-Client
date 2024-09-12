@@ -74,7 +74,7 @@ const Banner = () => {
                 your skills.
               </p>
               <Link
-                to="/bootCamps"
+                to="/resources"
                 className="bg-white text-sm md:text-base text-black px-3 py-1 md:px-4 md:py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Learn More
@@ -103,7 +103,7 @@ const Banner = () => {
                 career growth.
               </p>
               <Link
-                to="/bootCamps"
+                to="/mentors"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Find Mentors
@@ -132,7 +132,8 @@ const Banner = () => {
                 unique talents.
               </p>
               <Link
-                to="/bootCamps"
+
+                to="/openings"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Explore Now
@@ -161,7 +162,7 @@ const Banner = () => {
                 career.
               </p>
               <Link
-                to="/bootCamps"
+                to="/openings"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
                 Apply Now

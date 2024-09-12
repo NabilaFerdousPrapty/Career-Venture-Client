@@ -28,6 +28,9 @@ const Mentors = () => {
 
   return (
     <div>
+      <div className="flex justify-center mt-10">
+            <img className="object-cover w-full h-96 rounded-xl lg:w-4/5" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" />
+        </div>
       <div className="container px-6 py-16 mx-auto text-center">
         <div className="max-w-lg mx-auto">
           <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
@@ -40,7 +43,10 @@ const Mentors = () => {
             Start 14-Day Free Trial
           </button>
           <p className="mt-3 text-sm text-gray-400">No credit card required</p>
+          
         </div>
+        
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10  ">
           {mentors.map((mentor) => (

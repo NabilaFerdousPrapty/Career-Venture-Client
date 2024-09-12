@@ -26,11 +26,13 @@ const Dashboard = () => {
   const renderAdminLinks = () => (
     <ul className="pt-2 pb-4 space-y-3 ">
       <Link
-        to={"home"}
+        to={"/intro"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
       >
-        <span className="mx-2 text-sm font-medium">Home</span>
+        <span className="mx-2 text-sm font-medium">
+          Introduction
+        </span>
       </Link>
 
       <Link
@@ -70,17 +72,23 @@ const Dashboard = () => {
       <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
         <span className="mx-2 text-sm font-medium">Setting</span>
       </Link>
+      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+        <span className="mx-2 text-sm font-medium">Go to Home</span>
+      </Link>
+
     </ul>
   );
 
   const renderMentorLinks = () => (
     <ul className="pt-2 pb-4 space-y-1 text-lg gap-4">
       <Link
-        to={"/home"}
+        to={"/intro"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
       >
-        <span className="mx-2 text-sm font-medium">Home</span>
+        <span className="mx-2 text-sm font-medium">
+          Introduction
+        </span>
       </Link>
 
       <Link
@@ -126,17 +134,22 @@ const Dashboard = () => {
       <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
         <span className="mx-2 text-sm font-medium">Setting</span>
       </Link>
+      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+        <span className="mx-2 text-sm font-medium">Go to Home</span>
+      </Link>
     </ul>
   );
 
   const renderMemberLinks = () => (
     <ul className="pt-2 pb-4 space-y-1 text-xl gap-4">
       <Link
+        to={"/intro"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-        to={"home"}
         
       >
-        <span className="mx-2 text-sm font-medium">Home</span>
+        <span className="mx-2 text-sm font-medium">
+          Introduction
+        </span>
       </Link>
 
       <Link
@@ -190,6 +203,9 @@ const Dashboard = () => {
         <span className="mx-2 text-sm font-medium">
           Be a mentor
         </span>
+      </Link>
+      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+        <span className="mx-2 text-sm font-medium">Go to Home</span>
       </Link>
     </ul>
   );
@@ -254,13 +270,21 @@ const Dashboard = () => {
               {role.isAdmin && renderAdminLinks()}
               {role.isMentor && renderMentorLinks()}
               {role.isMember && renderMemberLinks()}
-              {!role.isMentor && !role.isAdmin && !role.isMember && (
+              {(!role.isMentor && !role.isAdmin && !role.isMember )&&  (
                 <div>
                   <h1>
                     You are not approved by the admin please wait for approval
                   </h1>
+                  <p>
+                    If you are not approved by the admin within 24 hours please 
+                    contact the admin
+                  </p>
+                 
                 </div>
               )}
+              {
+                isLoading && <h1>Loading...</h1>
+              }
               <Link className="mt-6">
                 <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">
                   <h2 className="text-sm font-medium text-gray-800 dark:text-white">
