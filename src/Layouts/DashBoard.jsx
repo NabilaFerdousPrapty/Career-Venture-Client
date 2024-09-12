@@ -270,7 +270,7 @@ const Dashboard = () => {
               {role.isAdmin && renderAdminLinks()}
               {role.isMentor && renderMentorLinks()}
               {role.isMember && renderMemberLinks()}
-              {(!role.isMentor && !role.isAdmin && !role.isMember )&&  (
+              {(!role.isMentor && !role.isAdmin && !role.isMember && !isLoading )&&  (
                 <div>
                   <h1>
                     You are not approved by the admin please wait for approval

@@ -1,11 +1,10 @@
-import React from 'react';
+
+import Hero from './Hero/Hero';
 
 const Openings = () => {
     return (
         <div>
-           <h1>
-            Openings
-            </h1> 
+          <Hero/>
         </div>
     );
 };

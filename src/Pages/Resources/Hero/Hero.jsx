@@ -11,7 +11,7 @@ const Hero = () => {
             <div className="w-full lg:w-1/2">
                 <div className="lg:max-w-lg">
                     <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-                        Search for Sepecific 
+                        Search for Specific 
                          <span className="text-blue-500 mx-2">
                             Resources
                             </span></h1>
