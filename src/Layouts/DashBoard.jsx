@@ -5,9 +5,15 @@ import { GiHamburger } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from "./../hooks/UseAuth/UseAuth";
 import Swal from "sweetalert2";
-import { BounceLoader } from "react-spinners";
-import { AiOutlineLogout } from "react-icons/ai";
+import { BounceLoader, RotateLoader } from "react-spinners";
 import { LuLogOut } from "react-icons/lu";
+import { PiListStarThin } from "react-icons/pi";
+import { FaFileInvoiceDollar, FaUsersGear } from "react-icons/fa6";
+import { GrOverview } from "react-icons/gr";
+import { TbReport } from "react-icons/tb";
+import { FcFeedback } from "react-icons/fc";
+import { IoSettings } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -30,16 +36,18 @@ const Dashboard = () => {
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
       >
+        <PiListStarThin />
         <span className="mx-2 text-sm font-medium">
           Introduction
         </span>
+
       </Link>
 
       <Link
         to={"/manage-users"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
-      >
+      ><FaUsersGear />
         <span className="mx-2 text-sm font-medium">User Management</span>
       </Link>
 
@@ -47,32 +55,32 @@ const Dashboard = () => {
         to={"/overview"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
-      >
+      ><GrOverview />
         <span className="mx-2 text-sm font-medium">Overview</span>
       </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
-      >
+      ><FaFileInvoiceDollar />
         <span className="mx-2 text-sm font-medium">Transaction Overview</span>
       </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
-      >
+      ><TbReport />
         <span className="mx-2 text-sm font-medium">Reports</span>
       </Link>
 
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><FcFeedback />
         <span className="mx-2 text-sm font-medium">Feedbacks</span>
       </Link>
 
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><IoSettings />
         <span className="mx-2 text-sm font-medium">Setting</span>
       </Link>
-      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><FaHome />
         <span className="mx-2 text-sm font-medium">Go to Home</span>
       </Link>
 
@@ -283,9 +291,9 @@ const Dashboard = () => {
                 </div>
               )}
               {
-                isLoading && <h1>Loading...</h1>
+                isLoading && <h1><RotateLoader /></h1>
               }
-              <Link className="mt-6">
+              <Link to={'/'} className="mt-6">
                 <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">
                   <h2 className="text-sm font-medium text-gray-800 dark:text-white">
                     New feature available!
