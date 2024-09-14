@@ -1,7 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo2w.png";
 import { useEffect, useState } from "react";
-import { GiHamburger } from "react-icons/gi";
+import { GiHamburger, GiOfficeChair } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from "./../hooks/UseAuth/UseAuth";
 import Swal from "sweetalert2";
@@ -58,6 +58,13 @@ const Dashboard = () => {
       ><GrOverview />
         <span className="mx-2 text-sm font-medium">Overview</span>
       </Link>
+      <Link
+        to={"/overview"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+        
+      ><GiOfficeChair />
+        <span className="mx-2 text-sm font-medium">Add job openings</span>
+      </Link>
 
       <Link
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -73,10 +80,7 @@ const Dashboard = () => {
         <span className="mx-2 text-sm font-medium">Reports</span>
       </Link>
 
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><FcFeedback />
-        <span className="mx-2 text-sm font-medium">Feedbacks</span>
-      </Link>
-
+     
       <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><IoSettings />
         <span className="mx-2 text-sm font-medium">Setting</span>
       </Link>
@@ -258,7 +262,7 @@ const Dashboard = () => {
           >
             <Link to={"/"}>
               <img
-                className="w-auto h-auto max-w-20 mx-auto "
+                className="w-auto h-auto max-w-28 mx-auto "
                 src={logo}
                 alt=""
               />
@@ -293,7 +297,7 @@ const Dashboard = () => {
               {
                 isLoading && <p><RotateLoader /></p>
               }
-              <Link to={'/'} className="mt-6">
+              <Link to={'/'} className="mt-1">
                 <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">
                   <h2 className="text-sm font-medium text-gray-800 dark:text-white">
                     New feature available!
