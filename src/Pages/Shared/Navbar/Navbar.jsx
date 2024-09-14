@@ -12,7 +12,7 @@ function Navbar() {
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
-  console.log(user);
+  // console.log(user);
   
   return (
     // eslint-disable-next-line react/no-unknown-property

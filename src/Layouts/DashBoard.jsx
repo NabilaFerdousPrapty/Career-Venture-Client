@@ -32,7 +32,7 @@ const Dashboard = () => {
   const renderAdminLinks = () => (
     <ul className="pt-2 pb-4 space-y-3 ">
       <Link
-        to={"/intro"}
+        to={"intro"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
       >
@@ -291,7 +291,7 @@ const Dashboard = () => {
                 </div>
               )}
               {
-                isLoading && <h1><RotateLoader /></h1>
+                isLoading && <p><RotateLoader /></p>
               }
               <Link to={'/'} className="mt-6">
                 <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">

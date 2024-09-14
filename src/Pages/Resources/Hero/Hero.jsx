@@ -4,9 +4,9 @@ const Hero = () => {
     return (
         <div>
             <div className="container px-6 py-16 mx-auto">
-        <div className="items-center lg:flex">
+        <div className="items-center lg:flex border border-amber-400 rounded-xl">
         <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-                <img className="w-full h-full max-w-md border border-amber-400 rounded-xl" src="https://i.ibb.co.com/2866CpT/43fdc93b807eaf0007e23d3392f9cf3f-removebg-preview.png" alt="email illustration vector art"/>
+                <img className="w-full h-full max-w-md  rounded-xl" src="https://i.ibb.co.com/2866CpT/43fdc93b807eaf0007e23d3392f9cf3f-removebg-preview.png" alt="email illustration vector art"/>
             </div>
             <div className="w-full lg:w-1/2">
                 <div className="lg:max-w-lg">
