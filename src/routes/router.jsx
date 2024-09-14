@@ -18,6 +18,8 @@ import BootCampDetails from '../Pages/BootCamps/BootCampDetails/BootCampDetails'
 import { axiosSecure } from './../hooks/UseAxiosSecure/UseAxiosSecure';
 import UseAxiosCommon from '../hooks/UseAxiosCommon/UseAxiosCommon';
 import PrivateRoute from './Private/PrivateRoute';
+import MentorDetails from '../Pages/MentorDetails/MentorDetails';
+import ResourceDetail from '../Pages/ResourceDetail/ResourceDetail';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -36,11 +38,22 @@ const axiosCommon = UseAxiosCommon();
           element:<Mentors/>,
 
         },{
+          path:'/learnAboutMentors/:id',
+          element:<PrivateRoute>
+            <MentorDetails/>
+          </PrivateRoute>
+        },
+          {
           path:'/openings',
           element:<Openings/>
         },{
           path:'/resources',
           element:<Resources/>
+        },{
+          path:'/resources/:id',
+          element:<PrivateRoute>
+            <ResourceDetail/>
+          </PrivateRoute>
         },{
           path:'/LearnAboutBootCamp/:id',
           element:<PrivateRoute>

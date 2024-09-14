@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosCommon from "./../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { ClockLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 const Mentors = () => {
   const axiosCommon = UseAxiosCommon();
@@ -55,7 +56,7 @@ const Mentors = () => {
               className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 h-[700px] border-2 border-amber-400"
             >
               <img
-                className=" object-center w-full h-80"
+                className=" object-center w-full h-96 object-cover"
                 src={mentor.profile_image || "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"}
                 alt={mentor.name}
               />
@@ -107,14 +108,17 @@ const Mentors = () => {
                   </svg>
                   <h1 className="px-2 text-sm">{mentor.location}</h1>
                 </div>
-                <div className="flex justify-end gap-2 p-6 pt-0">
-                  <button className="inline-flex h-10 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-50 px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700">
-                    <span>Send message</span>
+              
+              </div>
+              <div className="mt-auto w-full ">
+                <Link to={`/learnAboutMentors/${mentor?._id}`}>
+                  <button
+                    type="button"
+                    className="flex items-center justify-center w-full p-3 font-semibold tracking-wide bg-[#ad8a54] text-gray-50 rounded-xl"
+                  >
+                    Learn more
                   </button>
-                  <button className="inline-flex h-10 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700">
-                    <span>Book Me</span>
-                  </button>
-                </div>
+                </Link>
               </div>
             </div>
           ))}
