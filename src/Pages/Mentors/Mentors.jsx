@@ -20,7 +20,7 @@ const Mentors = () => {
 
   if (isLoading)
     return (
-      <div>
+      <div className="h-screen flex justify-center items-center">
         <ClockLoader />
       </div>
     );
