@@ -20,6 +20,7 @@ import UseAxiosCommon from '../hooks/UseAxiosCommon/UseAxiosCommon';
 import PrivateRoute from './Private/PrivateRoute';
 import MentorDetails from '../Pages/MentorDetails/MentorDetails';
 import ResourceDetail from '../Pages/ResourceDetail/ResourceDetail';
+import UserManagement from '../Pages/Admin/UserManagement/UserManagement';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -85,6 +86,9 @@ const axiosCommon = UseAxiosCommon();
         {
           path:'intro',
           element:<DashboardHome/>
+        },{
+          path:'manage-users',
+          element:<UserManagement/>
         }
       ],
       errorElement:<ErrorPage/>
