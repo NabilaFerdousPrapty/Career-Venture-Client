@@ -35,24 +35,72 @@ const BootCamps = () => {
 
   return (
     <div className="container mx-auto lg:px-4 py-2 px-2">
-      <div
-  className="w-full bg-center bg-cover h-[38rem] rounded-xl my-4"
-  style={{
-    backgroundImage:
-      "url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80')",
-  }}
->
-  <div className="flex items-center justify-center w-full h-full bg-gray-900/40">
-    <div className="text-center">
-      <h1 className="text-3xl font-semibold text-white lg:text-4xl">
-        Build your new <span className="text-blue-400">Bright</span> Future
-      </h1>
-      <button className="w-full px-5 py-2 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-        Start Learning
-      </button>
-    </div>
-  </div>
-</div>
+      <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
+        <div className="w-full lg:w-[45%]">
+          <div className="lg:max-w-lg">
+            <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">
+              Discover the Best Boot Camps to Accelerate Your Career
+            </h1>
+            <p className="mt-4 text-gray-600 dark:text-gray-300">
+              Our platform connects you with top-rated boot camps offering comprehensive training in various fields. Find the perfect boot camp to boost your career and gain valuable skills.
+            </p>
+            <div className="grid gap-6 mt-8 sm:grid-cols-2">
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Expert Instructors</span>
+              </div>
+
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Flexible Schedules</span>
+              </div>
+
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Certifications Provided</span>
+              </div>
+
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Hands-On Training</span>
+              </div>
+
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Career Support</span>
+              </div>
+
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Networking Opportunities</span>
+              </div>
+
+              <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
+                <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="mx-3">Affordable Prices</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center w-full h-96 lg:w-[55%] ">
+          <img className="object-cover w-full h-full max-w-3xl rounded-md" src="https://media.geeksforgeeks.org/wp-content/uploads/20230927184335/Best-Free-Coding-Bootcamps.png" alt="BootCamp photo" />
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {bootCamps.map((bootCamp) => (

@@ -94,7 +94,7 @@ const Dashboard = () => {
   const renderMentorLinks = () => (
     <ul className="pt-2 pb-4 space-y-1 text-lg gap-4">
       <Link
-        to={"/intro"}
+        to={"intro"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
       >
@@ -155,7 +155,7 @@ const Dashboard = () => {
   const renderMemberLinks = () => (
     <ul className="pt-2 pb-4 space-y-1 text-xl gap-4">
       <Link
-        to={"/intro"}
+        to={"intro"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
         
       >
