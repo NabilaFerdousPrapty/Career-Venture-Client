@@ -21,6 +21,8 @@ import PrivateRoute from './Private/PrivateRoute';
 import MentorDetails from '../Pages/MentorDetails/MentorDetails';
 import ResourceDetail from '../Pages/ResourceDetail/ResourceDetail';
 import UserManagement from '../Pages/Admin/UserManagement/UserManagement';
+import AddJobOpening from '../Pages/Admin/AddJobOpening/AddJobOpening';
+import TransactionOverview from '../Pages/Admin/Transactions/TransactionOverview';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -89,6 +91,12 @@ const axiosCommon = UseAxiosCommon();
         },{
           path:'manage-users',
           element:<UserManagement/>
+        },{
+          path:'add-job-openings',
+          element:<AddJobOpening/>
+        },{
+          path:'transaction-overview',
+          element:<TransactionOverview/>
         }
       ],
       errorElement:<ErrorPage/>
