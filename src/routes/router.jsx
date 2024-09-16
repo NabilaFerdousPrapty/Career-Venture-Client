@@ -23,6 +23,7 @@ import ResourceDetail from '../Pages/ResourceDetail/ResourceDetail';
 import UserManagement from '../Pages/Admin/UserManagement/UserManagement';
 import AddJobOpening from '../Pages/Admin/AddJobOpening/AddJobOpening';
 import TransactionOverview from '../Pages/Admin/Transactions/TransactionOverview';
+import AppliedMentor from '../Pages/Admin/AppliedMentor/AppliedMentor';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -97,6 +98,9 @@ const axiosCommon = UseAxiosCommon();
         },{
           path:'transaction-overview',
           element:<TransactionOverview/>
+        },{
+          path:'mentors-overview',
+          element:<AppliedMentor/>
         }
       ],
       errorElement:<ErrorPage/>
