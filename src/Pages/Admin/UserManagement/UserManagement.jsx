@@ -1,27 +1,26 @@
-import React from 'react';
-import UseAxiosSecure from '../../../hooks/UseAxiosSecure/UseAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
+import React from "react";
+import UseAxiosSecure from "../../../hooks/UseAxiosSecure/UseAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const UserManagement = () => {
-  
-    const axiosSecure=UseAxiosSecure();
-    const {
-        data: users = [],
-        isLoading,
-        isError,
-        error,
-      } = useQuery({
-        queryKey: ["users"],
-        queryFn: async () => {
-          const { data } = await axiosSecure.get("/users");
-          return data;
-        },
-      });
-      console.log("Loading:", isLoading);
-      console.log("Error:", error);
-      console.log("Data:", users);
-    return (
-      <div className="text-[#98BDE6]">
+  const axiosSecure = UseAxiosSecure();
+  const {
+    data: users = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get("/users");
+      return data;
+    },
+  });
+  console.log("Loading:", isLoading);
+  console.log("Error:", error);
+  console.log("Data:", users);
+  return (
+    <div className="text-[#98BDE6]">
       <h1 className="text-3xl font-bold my-5 text-center">User Management</h1>
       {!users && isLoading && (
         <div className="flex justify-center items-center">
@@ -60,12 +59,7 @@ const UserManagement = () => {
                       >
                         Phone Number
                       </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
-                      >
-                        Balance
-                      </th>
+                     
                       <th
                         scope="col"
                         className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -100,20 +94,25 @@ const UserManagement = () => {
                             {user.email}
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                           
+                            <div className="relative">
+                              <img
+                                className="object-cover w-12 h-12 rounded-full"
+                                src={user.photo}
+                                alt=""
+                              />
+                            </div>
                           </td>
+
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                         
+                            {user.role}
                           </td>
+                          
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                             {user.status}
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                            {user.AppliedAs}
-                          </td>
-                          <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                              Authorize
+                              Deactivate
                             </button>
                           </td>
                         </tr>
@@ -126,7 +125,7 @@ const UserManagement = () => {
         </div>
       </section>
     </div>
-    );
+  );
 };
 
 export default UserManagement;

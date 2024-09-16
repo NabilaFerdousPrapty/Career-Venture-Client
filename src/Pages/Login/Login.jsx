@@ -40,6 +40,8 @@ const Login = () => {
               name: user.displayName,
               email: user.email,
               role: 'member',
+              photo: user.photoURL,
+              status: 'active',
             };
       
             axiosCommon.post('/users', userInfo)

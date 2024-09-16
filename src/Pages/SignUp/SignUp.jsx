@@ -59,7 +59,8 @@ const SignUp = () => {
                 name,
                 email,
                 role: 'member',
-                photo: imageUrl, // Store URL from the API response
+                photo: imageUrl, 
+                status: 'active',
               };
 
               axiosCommon.post('/users', userInfo)
@@ -99,6 +100,8 @@ const SignUp = () => {
           name: user.displayName,
           email: user.email,
           role: 'member',
+          photo: user.photoURL,
+          status: 'active',
         };
 
         axiosCommon.post('/users', userInfo)
