@@ -11,6 +11,7 @@ const Login = () => {
         register,
         handleSubmit,
         formState: { errors },
+        reset
       } = useForm()
     
       const onSubmit = (data) =>{
@@ -26,6 +27,16 @@ const Login = () => {
           
           navigate( '/');
         })
+        .catch((error) => {
+          const errorMessage = error.message;
+          console.error('Error signing in with email:', errorMessage);
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: errorMessage,
+          });
+          reset();
+        });
 
         
     

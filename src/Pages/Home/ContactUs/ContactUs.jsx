@@ -1,9 +1,10 @@
-import { FaGithub } from "react-icons/fa";
+import { FaFacebookSquare, FaGithub, FaInstagramSquare, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useRef } from 'react';
 import Swal from "sweetalert2";
 import emailjs from '@emailjs/browser';
 import UseAuth from "../../../hooks/UseAuth/UseAuth";
+import { BsWhatsapp } from "react-icons/bs";
 
 const ContactUs = () => {
   const form = useRef();
@@ -169,13 +170,41 @@ const ContactUs = () => {
 
               <div className="mt-6 w-80 md:mt-8">
                 <h3 className="text-gray-600 dark:text-gray-300">Follow Career Venture</h3>
-                <div className="flex mt-4 -mx-1.5">
+                <div className="flex mt-4 -mx-1.5 justify-between">
                   <Link
                     to="https://github.com/NabilaFerdousPrapty"
                     target="_blank"
                     className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
                   >
                     <FaGithub className="w-8 h-8" />
+                  </Link>
+                  <Link
+                    
+                    target="_blank"
+                    className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
+                  >
+                    <FaFacebookSquare className="w-8 h-8"  />
+                  </Link>
+                  <Link
+                 
+                    target="_blank"
+                    className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
+                  >
+                   <BsWhatsapp className="w-8 h-8"  />
+                  </Link>
+                  <Link
+                    
+                    target="_blank"
+                    className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
+                  >
+                   <FaTwitter className="w-8 h-8"/>
+                  </Link>
+                  <Link
+                    
+                    target="_blank"
+                    className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
+                  >
+                   <FaInstagramSquare className="w-8 h-8" />
                   </Link>
                 </div>
               </div>

@@ -3,17 +3,16 @@ import logo from "../../../assets/logo2w.png";
 import { Link, useLocation } from "react-router-dom";
 import UseAuth from "../../../hooks/UseAuth/UseAuth";
 import Dropdown from "./Dropdown/Dropdown";
+import { FaBell } from "react-icons/fa";
 function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const {
-    user
-  }=UseAuth();
+  const { user } = UseAuth();
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
   // console.log(user);
-  
+
   return (
     // eslint-disable-next-line react/no-unknown-property
     <nav className="relative  shadow " x-data="{ isOpen: false }">
@@ -70,115 +69,103 @@ function Navbar() {
           <div
             className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out  lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${
               isOpen
-                ? "translate-x-0 opacity-100"
-                : "opacity-0 -translate-x-full"
+                ? "translate-x-0 opacity-100 py-0"
+                : "opacity-80 -translate-x-full bg-[#1a202c] lg:translate-x-0 lg:opacity-100 lg:bg-transparent"
             }`}
           >
             <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
               <Link
                 to="/"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
+                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] lg:bg-transparent ${
                   isActiveLink("/")
-                    ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                    : ""
+                    ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
+                    : "bg-[#333333] lg:bg-transparent"
                 } `}
               >
                 Home
               </Link>
-              
+
               <Link
                 to="/bootCamps"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
-                    isActiveLink("/bootCamps")
-                        ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                        : ""
+                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] lg:bg-transparent ${
+                  isActiveLink("/bootCamps")
+                    ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
+                    : "bg-[#333333] lg:bg-transparent"
                 } `}
               >
                 Boot Camps
               </Link>
+
               <Link
                 to="/mentors"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
-                    isActiveLink("/mentors")
-                        ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                        : ""
+                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] lg:bg-transparent ${
+                  isActiveLink("/mentors")
+                    ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
+                    : "bg-[#333333] lg:bg-transparent"
                 } `}
               >
                 Mentors
               </Link>
+
               <Link
                 to="/openings"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
+                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] lg:bg-transparent ${
                   isActiveLink("/openings")
-                    ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                    : ""
+                    ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
+                    : "bg-[#333333] lg:bg-transparent"
                 } `}
               >
                 Openings
               </Link>
-            {
-              user && (  <Link
-                to="/dashBoard/intro"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
+
+              {user && (
+                <Link
+                  to="/dashBoard/intro"
+                  className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] lg:bg-transparent ${
                     isActiveLink("/dashBoard")
-                        ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                        : ""
-                    } `
-                }
-              >
-                Dashboard
-              </Link>)
-            }
+                      ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
+                      : "bg-[#333333] lg:bg-transparent"
+                  } `}
+                >
+                  Dashboard
+                </Link>
+              )}
+
               <Link
                 to="/resources"
-                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] ${
-                    isActiveLink("/resources")
-                        ? "text-[#c5e384] border-b-2 border-[#ffd700] rounded-3xl"
-                        : ""
-                    } `}
+                className={`px-6 py-2 text-lg font-semibold text-[#ad8a54] lg:bg-transparent ${
+                  isActiveLink("/resources")
+                    ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
+                    : "bg-[#333333] lg:bg-transparent"
+                } `}
               >
                 Resources
               </Link>
             </div>
+            <div className="flex items-center lg:mt-4 mt-1 justify-between text-[#c5e384] bg-[#333333] rounded-lg lg:bg-transparent gap-2">
+            <input type="checkbox" value="synthwave" className="toggle theme-controller" />
+            <button
+              className=" mx-1 text-gray-600 transition-colors duration-300 transform  dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
+              aria-label="show notifications"
+            >
+             <FaBell />
+            </button>
 
-            <div className="flex items-center mt-4 lg:mt-0">
+            {user ? (
+              <Dropdown />
+            ) : (
               <button
-                className="hidden mx-4 text-gray-600 transition-colors duration-300 transform lg:block dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
-                aria-label="show notifications"
+                type="button"
+                className="flex items-center focus:outline-none btn bg-[#ad8a54]"
               >
-                <svg
-                  className="w-6 h-6"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 17H20L18.5951 15.5951C18.2141 15.2141 18 14.6973 18 14.1585V11C18 8.38757 16.3304 6.16509 14 5.34142V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V5.34142C7.66962 6.16509 6 8.38757 6 11V14.1585C6 14.6973 5.78595 15.2141 5.40493 15.5951L4 17H9M15 17V18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18V17M15 17H9"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <Link to="/login" className="text-white">
+                  Login
+                </Link>
               </button>
-
-              {
-  user ? (
-    <Dropdown />
-  ) : (
-    <button
-      type="button"
-      className="flex items-center focus:outline-none btn bg-[#ad8a54]"
-    >
-      <Link to="/login" className="text-white">
-        Login
-      </Link>
-    </button>
-  )
-}
-
-            </div>
+            )}
           </div>
+          </div>
+          
         </div>
       </div>
     </nav>
