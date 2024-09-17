@@ -41,7 +41,7 @@ const AppliedMentor = () => {
 
         <div className="flex flex-col mt-6">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="inline-block max-w-7xl py-2 align-middle md:px-6 lg:px-8">
+            <div className="inline-block xl:max-w-6xl lg:max-w-5xl md:max-w-4xl max-w-xl py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 md:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-800">
@@ -104,7 +104,7 @@ const AppliedMentor = () => {
                         </td>
                         <td className="px-4 py-4 text-sm whitespace-nowrap ">
                           {mentor.skills.map((skill) => (
-                            <span key={skill} className="px-3 py-1 text-xs text-indigo-500 rounded-full bg-indigo-100/60 dark:bg-gray-800 mr-1">{skill}</span>
+                            <span key={skill} className="px-2 py-1 text-xs text-indigo-500 rounded-full bg-indigo-100/60 dark:bg-gray-800 mr-1">#{skill}</span>
                           ))}
                         </td>
                         <td className="px-4 py-4 text-sm whitespace-nowrap">
