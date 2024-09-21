@@ -91,7 +91,7 @@ const handleApprove = (id, email) => {
 
 
 // Function to handle mentor rejection
-const handleReject = (email) => {
+const handleReject = (id) => {
   Swal.fire({
     title: "Do you want to reject this mentor?",
     showDenyButton: true,
@@ -101,11 +101,14 @@ const handleReject = (email) => {
   }).then((result) => {
     if (result.isConfirmed) {
       axiosCommon
-        .patch(`/user/mentor/reject/${email}`)
+        .patch(`/mentors/reject/${id}`)
         .then((response) => {
           if (response.status === 200) {
             Swal.fire("Rejected!", "", "success");
             refetch(); 
+           
+          }else
+          {
             Swal.fire("Rejection Failed", "", "error");
           }
         })
@@ -220,7 +223,7 @@ const handleReject = (email) => {
                             <button onClick={()=>handleApprove(mentor._id,mentor.email)} className="text-gray-500 transition-colors duration-200 hover:text-red-500 focus:outline-none border border-[#ad8a54] py-1 px-2 rounded-xl ">
                               Approve 
                             </button>
-                            <button onClick={()=>handleReject(mentor.email)} className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none border border-[#ad8a54] py-1 px-2 rounded-xl ">
+                            <button onClick={()=>handleReject(mentor._id)} className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none border border-[#ad8a54] py-1 px-2 rounded-xl ">
                               Reject
                             </button>
                           </div>

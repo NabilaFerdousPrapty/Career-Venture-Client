@@ -5,18 +5,18 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import UseAxiosCommon from '../../../hooks/UseAxiosCommon/UseAxiosCommon';
 
-const ApprovedMentors = () => {
+const RejectedMentors = () => {
 const axiosCommon=UseAxiosCommon();
   const {
-    data: approvedMentors = [],
+    data: rejectedMentors = [],
     isLoading,
     isError,
     error,
     refetch,
   } = useQuery({
-    queryKey: ["approvedMentors"],
+    queryKey: ["rejectedMentors"],
     queryFn: async () => {
-      const { data } = await axiosCommon.get("/approvedMentors");
+      const { data } = await axiosCommon.get("/rejectedMentors");
       return data;
     },
   });
@@ -36,10 +36,10 @@ const axiosCommon=UseAxiosCommon();
       <section className="container px-4 mx-auto">
         <div className="flex items-center gap-x-3">
           <h2 className="text-lg font-medium text-gray-800 dark:text-white">
-            Approved Mentors
+            Rejected Mentors
           </h2>
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
-            {approvedMentors.length}
+            {rejectedMentors.length}
           </span>
         </div>
 
@@ -82,7 +82,7 @@ const axiosCommon=UseAxiosCommon();
                   </thead>
 
                   <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {approvedMentors.map((mentor) => (
+                    {rejectedMentors.map((mentor) => (
                       <tr key={mentor._id}>
                         <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                           <div className="inline-flex items-center gap-x-3">
@@ -127,4 +127,4 @@ const axiosCommon=UseAxiosCommon();
   );
 };
 
-export default ApprovedMentors;
+export default RejectedMentors;
