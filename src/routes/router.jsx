@@ -24,6 +24,7 @@ import UserManagement from '../Pages/Admin/UserManagement/UserManagement';
 import AddJobOpening from '../Pages/Admin/AddJobOpening/AddJobOpening';
 import TransactionOverview from '../Pages/Admin/Transactions/TransactionOverview';
 import AppliedMentor from '../Pages/Admin/AppliedMentor/AppliedMentor';
+import MentorsOverview from '../Pages/Admin/MentorsOverview/MentorsOverview';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -100,7 +101,7 @@ const axiosCommon = UseAxiosCommon();
           element:<TransactionOverview/>
         },{
           path:'mentors-overview',
-          element:<AppliedMentor/>
+          element:<MentorsOverview/>
         }
       ],
       errorElement:<ErrorPage/>
