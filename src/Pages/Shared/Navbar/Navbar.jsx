@@ -4,25 +4,26 @@ import { Link, useLocation } from "react-router-dom";
 import UseAuth from "../../../hooks/UseAuth/UseAuth";
 import Dropdown from "./Dropdown/Dropdown";
 import { FaBell } from "react-icons/fa";
+import useTheme from './../../../hooks/UseTheme/UseTheme';
+
 function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const { user } = UseAuth();
+  const { theme, toggleTheme } = useTheme(); // Use the useTheme hook
+
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
-  // console.log(user);
 
   return (
-    // eslint-disable-next-line react/no-unknown-property
-    <nav className="relative  shadow " x-data="{ isOpen: false }">
+    <nav className="relative shadow">
       <div className="container px-6 py-1 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
             <Link>
               <img src={logo} alt="logo" className="w-auto h-24" />
             </Link>
-            {/* Mobile menu button */}
             <div className="flex lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -65,9 +66,8 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu open: "block", Menu closed: "hidden" */}
           <div
-            className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out  lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${
+            className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${
               isOpen
                 ? "translate-x-0 opacity-100 py-0"
                 : "opacity-80 -translate-x-full bg-[#1a202c] lg:translate-x-0 lg:opacity-100 lg:bg-transparent"
@@ -80,7 +80,7 @@ function Navbar() {
                   isActiveLink("/")
                     ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
                     : "bg-[#333333] lg:bg-transparent"
-                } `}
+                }`}
               >
                 Home
               </Link>
@@ -91,7 +91,7 @@ function Navbar() {
                   isActiveLink("/bootCamps")
                     ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
                     : "bg-[#333333] lg:bg-transparent"
-                } `}
+                }`}
               >
                 Boot Camps
               </Link>
@@ -102,7 +102,7 @@ function Navbar() {
                   isActiveLink("/mentors")
                     ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
                     : "bg-[#333333] lg:bg-transparent"
-                } `}
+                }`}
               >
                 Mentors
               </Link>
@@ -113,7 +113,7 @@ function Navbar() {
                   isActiveLink("/openings")
                     ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
                     : "bg-[#333333] lg:bg-transparent"
-                } `}
+                }`}
               >
                 Openings
               </Link>
@@ -125,7 +125,7 @@ function Navbar() {
                     isActiveLink("/dashBoard")
                       ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
                       : "bg-[#333333] lg:bg-transparent"
-                  } `}
+                  }`}
                 >
                   Dashboard
                 </Link>
@@ -137,35 +137,42 @@ function Navbar() {
                   isActiveLink("/resources")
                     ? "text-[#c5e384] bg-[#4A5568] border-b-2 border-[#ffd700] rounded-3xl"
                     : "bg-[#333333] lg:bg-transparent"
-                } `}
+                }`}
               >
                 Resources
               </Link>
             </div>
-            <div className="flex items-center lg:mt-4 mt-1 justify-between text-[#c5e384] bg-[#333333] rounded-lg lg:bg-transparent gap-2">
-            <input type="checkbox" value="synthwave" className="toggle theme-controller" />
-            <button
-              className=" mx-1 text-gray-600 transition-colors duration-300 transform  dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
-              aria-label="show notifications"
-            >
-             <FaBell />
-            </button>
 
-            {user ? (
-              <Dropdown />
-            ) : (
+            <div className="flex items-center lg:mt-4 mt-1 justify-between text-[#c5e384] bg-[#333333] rounded-lg lg:bg-transparent gap-2">
+              {/* Theme toggle checkbox */}
+              <input
+                type="checkbox"
+                value={theme}
+                className="toggle theme-controller"
+                checked={theme === "synthwave"}
+                onChange={toggleTheme} // Call the toggleTheme function on change
+              />
               <button
-                type="button"
-                className="flex items-center focus:outline-none btn bg-[#ad8a54]"
+                className="mx-1 text-gray-600 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-700 dark:hover:text-gray-400 focus:text-gray-700 dark:focus:text-gray-400 focus:outline-none"
+                aria-label="show notifications"
               >
-                <Link to="/login" className="text-white">
-                  Login
-                </Link>
+                <FaBell />
               </button>
-            )}
+
+              {user ? (
+                <Dropdown />
+              ) : (
+                <button
+                  type="button"
+                  className="flex items-center focus:outline-none btn bg-[#ad8a54]"
+                >
+                  <Link to="/login" className="text-white">
+                    Login
+                  </Link>
+                </button>
+              )}
+            </div>
           </div>
-          </div>
-          
         </div>
       </div>
     </nav>
