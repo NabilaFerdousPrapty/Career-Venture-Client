@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import UseAxiosCommon from './../../hooks/UseAxiosCommon/UseAxiosCommon';
+import UseAuth from './../../hooks/UseAuth/UseAuth';
 
-const ResourcesCard = ({ resource }) => {
+const ResourcesCard = ({ resource,refetch }) => {
+  const axiosCommon = UseAxiosCommon();
+  const {user}=UseAuth();
   const {
     _id,
     name,
@@ -9,13 +14,74 @@ const ResourcesCard = ({ resource }) => {
     author,
     date,
     details,
-    upvotes,
-    downvotes,
+    upvote,
+    downvote,
     imageLink,
     tags,
     resourceLink,
     comments
   } = resource;
+  const handleUpVote = (id) => {
+    axiosCommon
+      .patch(`/resources/upvote/${id}`)
+      .then(() => {
+        Swal.fire({
+          title: "Success",
+          text: "Upvoted successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        refetch();
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
+  };
+
+  const handleDownVote = (id) => {
+    UseAxiosCommon
+      .patch(`/resources/downvote/${id}`)
+      .then(() => {
+        Swal.fire({
+          title: "Success",
+          text: "Downvoted successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        refetch();
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      });
+  };
+  const handleVoteClick = (type, id) => {
+    if (!user) {
+      Swal.fire({
+        title: "Error",
+        text: "Please login to vote",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+    if (type === "up") {
+      handleUpVote(id);
+    } else {
+      handleDownVote(id);
+    }
+  };
 
   return (
   
@@ -81,7 +147,10 @@ const ResourcesCard = ({ resource }) => {
           {/* Additional details like upvotes/downvotes can be shown here */}
           <div className="mt-4 flex justify-between">
             <div>
-              <span>👍 {upvotes || 0}</span> <span>👎 {downvotes || 0}</span>
+              <span><button onClick={() => handleVoteClick("up", _id)}>👍</button> {upvote || 0}</span> 
+              <span><button onClick={() => handleVoteClick("down", _id)}>
+              👎
+                </button> {downvote || 0}</span>
             </div>
             <div>
                 <Link to={`/resources/${resource._id}`}>

@@ -84,7 +84,7 @@ const Testimonial = () => {
               <p className="text-sm text-center text-gray-600 dark:text-gray-300 my-2">
                 {reviewer.review.slice(0,100)}...
               </p>
-              <Link>
+              <Link to={`/testimonial/${reviewer._id}`}>
               <button className="px-4 py-2 mt-2 text-sm  text-slate-600 font-semibold bg-[#b5d968] hover:bg-[#7ca428] rounded-lg  focus:outline-none ">
                 See Details
               </button>

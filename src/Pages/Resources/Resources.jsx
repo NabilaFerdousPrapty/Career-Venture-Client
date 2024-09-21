@@ -8,7 +8,7 @@ const Resources = () => {
     const axiosCommon = UseAxiosCommon();
   const {
     data: resources = [],
-    isLoading, isError,error,} = useQuery({
+    isLoading, isError,error,refetch} = useQuery({
     queryKey: ["resources"], queryFn: async () => {
       const { data } = await axiosCommon.get("/resources");
       return data;
@@ -32,7 +32,7 @@ const Resources = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10  ">
   {
     resources.map((resource) => (
-      <ResourcesCard key={resource._id} resource={resource} />))
+      <ResourcesCard key={resource._id} resource={resource} refetch={refetch} />))
   }
       </div>
     </div>
