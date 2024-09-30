@@ -1,4 +1,4 @@
-import React from "react";
+
 import UseAxiosCommon from "../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
@@ -20,10 +20,6 @@ const BootCamps = () => {
     },
   });
 
-  // Debugging output
-  console.log("Loading:", isLoading);
-  console.log("Error:", error);
-  console.log("Data:", bootCamps);
 
   if (isLoading)
     return (

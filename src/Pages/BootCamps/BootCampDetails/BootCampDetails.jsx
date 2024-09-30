@@ -1,9 +1,11 @@
-import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import UseAuth from "../../../hooks/UseAuth/UseAuth";
+import PaymentPage from "../../../../components/Payments/PaymentPage";
+import { useState } from "react"; // Import useState
 
 const BootCampDetails = () => {
   const bootCampDetails = useLoaderData();
-  console.log(bootCampDetails);
+  const user = UseAuth();
 
   const {
     name,
@@ -11,15 +13,48 @@ const BootCampDetails = () => {
     duration,
     price,
     location,
-    classVideo, // This should be the video URL
+    classVideo,
     classImage,
     mentors,
   } = bootCampDetails;
 
+  const bookingData = {
+    user,
+    bootCampName: name,
+    bootCampPrice: price,
+    bootCampMentors: mentors,
+  };
+  console.log("Booking Data:", bookingData);
+
+  // State to manage payment page visibility
+  const [showPaymentPage, setShowPaymentPage] = useState(false);
+  let clickTimeout; // Declare a timeout variable
+
+  // Function to handle the button click
+  const handleEnrollClick = () => {
+    if (showPaymentPage) {
+      setShowPaymentPage(false); // Hide payment page if it's currently shown
+    } else {
+      // Show payment page on first click
+      setShowPaymentPage(true);
+      clickTimeout = setTimeout(() => {
+        clickTimeout = null; // Reset the timeout variable
+      }, 300); // Adjust timeout as needed
+    }
+  };
+
+  // Function to handle double click
+  const handleDoubleClick = () => {
+    if (clickTimeout) {
+      clearTimeout(clickTimeout); // Clear the single click timer
+      setShowPaymentPage(false); // Hide payment page on double click
+    }
+  };
+
   // Function to extract video ID from the YouTube URL
   const extractVideoId = (url) => {
     const match = url.match(
-      /(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/
+      /(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/,
     );
     return match ? match[1] : "";
   };
@@ -34,25 +69,22 @@ const BootCampDetails = () => {
           src={classImage}
           alt="Bootcamp"
         />
-
         <div className="p-6 text-center">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-              {name}
-            </h2>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              {description}
-            </p>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              <strong>Duration:</strong> {duration}
-            </p>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              <strong>Price:</strong> ${price}
-            </p>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              <strong>Location:</strong> {location}
-            </p>
-          </div>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+            {name}
+          </h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {description}
+          </p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <strong>Duration:</strong> {duration}
+          </p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <strong>Price:</strong> ${price}
+          </p>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <strong>Location:</strong> {location}
+          </p>
 
           <div className="mt-4 flex justify-center items-center">
             <iframe
@@ -67,29 +99,24 @@ const BootCampDetails = () => {
           </div>
 
           <div className="mt-4">
-            <h3 className="text-lg font-semibold   text-center text-amber-400">
+            <h3 className="text-lg font-semibold text-center text-amber-400">
               Mentors
             </h3>
             {mentors.map((mentor, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center mt-2"
-              >
-                <div className="flex items-center justify-between">
-                  <img
-                    className="object-cover h-10 rounded-full"
-                    src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                    alt={mentor.name}
-                  />
-                  <a
-                    href="#"
-                    className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
-                    tabIndex="0"
-                    role="link"
-                  >
-                    {mentor.name}
-                  </a>
-                </div>
+              <div key={index} className="flex items-center justify-center mt-2">
+                <img
+                  className="object-cover h-10 rounded-full"
+                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  alt={mentor.name}
+                />
+                <a
+                  href="#"
+                  className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
+                  tabIndex="0"
+                  role="link"
+                >
+                  {mentor.name}
+                </a>
                 <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
                   {mentor.experience} - {mentor.expertise}
                 </span>
@@ -100,20 +127,23 @@ const BootCampDetails = () => {
             <button
               type="button"
               className="flex items-center focus:outline-none btn bg-[#ad8a54]"
+              onClick={handleEnrollClick} // Handle single click
+              onDoubleClick={handleDoubleClick} // Handle double click
             >
-              <Link to="/start_trial" className="text-white">
-                Give a try
-              </Link>
+              {showPaymentPage ? "Hide Payment Page" : "Enroll Now"}
             </button>
             <button
               type="button"
               className="flex items-center focus:outline-none btn bg-[#ad8a54]"
             >
-              <Link  to="/Enroll" className="text-white">
-                Enroll
+              <Link to="/start_trial" className="text-white">
+                Give a try
               </Link>
             </button>
           </div>
+          
+          {/* Conditionally render the PaymentPage */}
+          {showPaymentPage && <PaymentPage bookingData={bookingData} />}
         </div>
       </div>
     </div>

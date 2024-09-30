@@ -6,10 +6,14 @@ import CheckoutForm from "../Checkout/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
-const PaymentPage = () => {
+const PaymentPage = ({bookingData}) => {
 
-  const location = useLocation();
-  const { bookingData } = location.state || {};
+ if(!bookingData) {
+    return <div> 
+      <h1> No Booking Data Found</h1>
+    </div>
+  }
+
 
 
 

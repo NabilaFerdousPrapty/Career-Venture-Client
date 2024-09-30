@@ -77,15 +77,15 @@ const CheckoutForm = ({ bookingData }) => {
       // console.error("Error in payment:", paymentError);
       setError(paymentError.message);
     } else {
-      // console.log("Payment confirmed:", paymentIntent);
+      console.log("Payment confirmed:", paymentIntent);
       setError("");
       if (paymentIntent.status === "succeeded") {
-        // console.log("Payment successful");
-        // console.log(`${paymentIntent.id} is the payment intent id`);
+        console.log("Payment successful");
+        console.log(`${paymentIntent.id} is the payment intent id`);
         setTransactionId(paymentIntent.id);
         const payment = {
           email: user?.email || "Anonymous",
-          // price: bookingData.package_price,
+          price: bookingData.package_price,
           date: new Date().toLocaleDateString(),
           status: "pending",
           transactionId: paymentIntent.id,
