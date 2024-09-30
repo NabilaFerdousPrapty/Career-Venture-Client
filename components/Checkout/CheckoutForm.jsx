@@ -6,36 +6,40 @@ import UseAuth from "../../src/hooks/UseAuth/UseAuth";
 import UseAxiosSecure from "../../src/hooks/UseAxiosSecure/UseAxiosSecure";
 
 const CheckoutForm = ({ bookingData }) => {
- 
-  // const {
-   
-  // } = bookingData;
+  const {
+    bootCampPrice, // Use correct variable name
+    user, // Only one user variable
+    bootCampName,
+    bootCampMentors,
+  } = bookingData;
 
   const stripe = useStripe();
+  
+
   const elements = useElements();
   const [transactionId, setTransactionId] = useState("");
-  const { user } = UseAuth();
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const axiosSecure = UseAxiosSecure();
 
-  // useEffect(() => {
-  //   const createPaymentIntent = async () => {
-  //     try {
-  //       if (package_price > 0) {
-  //         const response = await axiosSecure.post("/create_payment_intent", {
-  //           price: package_price,
-  //         });
-  //         setClientSecret(response.data.clientSecret);
-  //       }
-  //     } catch (err) {
-  //       console.error("Error creating payment intent:", err);
-  //       setError("Failed to create payment intent. Please try again later.");
-  //     }
-  //   };
+  // useEffect to create payment intent when bootCampPrice changes
+  useEffect(() => {
+    const createPaymentIntent = async () => {
+      try {
+        if (bootCampPrice > 0) { // Correct variable reference
+          const response = await axiosSecure.post("/create_payment_intent", {
+            price: bootCampPrice,
+          });
+          setClientSecret(response.data.clientSecret);
+        }
+      } catch (err) {
+        console.error("Error creating payment intent:", err);
+        setError("Failed to create payment intent. Please try again later.");
+      }
+    };
 
-  //   createPaymentIntent();
-  // }, [axiosSecure, package_price]);
+    createPaymentIntent();
+  }, [axiosSecure, bootCampPrice]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,10 +58,8 @@ const CheckoutForm = ({ bookingData }) => {
     });
 
     if (error) {
-      // console.log("Error in", error);
       setError(error.message);
     } else {
-      // console.log("Payment method", paymentMethod);
       setError("");
     }
 
@@ -67,14 +69,13 @@ const CheckoutForm = ({ bookingData }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: user?.displayName || "Anonymous",
-            email: user?.email || "Anonymous",
+            name: user?.user?.displayName || "Anonymous",
+            email: user?.user?.email || "Anonymous",
           },
         },
       });
 
     if (paymentError) {
-      // console.error("Error in payment:", paymentError);
       setError(paymentError.message);
     } else {
       console.log("Payment confirmed:", paymentIntent);
@@ -85,16 +86,13 @@ const CheckoutForm = ({ bookingData }) => {
         setTransactionId(paymentIntent.id);
         const payment = {
           email: user?.email || "Anonymous",
-          price: bookingData.package_price,
+          price: bootCampPrice, 
           date: new Date().toLocaleDateString(),
           status: "pending",
           transactionId: paymentIntent.id,
-          
-         
         };
 
         const res = await axiosSecure.post("/payments", payment);
-        // console.log("Payment saved", res.data);
         if (res.data) {
           Swal.fire({
             icon: "success",
@@ -137,7 +135,7 @@ const CheckoutForm = ({ bookingData }) => {
         <p className="text-red-600 text-xl my-4">{error}</p>
         {transactionId && (
           <p className="text-green-400 text-xl my-4">
-            Payment successful. Payment Transition id: {transactionId}
+            Payment successful. Payment Transaction id: {transactionId}
           </p>
         )}
       </form>
