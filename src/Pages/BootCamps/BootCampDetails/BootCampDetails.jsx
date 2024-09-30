@@ -109,7 +109,7 @@ const BootCampDetails = () => {
               type="button"
               className="flex items-center focus:outline-none btn bg-[#ad8a54]"
             >
-              <Link to="/Enroll" className="text-white">
+              <Link  to="/Enroll" className="text-white">
                 Enroll
               </Link>
             </button>

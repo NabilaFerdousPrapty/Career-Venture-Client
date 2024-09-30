@@ -1,11 +1,13 @@
 
 import { Link, useLocation } from "react-router-dom";
-import CheckoutForm from "./CheckOutForm/CheckOutForm";
+
+
+import CheckoutForm from "../Checkout/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import { Helmet } from "react-helmet-async";
+import { Elements } from '@stripe/react-stripe-js';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
 const PaymentPage = () => {
+
   const location = useLocation();
   const { bookingData } = location.state || {};
 
@@ -14,9 +16,7 @@ const PaymentPage = () => {
   // console.log(bookingData);
   return (
     <div>
-      <Helmet>
-      <title>Track Tonic || Payment</title>
-    </Helmet>
+      
       <header className="bg-white dark:bg-gray-900">
         <nav className="px-6 py-4 shadow">
           <div className="lg:items-center lg:justify-between lg:flex">
@@ -32,16 +32,16 @@ const PaymentPage = () => {
           <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
             <div className="max-w-xl">
               <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-                Get Your Own{" "}
+                Get 
                 <span className="text-blue-600 dark:text-blue-400">
-                  Personal Trainer
+                Your desired service
                 </span>
+                 After a small payment
               </h2>
 
               <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
-                Pay for your trainer and get started with your fitness journey.A
-                trainer will be assigned to you based on your preferences.A
-                small change can make a big difference.
+                Here you can pay for your desired service and get it done by our professionals.
+                So what are you waiting for? Pay now and get your service done.
               </p>
 
               <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">

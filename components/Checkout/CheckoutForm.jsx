@@ -1,48 +1,41 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2"; // Correctly import SweetAlert2
-import useAuth from "../../../hooks/UseAuth";
 import { useEffect, useState } from "react";
-import UseAxiosSecure from "../../../hooks/UseAxiosSecure";
+
+import UseAuth from "../../src/hooks/UseAuth/UseAuth";
+import UseAxiosSecure from "../../src/hooks/UseAxiosSecure/UseAxiosSecure";
 
 const CheckoutForm = ({ bookingData }) => {
  
-  const {
-    trainer_name,
-    trainer_image,
-    trainer_designation,
-    slot_name,
-    package_name,
-    package_price,
-    user_name,
-    user_email,
-    user_image,
-  } = bookingData;
+  // const {
+   
+  // } = bookingData;
 
   const stripe = useStripe();
   const elements = useElements();
   const [transactionId, setTransactionId] = useState("");
-  const { user } = useAuth();
+  const { user } = UseAuth();
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const axiosSecure = UseAxiosSecure();
 
-  useEffect(() => {
-    const createPaymentIntent = async () => {
-      try {
-        if (package_price > 0) {
-          const response = await axiosSecure.post("/create_payment_intent", {
-            price: package_price,
-          });
-          setClientSecret(response.data.clientSecret);
-        }
-      } catch (err) {
-        console.error("Error creating payment intent:", err);
-        setError("Failed to create payment intent. Please try again later.");
-      }
-    };
+  // useEffect(() => {
+  //   const createPaymentIntent = async () => {
+  //     try {
+  //       if (package_price > 0) {
+  //         const response = await axiosSecure.post("/create_payment_intent", {
+  //           price: package_price,
+  //         });
+  //         setClientSecret(response.data.clientSecret);
+  //       }
+  //     } catch (err) {
+  //       console.error("Error creating payment intent:", err);
+  //       setError("Failed to create payment intent. Please try again later.");
+  //     }
+  //   };
 
-    createPaymentIntent();
-  }, [axiosSecure, package_price]);
+  //   createPaymentIntent();
+  // }, [axiosSecure, package_price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -92,18 +85,12 @@ const CheckoutForm = ({ bookingData }) => {
         setTransactionId(paymentIntent.id);
         const payment = {
           email: user?.email || "Anonymous",
-          price: bookingData.package_price,
+          // price: bookingData.package_price,
           date: new Date().toLocaleDateString(),
           status: "pending",
           transactionId: paymentIntent.id,
           
-          trainer_name,
-          trainer_image,
-          trainer_designation,
-          slot_name,
-          package_name,
-          user_name,
-          user_image,
+         
         };
 
         const res = await axiosSecure.post("/payments", payment);

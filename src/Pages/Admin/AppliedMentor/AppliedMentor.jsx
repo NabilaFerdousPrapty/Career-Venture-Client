@@ -152,7 +152,13 @@ const handleReject = (id) => {
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block 2xl:max-w-full xl:max-w-6xl lg:max-w-3xl md:max-w-4xl max-w-xl py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-x-auto border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                {
+                  !pendingMembers.length ? (
+                    <div className="flex items-center justify-center p-4 text-gray-500 dark:text-gray-400 w-full">
+                      No pending mentors found
+                    </div>
+                  ):(
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-800">
                     <tr>
                       <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -232,6 +238,8 @@ const handleReject = (id) => {
                     ))}
                   </tbody>
                 </table>
+                  )
+                }
               </div>
             </div>
           </div>

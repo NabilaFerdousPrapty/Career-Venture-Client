@@ -43,50 +43,7 @@ const Login = () => {
       }
       const navigate=useNavigate();
       const axiosCommon=UseAxiosCommon();
-      const handleGoogleSignIn = () => {
-        signInWithGoogle()
-          .then((userCredential) => {
-            const user = userCredential.user;
-            const userInfo = {
-              name: user.displayName,
-              email: user.email,
-              role: 'member',
-              photo: user.photoURL,
-              status: 'active',
-            };
-      
-            axiosCommon.post('/users', userInfo)
-              .then((res) => {
-                if (res.data.insertedId) {
-                  Swal.fire({
-                    icon: "success",
-                    title: "Congratulations",
-                    text: "Your account has been created successfully!",
-                  });
-                 
-                  navigate(location?.state ? location.state : "/");
-                }
-              })
-              .catch((error) => {
-                console.error('Error creating user:', error);
-              });
-              Swal.fire({
-                icon: 'success',
-                title: 'Login Success',
-                text: `Welcome back ${user.displayName}!`,
-              });
-              navigate('/');
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            console.error('Error signing in with Google:', errorMessage);
-            Swal.fire({
-              icon: 'error',
-              title: 'Login Failed',
-              text: errorMessage,
-            });
-          });
-      };
+     
     return (
         <div className='flex justify-between items-center h-screen rounded-2xl'>
             <div className="flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1c2940] lg:max-w-6xl ">

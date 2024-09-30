@@ -25,6 +25,7 @@ import AddJobOpening from '../Pages/Admin/AddJobOpening/AddJobOpening';
 import TransactionOverview from '../Pages/Admin/Transactions/TransactionOverview';
 import AppliedMentor from '../Pages/Admin/AppliedMentor/AppliedMentor';
 import MentorsOverview from '../Pages/Admin/MentorsOverview/MentorsOverview';
+import PaymentPage from '../../components/Payments/PaymentPage';
 const axiosCommon = UseAxiosCommon();
 
   const router = createBrowserRouter([
@@ -38,6 +39,11 @@ const axiosCommon = UseAxiosCommon();
         },{
           path:'/bootCamps',
           element:<BootCamps/>
+        },{
+          path:'/Enroll',
+          element:<PrivateRoute>
+            <PaymentPage/>
+          </PrivateRoute>
         },{
           path:'/mentors',
           element:<Mentors/>,

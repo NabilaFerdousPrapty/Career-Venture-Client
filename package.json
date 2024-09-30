@@ -12,6 +12,8 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@smastrom/react-rating": "^1.5.0",
+    "@stripe/react-stripe-js": "^2.8.0",
+    "@stripe/stripe-js": "^4.5.0",
     "@tanstack/react-query": "^5.48.0",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
@@ -27,6 +29,7 @@
     "react-router-dom": "^6.23.1",
     "react-spinners": "^0.14.1",
     "sort-by": "^1.2.0",
+    "stripe": "^16.12.0",
     "sweetalert2": "^11.12.1",
     "swiper": "^11.1.4"
   },
