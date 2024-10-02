@@ -1,24 +1,38 @@
 
 import UseAxiosCommon from "../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
 
 const BootCamps = () => {
   const axiosCommon = UseAxiosCommon();
+  
+  const [page, setPage] = useState(1); // Track the current page
+  const [limit] = useState(6); // Set the number of items per page
 
   const {
-    data: bootCamps = [],
+    data,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ["bootCamps"],
+    queryKey: ["bootCamps", page],
     queryFn: async () => {
-      const { data } = await axiosCommon.get("/bootCamps");
+      const { data } = await axiosCommon.get(`/bootCamps?page=${page}&limit=${limit}`);
       return data;
     },
   });
+
+  if (isLoading)
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <ClockLoader />
+      </div>
+    );
+  if (isError) return <div>Error: {error.message}</div>;
+
+  const { bootCamps, totalPages } = data;
 
 
   if (isLoading)
@@ -169,7 +183,30 @@ const BootCamps = () => {
           </div>
         ))}
       </div>
+       {/* Pagination buttons */}
+       <div className="flex justify-center space-x-4 mt-8">
+        <button
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          disabled={page === 1}
+          className="px-4 py-2 bg-amber-600 text-white rounded disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span className="px-4 py-2">
+          Page {page} of {totalPages}
+        </span>
+        <button
+          onClick={() => setPage((prev) => (prev < totalPages ? prev + 1 : prev))}
+          disabled={page === totalPages}
+          className="px-4 py-2 bg-amber-600 text-white rounded disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
     </div>
+
+   
+    
   );
 };
 
