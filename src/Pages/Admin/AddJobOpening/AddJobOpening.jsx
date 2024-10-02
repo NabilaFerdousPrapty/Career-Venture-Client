@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -6,6 +6,8 @@ import UseAxiosSecure from '../../../hooks/UseAxiosSecure/UseAxiosSecure';
 import Swal from 'sweetalert2';
 
 const JobForm = () => {
+    
+    const [applyBy, setApplyBy] = useState(new Date()); // State to manage the date
     const {
         register,
         handleSubmit,
@@ -22,7 +24,7 @@ const JobForm = () => {
             salary: '',
             description: '',
             postedDate: new Date(),
-            applyBy: new Date(),
+            applyBy: applyBy, // Set default value for applyBy
             jobImage: '', // New field for Job Image URL
         },
     });
@@ -174,11 +176,14 @@ const JobForm = () => {
 
                     <div className=''>
                         <label className="text-gray-700 dark:text-gray-200" htmlFor="applyBy">Apply By</label>
-                        <div >
+                        <div>
                             <DatePicker
                                 id="applyBy"
-                                selected={new Date()}
-                                onChange={(date) => setValue('applyBy', date)}
+                                selected={applyBy} // Use the state variable
+                                onChange={(date) => {
+                                    setApplyBy(date); // Update the state when the date changes
+                                    setValue('applyBy', date); // Update the form value
+                                }}
                                 className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                     dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
                                     focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
@@ -186,7 +191,6 @@ const JobForm = () => {
                             />
                         </div>
                     </div>
-
                     <div className="lg:col-span-2">
                         <label className="text-gray-700 dark:text-gray-200" htmlFor="description">Job Description</label>
                         <textarea

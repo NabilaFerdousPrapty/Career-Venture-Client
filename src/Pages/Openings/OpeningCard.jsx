@@ -47,7 +47,7 @@ console.log(opening);
 
           {/* Job description */}
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {description || "No description available."}
+            {description.slice(0,100) || "No description available."}.....
           </p>
         </div>
 
