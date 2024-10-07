@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UseAxiosCommon from './../../hooks/UseAxiosCommon/UseAxiosCommon';
 import UseAuth from './../../hooks/UseAuth/UseAuth';
-
+import propTypes from 'prop-types';
 const ResourcesCard = ({ resource,refetch }) => {
   const axiosCommon = UseAxiosCommon();
   const {user}=UseAuth();
@@ -13,7 +13,7 @@ const ResourcesCard = ({ resource,refetch }) => {
     description,
     author,
     date,
-    details,
+   
     upvote,
     downvote,
     imageLink,
@@ -45,7 +45,7 @@ const ResourcesCard = ({ resource,refetch }) => {
   };
 
   const handleDownVote = (id) => {
-    UseAxiosCommon
+    axiosCommon
       .patch(`/resources/downvote/${id}`)
       .then(() => {
         Swal.fire({
@@ -148,9 +148,7 @@ const ResourcesCard = ({ resource,refetch }) => {
           <div className="mt-4 flex justify-between">
             <div>
               <span><button onClick={() => handleVoteClick("up", _id)}>👍</button> {upvote || 0}</span> 
-              <span><button onClick={() => handleVoteClick("down", _id)}>
-              👎
-                </button> {downvote || 0}</span>
+              <span><button onClick={() => handleVoteClick("down", _id)}>👎</button> {downvote || 0}</span>
             </div>
             <div>
                 <Link to={`/resources/${resource._id}`}>
@@ -171,3 +169,9 @@ const ResourcesCard = ({ resource,refetch }) => {
 };
 
 export default ResourcesCard;
+
+ResourcesCard.propTypes = {
+
+  resource: propTypes.object.isRequired,
+  refetch: propTypes.func.isRequired,
+};

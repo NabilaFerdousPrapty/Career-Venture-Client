@@ -1,14 +1,24 @@
-import { useQuery } from "@tanstack/react-query";
-import Hero from "./Hero/Hero";
-import { ClockLoader } from "react-spinners";
+import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
+import ClockLoader from "react-spinners/ClockLoader";
 import UseAxiosCommon from "../../hooks/UseAxiosCommon/UseAxiosCommon";
 import ResourcesCard from "./ResourcesCard";
-import { useState } from "react";
+import Hero from "./Hero/Hero";
+import { useQuery } from "@tanstack/react-query";
 
 const Resources = () => {
   const axiosCommon = UseAxiosCommon();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTag, setSearchTag] = useState(""); // State for search tag
   const limit = 6;
+
+  // Function to handle the search operation from Hero component
+  const onSearch = (tag) => {
+    setSearchTag(tag);
+    setCurrentPage(1); // Reset to the first page when searching
+    refetch(); // Refetch the data based on the new search tag
+  };
 
   const {
     data: resourcesData = {},
@@ -17,16 +27,23 @@ const Resources = () => {
     error,
     refetch,
   } = useQuery({
-    queryKey: ["resources", currentPage],
+    queryKey: ["resources", currentPage, searchTag], // Include searchTag in queryKey
     queryFn: async () => {
       const { data } = await axiosCommon.get(
-        `/resources?page=${currentPage}&limit=${limit}`
+        `/resources?page=${currentPage}&limit=${limit}&search=${searchTag}`
       );
       return data;
     },
   });
 
   const { resources = [], totalPages } = resourcesData;
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+    });
+  }, []);
 
   if (isLoading)
     return (
@@ -43,10 +60,16 @@ const Resources = () => {
 
   return (
     <div>
-      <Hero />
+      <Hero onSearch={onSearch} /> {/* Pass onSearch to Hero */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-        {resources.map((resource) => (
-          <ResourcesCard key={resource._id} resource={resource} refetch={refetch} />
+        {resources.map((resource, index) => (
+          <div
+            key={resource._id}
+            data-aos="fade-up" // AOS animation applied here
+            data-aos-delay={`${index * 100}`} // Apply delay for staggered animation
+          >
+            <ResourcesCard resource={resource} refetch={refetch} />
+          </div>
         ))}
       </div>
 
