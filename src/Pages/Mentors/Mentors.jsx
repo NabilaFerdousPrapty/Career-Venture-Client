@@ -60,12 +60,17 @@ const Mentors = () => {
           <p className="mt-3 text-sm text-gray-500">No credit card required</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-          {mentors.map((mentor) => (
+      <div className="my-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-2 ">
+          {
+            
+            
+          mentors && mentors.map((mentor,index) => (
+        
             <div
               key={mentor._id}
-              data-aos="fade-up"
-              data-aos-duration="600"
+              
+              
               className="relative mt-16 mb-32 sm:mb-24 transform transition-transform duration-300 hover:scale-105"
             >
               <div className="rounded overflow-hidden shadow-md bg-gray-800 hover:bg-gray-700 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
@@ -139,6 +144,7 @@ const Mentors = () => {
             </div>
           ))}
         </div>
+      </div>
 
         {/* Pagination */}
         <div className="mt-10 flex justify-center items-center space-x-2">
