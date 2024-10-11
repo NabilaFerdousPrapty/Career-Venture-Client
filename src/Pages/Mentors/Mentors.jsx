@@ -3,31 +3,31 @@ import UseAxiosCommon from "./../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { ClockLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Mentors = () => {
-  const [currentPage, setCurrentPage] = useState(1); // Track the current page
+  const [currentPage, setCurrentPage] = useState(1);
   const axiosCommon = UseAxiosCommon();
-  const limit = 6; // Number of items per page
+  const limit = 6;
 
-  // Fetch mentors with pagination
   const {
-    data: { mentors = [], totalPages } = {}, // Destructure data with fallback values
+    data: { mentors = [], totalPages } = {},
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryKey: ["mentors", currentPage], // Refetch when currentPage changes
+    queryKey: ["mentors", currentPage],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/approvedMentors?page=${currentPage}&limit=${limit}`);
       return data;
     },
-    keepPreviousData: true, // Keep old data while fetching new page data
+    keepPreviousData: true,
   });
 
   if (isLoading)
     return (
       <div className="h-screen flex justify-center items-center">
-        <ClockLoader />
+        <ClockLoader color="#FBBF24" />
       </div>
     );
 
@@ -38,7 +38,7 @@ const Mentors = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="flex justify-center mt-10">
         <img
           className="object-cover w-full h-96 rounded-xl lg:w-4/5"
@@ -48,47 +48,93 @@ const Mentors = () => {
       </div>
       <div className="container px-6 py-16 mx-auto text-center">
         <div className="max-w-lg mx-auto">
-          <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+          <h1 className="text-3xl font-semibold text-white lg:text-4xl">
             Meet Our Mentors
           </h1>
-          <p className="mt-6 text-gray-500 dark:text-gray-300">
+          <p className="mt-6 text-gray-400">
             Learn from industry experts and elevate your career.
           </p>
-          <button className="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-blue-600 rounded-lg hover:bg-blue-500 lg:mx-0 lg:w-auto focus:outline-none">
+          <button className="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:outline-none">
             Start 14-Day Free Trial
           </button>
-          <p className="mt-3 text-sm text-gray-400">No credit card required</p>
+          <p className="mt-3 text-sm text-gray-500">No credit card required</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
           {mentors.map((mentor) => (
             <div
               key={mentor._id}
-              className="flex flex-col w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 h-[700px] border-2 border-amber-400"
+              data-aos="fade-up"
+              data-aos-duration="600"
+              className="relative mt-16 mb-32 sm:mb-24 transform transition-transform duration-300 hover:scale-105"
             >
-              <img
-                className="object-center w-full h-96 object-cover"
-                src={mentor.profile_image || "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"}
-                alt={mentor.name}
-              />
-              <div className="px-6 py-4 flex flex-col flex-grow">
-                <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
-                  {mentor.name}
-                </h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {mentor.designation} - {mentor.location}
-                </p>
-                <p className="py-2 text-gray-700 dark:text-gray-400">{mentor.bio}</p>
-              </div>
-              <div className="mt-auto w-full">
-                <Link to={`/learnAboutMentors/${mentor?._id}`}>
-                  <button
-                    type="button"
-                    className="flex items-center justify-center w-full p-3 font-semibold tracking-wide bg-[#ad8a54] text-gray-50 rounded-xl"
-                  >
-                    Learn more
+              <div className="rounded overflow-hidden shadow-md bg-gray-800 hover:bg-gray-700 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
+                <div className="absolute -mt-24 w-full flex justify-center">
+                  <div className="h-36 w-36 ">
+                    <img
+                      src={mentor.profile_image || "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"}
+                      alt={`Display Picture of ${mentor.name}`}
+                      className="rounded-full object-cover h-full w-full shadow-md"
+                    />
+                  </div>
+                </div>
+                <div className="px-6 mt-16 flex-grow flex flex-col justify-between items-start text-justify">
+                  <div>
+                    <h1 className="font-bold text-3xl text-center mb-1 text-white">
+                      {mentor.name}
+                    </h1>
+                    <p className="text-gray-400 text-sm text-center">
+                      {mentor.designation} - {mentor.location}
+                    </p>
+                    <p className="text-center text-gray-300 text-base pt-3 font-normal">
+                      {mentor.bio}
+                    </p>
+                    <div className="mt-4">
+                      <p className="text-center text-gray-400 font-semibold">
+                      <span className="text-amber-500">
+                      Experience:
+                      </span>
+                        <span className="font-normal"> {mentor.years_of_experience} years</span>
+                      </p>
+                      <p className="text-center text-gray-400 font-semibold">
+                      <span className="text-amber-500">
+                      Skills:
+                      </span>
+                        <span className="font-normal"> {mentor.skills.join(", ")}</span>
+                      </p>
+                      <p className="text-center text-gray-400 font-semibold">
+                        
+                       <span className="text-amber-500">
+                        Available Days:
+                        </span>
+                        <span className="font-normal"> {mentor.available_days.join(", ")}</span>
+                      </p>
+                      <p className="text-center text-gray-400 font-semibold">
+                        <span className="text-amber-500">
+                        Background:
+                        </span>
+                        <span className="font-normal"> {mentor.background_and_qualifications}</span>
+                      </p>
+                      
+                    </div>
+                  </div>
+                  <div className="w-full flex justify-center pt-5">
+                    <a href={mentor.social_media_links[1]} className="mx-5">
+                      <FaGithub size={24} color="#FBBF24" />
+                    </a>
+                    <a href="javascript:void(0)" className="mx-5">
+                      <FaTwitter size={24} color="#FBBF24" />
+                    </a>
+                    <a href="javascript:void(0)" className="mx-5">
+                      <FaInstagram size={24} color="#FBBF24" />
+                    </a>
+                  </div>
+                </div>
+                <div className="flex justify-center pb-5">
+                  <button className="px-5 py-2 mt-4 text-sm font-medium leading-5 text-center text-white capitalize bg-yellow-500 rounded-lg hover:bg-yellow-400">
+                    Book Now
                   </button>
-                </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -102,8 +148,8 @@ const Mentors = () => {
               onClick={() => handlePageClick(index + 1)}
               className={`px-4 py-2 rounded-full ${
                 currentPage === index + 1
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-700"
+                  ? "bg-yellow-500 text-white"
+                  : "bg-gray-700 text-gray-400"
               }`}
             >
               {index + 1}
