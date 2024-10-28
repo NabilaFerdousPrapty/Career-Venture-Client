@@ -39,17 +39,17 @@ const ResourceDetail = () => {
 
         try {
             const { data } = await axiosCommon.post(`/resources/${id}/comments`, {
-                user: user.displayName,
-                u_image: user.photoURL,
-                comment,
+                author: user.displayName,
+                text: comment,
                 date: new Date().toISOString(),
             });
-            setComments([...comments, data]); // Append the new comment to the existing comments
+            setComments([...comments, data.comment]); // Append the new comment to the existing comments
             setComment(""); // Clear the input field
         } catch (err) {
             console.error("Error adding comment:", err);
         }
     };
+
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error: {error.message}</p>;
