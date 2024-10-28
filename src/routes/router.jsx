@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-    createBrowserRouter,
-    
-  } from "react-router-dom";
+  createBrowserRouter,
+
+} from "react-router-dom";
 import MainLayout from '../Layouts/MainLayout';
 import Home from '../Pages/Home/Home';
 import BootCamps from './../Pages/BootCamps/BootCamps';
@@ -26,101 +26,107 @@ import TransactionOverview from '../Pages/Admin/Transactions/TransactionOverview
 import AppliedMentor from '../Pages/Admin/AppliedMentor/AppliedMentor';
 import MentorsOverview from '../Pages/Admin/MentorsOverview/MentorsOverview';
 import PaymentPage from '../../components/Payments/PaymentPage';
+import OpenningDetails from '../Pages/OpenningDetails/OpenningDetails';
 const axiosCommon = UseAxiosCommon();
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout/>,
-      children:[
-        {
-          path:'/',
-          element:<Home/>
-        },{
-          path:'/bootCamps',
-          element:<BootCamps/>
-        },{
-          path:'/Enroll',
-          element:<PrivateRoute>
-            <PaymentPage/>
-          </PrivateRoute>
-        },{
-          path:'/mentors',
-          element:<Mentors/>,
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      }, {
+        path: '/bootCamps',
+        element: <BootCamps />
+      }, {
+        path: '/Enroll',
+        element: <PrivateRoute>
+          <PaymentPage />
+        </PrivateRoute>
+      }, {
+        path: '/mentors',
+        element: <Mentors />,
 
-        },{
-          path:'/learnAboutMentors/:id',
-          element:<PrivateRoute>
-            <MentorDetails/>
-          </PrivateRoute>
-        },
-          {
-          path:'/openings',
-          element:<Openings/>
-        },{
-          path:'/resources',
-          element:<Resources/>
-        },{
-          path:'/resources/:id',
-          element:<PrivateRoute>
-            <ResourceDetail/>
-          </PrivateRoute>
-        },{
-          path:'/LearnAboutBootCamp/:id',
-          element:<PrivateRoute>
-            <BootCampDetails/>
-          </PrivateRoute>
-          ,
-          loader: async ({ params }) => {
-            try {
-              const response = await axiosCommon.get(`/LearnAboutBootCamp/${params.id}`);
-              return response.data;
-            } catch (error) {
-              console.error('Error loading item:', error);
-              throw new Error('Failed to load item data');
-            }
+      }, {
+        path: '/learnAboutMentors/:id',
+        element: <PrivateRoute>
+          <MentorDetails />
+        </PrivateRoute>
+      },
+      {
+        path: '/openings',
+        element: <Openings />
+      }, {
+        path: '/opening/:id',
+        element: <PrivateRoute>
+          <OpenningDetails />
+        </PrivateRoute>
+      }, {
+        path: '/resources',
+        element: <Resources />
+      }, {
+        path: '/resources/:id',
+        element: <PrivateRoute>
+          <ResourceDetail />
+        </PrivateRoute>
+      }, {
+        path: '/LearnAboutBootCamp/:id',
+        element: <PrivateRoute>
+          <BootCampDetails />
+        </PrivateRoute>
+        ,
+        loader: async ({ params }) => {
+          try {
+            const response = await axiosCommon.get(`/LearnAboutBootCamp/${params.id}`);
+            return response.data;
+          } catch (error) {
+            console.error('Error loading item:', error);
+            throw new Error('Failed to load item data');
           }
         }
-      ],
-      errorElement:<ErrorPage/>
+      }
+    ],
+    errorElement: <ErrorPage />
 
 
-    },{
-      path:'/dashboard',
-      element:
+  }, {
+    path: '/dashboard',
+    element:
       <PrivateRoute>
-        <Dashboard/>
+        <Dashboard />
       </PrivateRoute>
-     ,
-      children:[
-        {
-          path:'intro',
-          element:<DashboardHome/>
-        },{
-          path:'manage-users',
-          element:<UserManagement/>
-        },{
-          path:'add-job-openings',
-          element:<AddJobOpening/>
-        },{
-          path:'transaction-overview',
-          element:<TransactionOverview/>
-        },{
-          path:'mentors-overview',
-          element:<MentorsOverview/>
-        }
-      ],
-      errorElement:<ErrorPage/>
-      
-    },
-    {
-      path: "/login",
-      element:<Login/>
+    ,
+    children: [
+      {
+        path: 'intro',
+        element: <DashboardHome />
+      }, {
+        path: 'manage-users',
+        element: <UserManagement />
+      }, {
+        path: 'add-job-openings',
+        element: <AddJobOpening />
+      }, {
+        path: 'transaction-overview',
+        element: <TransactionOverview />
+      }, {
+        path: 'mentors-overview',
+        element: <MentorsOverview />
+      }
+    ],
+    errorElement: <ErrorPage />
 
-    },{
-      path:'/signUp',
-      element:<SignUp/>
-    }
-  ]);
+  },
+  {
+    path: "/login",
+    element: <Login />
+
+  }, {
+    path: '/signUp',
+    element: <SignUp />
+  }
+]);
 
 export default router;

@@ -5,15 +5,17 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Banner = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Swiper
         spaceBetween={30}
         effect={"fade"}
         autoplay={{
-          delay:5000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         navigation={true}
@@ -38,17 +40,16 @@ const Banner = () => {
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-700 text-gray-900  ">
               <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
-                Discover Your Dream Career
+                {t('discoverCareer')}
               </h1>
               <p className="lg:text-xl text-sm text-slate-900 font-semibold">
-                Explore thousands of job opportunities tailored to your skills
-                and interests.
+                {t('exploreOpportunities')}
               </p>
               <Link
                 to="/bootCamps"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
-                Get Started
+                {t('getStarted')}
               </Link>
             </div>
           </div>
@@ -67,17 +68,16 @@ const Banner = () => {
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent lg:p-6 p-2 rounded-2xl border-2 border-amber-300">
               <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
-                Upskill for the Future
+                {t('upskillFuture')}
               </h1>
               <p className="lg:text-xl text-sm">
-                Enroll in top-rated courses and training programs to enhance
-                your skills.
+                {t('enrollCourses')}
               </p>
               <Link
                 to="/resources"
                 className="bg-white text-sm md:text-base text-black px-3 py-1 md:px-4 md:py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
-                Learn More
+                {t('learnMore')}
               </Link>
             </div>
           </div>
@@ -96,17 +96,16 @@ const Banner = () => {
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
               <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
-                Connect with Experts
+                {t('connectExperts')}
               </h1>
               <p className="lg:text-xl text-sm">
-                Get guidance from industry professionals to accelerate your
-                career growth.
+                {t('guidanceProfessionals')}
               </p>
               <Link
                 to="/mentors"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
-                Find Mentors
+                {t('findMentors')}
               </Link>
             </div>
           </div>
@@ -125,18 +124,17 @@ const Banner = () => {
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
               <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
-                Personalized Career Paths
+                {t('personalizedPaths')}
               </h1>
               <p className="lg:text-xl text-sm">
-                Discover career paths and job opportunities that match your
-                unique talents.
+                {t('discoverPaths')}
               </p>
               <Link
 
                 to="/openings"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
-                Explore Now
+                {t('exploreNow')}
               </Link>
             </div>
           </div>
@@ -155,17 +153,16 @@ const Banner = () => {
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
               <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
-                Land Your Dream Job
+                {t('landDreamJob')}
               </h1>
               <p className="lg:text-xl text-sm">
-                Apply for jobs at top companies and take the next step in your
-                career.
+                {t('applyTopCompanies')}
               </p>
               <Link
                 to="/openings"
                 className="bg-white text-sm md:text-base text-black px-4 py-2 rounded-md mt-4 lg:mt-8 inline-block"
               >
-                Apply Now
+                {t('applyNow')}
               </Link>
             </div>
           </div>
