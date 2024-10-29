@@ -8,9 +8,12 @@ const Dropdown = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
   const { user, setUser, LogOut } = UseAuth();
+  console.log(user.photoURL);
+
   return (
-    <div className="relative inline-block ">
+    <div className="relative inline-block  text-center">
 
       {/* Dropdown toggle button */}
       <button
@@ -21,7 +24,7 @@ const Dropdown = () => {
           <img
             className="object-cover w-auto h-10 rounded-full"
             src={user?.photoURL || 'https://i.ibb.co/M7Zxxsm/770fb75f5e81e4c2dbe8934f246aeeab.jpg'}
-            alt="jane doe"
+            alt="avtar"
           />
         </span>
 
@@ -30,9 +33,9 @@ const Dropdown = () => {
       {/* Dropdown menu */}
       {isOpen && (
         <div
-          className="absolute right-0 z-20 lg:w-64 md:w-56 w-48 py-2  overflow-hidden origin-top-right rounded-md shadow-xl text-center bg-[#333333]"
+          className="absolute right-0 z-20 lg:w-64 md:w-56 w-48 py-2  overflow-hidden origin-top-right rounded-md shadow-xl text-center bg-[#333333] "
         >
-          <li className="flex items-center p-2 text-sm text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+          <li className="flex justify-center items-center p-2 text-sm text-gray-600 transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
             <img
               className="flex-shrink-0 object-cover mx-1 rounded-full w-4 h-4"
               src={user?.photoURL || 'https://randomuser.me/api/portraits'}
