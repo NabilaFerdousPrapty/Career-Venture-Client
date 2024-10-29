@@ -50,6 +50,12 @@ const router = createBrowserRouter([
         element: <Mentors />,
 
       }, {
+        path: '/mentor/:id',
+        element: <PrivateRoute>
+          <MentorDetails />
+        </PrivateRoute>
+      },
+      {
         path: '/learnAboutMentors/:id',
         element: <PrivateRoute>
           <MentorDetails />

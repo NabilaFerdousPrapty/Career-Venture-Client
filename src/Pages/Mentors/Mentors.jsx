@@ -60,91 +60,91 @@ const Mentors = () => {
           <p className="mt-3 text-sm text-gray-500">No credit card required</p>
         </div>
 
-      <div className="my-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-2 ">
-          {
-            
-            
-          mentors && mentors.map((mentor,index) => (
-        
-            <div
-              key={mentor._id}
-              
-              
-              className="relative mt-16 mb-32 sm:mb-24 transform transition-transform duration-300 hover:scale-105"
-            >
-              <div className="rounded overflow-hidden shadow-md bg-gray-800 hover:bg-gray-700 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
-                <div className="absolute -mt-24 w-full flex justify-center">
-                  <div className="h-36 w-36 ">
-                    <img
-                      src={mentor.profile_image || "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"}
-                      alt={`Display Picture of ${mentor.name}`}
-                      className="rounded-full object-cover h-full w-full shadow-md"
-                    />
-                  </div>
-                </div>
-                <div className="px-6 mt-16 flex-grow flex flex-col justify-between items-start text-justify">
-                  <div>
-                    <h1 className="font-bold text-3xl text-center mb-1 text-white">
-                      {mentor.name}
-                    </h1>
-                    <p className="text-gray-400 text-sm text-center">
-                      {mentor.designation} - {mentor.location}
-                    </p>
-                    <p className="text-center text-gray-300 text-base pt-3 font-normal">
-                      {mentor.bio}
-                    </p>
-                    <div className="mt-4">
-                      <p className="text-center text-gray-400 font-semibold">
-                      <span className="text-amber-500">
-                      Experience:
-                      </span>
-                        <span className="font-normal"> {mentor.years_of_experience} years</span>
-                      </p>
-                      <p className="text-center text-gray-400 font-semibold">
-                      <span className="text-amber-500">
-                      Skills:
-                      </span>
-                        <span className="font-normal"> {mentor.skills.join(", ")}</span>
-                      </p>
-                      <p className="text-center text-gray-400 font-semibold">
-                        
-                       <span className="text-amber-500">
-                        Available Days:
-                        </span>
-                        <span className="font-normal"> {mentor.available_days.join(", ")}</span>
-                      </p>
-                      <p className="text-center text-gray-400 font-semibold">
-                        <span className="text-amber-500">
-                        Background:
-                        </span>
-                        <span className="font-normal"> {mentor.background_and_qualifications}</span>
-                      </p>
-                      
+        <div className="my-5 mt-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-2 ">
+            {
+
+
+              mentors && mentors.map((mentor, index) => (
+
+                <div
+                  key={mentor._id}
+
+
+                  className="relative mt-16 mb-32 sm:mb-24 transform transition-transform duration-300 hover:scale-105"
+                >
+                  <div className="rounded overflow-hidden shadow-md bg-gray-800 hover:bg-gray-700 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
+                    <div className="absolute -mt-24 w-full flex justify-center">
+                      <div className="h-36 w-36 ">
+                        <img
+                          src={mentor.profile_image || "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"}
+                          alt={`Display Picture of ${mentor.name}`}
+                          className="rounded-full object-cover h-full w-full shadow-md"
+                        />
+                      </div>
+                    </div>
+                    <div className="px-6 mt-16 flex-grow flex flex-col justify-between items-start text-justify">
+                      <div>
+                        <h1 className="font-bold text-3xl text-center mb-1 text-white">
+                          {mentor.name}
+                        </h1>
+                        <p className="text-gray-400 text-sm text-center">
+                          {mentor.designation} - {mentor.location}
+                        </p>
+                        <p className="text-center text-gray-300 text-base pt-3 font-normal">
+                          {mentor.bio}
+                        </p>
+                        <div className="mt-4">
+                          <p className="text-center text-gray-400 font-semibold">
+                            <span className="text-amber-500">
+                              Experience:
+                            </span>
+                            <span className="font-normal"> {mentor.years_of_experience} years</span>
+                          </p>
+                          <p className="text-center text-gray-400 font-semibold">
+                            <span className="text-amber-500">
+                              Skills:
+                            </span>
+                            <span className="font-normal"> {mentor.skills.join(", ")}</span>
+                          </p>
+                          <p className="text-center text-gray-400 font-semibold">
+
+                            <span className="text-amber-500">
+                              Available Days:
+                            </span>
+                            <span className="font-normal"> {mentor.available_days.join(", ")}</span>
+                          </p>
+                          <p className="text-center text-gray-400 font-semibold">
+                            <span className="text-amber-500">
+                              Background:
+                            </span>
+                            <span className="font-normal"> {mentor.background_and_qualifications}</span>
+                          </p>
+
+                        </div>
+                      </div>
+                      <div className="w-full flex justify-center pt-5">
+                        <a href={mentor.social_media_links[1]} className="mx-5">
+                          <FaGithub size={24} color="#FBBF24" />
+                        </a>
+                        <a href="javascript:void(0)" className="mx-5">
+                          <FaTwitter size={24} color="#FBBF24" />
+                        </a>
+                        <a href="javascript:void(0)" className="mx-5">
+                          <FaInstagram size={24} color="#FBBF24" />
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex justify-center pb-5">
+                      <Link to={`/mentor/${mentor._id}`} className="px-5 py-2 mt-4 text-sm font-medium leading-5 text-center text-white capitalize bg-yellow-500 rounded-lg hover:bg-yellow-400">
+                        Book Now
+                      </Link>
                     </div>
                   </div>
-                  <div className="w-full flex justify-center pt-5">
-                    <a href={mentor.social_media_links[1]} className="mx-5">
-                      <FaGithub size={24} color="#FBBF24" />
-                    </a>
-                    <a href="javascript:void(0)" className="mx-5">
-                      <FaTwitter size={24} color="#FBBF24" />
-                    </a>
-                    <a href="javascript:void(0)" className="mx-5">
-                      <FaInstagram size={24} color="#FBBF24" />
-                    </a>
-                  </div>
                 </div>
-                <div className="flex justify-center pb-5">
-                  <button className="px-5 py-2 mt-4 text-sm font-medium leading-5 text-center text-white capitalize bg-yellow-500 rounded-lg hover:bg-yellow-400">
-                    Book Now
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+              ))}
+          </div>
         </div>
-      </div>
 
         {/* Pagination */}
         <div className="mt-10 flex justify-center items-center space-x-2">
@@ -152,11 +152,10 @@ const Mentors = () => {
             <button
               key={index + 1}
               onClick={() => handlePageClick(index + 1)}
-              className={`px-4 py-2 rounded-full ${
-                currentPage === index + 1
-                  ? "bg-yellow-500 text-white"
-                  : "bg-gray-700 text-gray-400"
-              }`}
+              className={`px-4 py-2 rounded-full ${currentPage === index + 1
+                ? "bg-yellow-500 text-white"
+                : "bg-gray-700 text-gray-400"
+                }`}
             >
               {index + 1}
             </button>

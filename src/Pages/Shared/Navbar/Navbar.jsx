@@ -75,9 +75,10 @@ function Navbar() {
           <div
             className={`absolute inset-x-0 z-20 w-full px-4 py-4 transition-all duration-300 ease-in-out lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center ${isOpen
               ? "translate-x-0 opacity-100 py-0"
-              : "opacity-80 -translate-x-full bg-[#1a202c] lg:translate-x-0 lg:opacity-100 lg:bg-transparent"
+              : "opacity-80 -translate-x-[120%] bg-[#1a202c] lg:translate-x-0 lg:opacity-100 lg:bg-transparent"
               }`}
           >
+
             <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
               <Link
                 to="/"
