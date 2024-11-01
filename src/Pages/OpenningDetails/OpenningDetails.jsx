@@ -12,9 +12,11 @@ const OpenningDetails = () => {
     const { user } = UseAuth();
     const axiosCommon = UseAxiosCommon();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [resumeType, setResumeType] = useState('file'); // New state to manage resume type selection
     const [resume, setResume] = useState(null);
-    const [portfolio, setPortfolio] = useState("");
-    const [submitError, setSubmitError] = useState("");
+    const [resumeLink, setResumeLink] = useState('');
+    const [portfolio, setPortfolio] = useState('');
+    const [submitError, setSubmitError] = useState('');
 
     const { data: openingData = {}, isLoading, isError, error, refetch } = useQuery({
         queryKey: ["opening", id],
@@ -32,19 +34,22 @@ const OpenningDetails = () => {
     const closeModal = () => setIsModalOpen(false);
 
     const handleResumeChange = (e) => setResume(e.target.files[0]);
+    const handleResumeLinkChange = (e) => setResumeLink(e.target.value);
     const handlePortfolioChange = (e) => setPortfolio(e.target.value);
 
     const handleApply = async (e) => {
         e.preventDefault();
         setSubmitError("");
 
-        if (!resume || !portfolio) {
-            setSubmitError("Please upload your resume and enter a portfolio link.");
+        if ((resumeType === 'file' && !resume) || (resumeType === 'link' && !resumeLink) || !portfolio) {
+            setSubmitError("Please complete all fields.");
             return;
         }
 
         const formData = new FormData();
-        formData.append("resume", resume);
+        if (resumeType === 'file') formData.append("resume", resume);
+        else formData.append("resumeLink", resumeLink);
+
         formData.append("portfolio", portfolio);
 
         try {
@@ -71,23 +76,22 @@ const OpenningDetails = () => {
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error: {error.message}</p>;
-    console.log(user);
 
     return (
-        <div className="max-w-5xl bg-[#3b3b4f]  mx-auto rounded-lg shadow-md p-6">
+        <div className="max-w-5xl bg-[#3b3b4f] mx-auto rounded-lg shadow-md p-6">
             <img
                 className="object-cover w-full h-80 rounded-md"
                 src={openingData.jobImage}
                 alt={openingData.title}
             />
-            <h2 className="text-2xl font-semibold  mt-4">{openingData.title}</h2>
-            <p className="text-sm ">{openingData.company} - {openingData.location}</p>
-            <p className="mt-2 ">{openingData.description}</p>
-            <p className="mt-2 "><strong>Experience:</strong> {openingData.experience} years</p>
-            <p className="mt-2 "><strong>Salary:</strong> BDT {openingData.salary}</p>
+            <h2 className="text-2xl font-semibold mt-4">{openingData.title}</h2>
+            <p className="text-sm">{openingData.company} - {openingData.location}</p>
+            <p className="mt-2">{openingData.description}</p>
+            <p className="mt-2"><strong>Experience:</strong> {openingData.experience} years</p>
+            <p className="mt-2"><strong>Salary:</strong> BDT {openingData.salary}</p>
             <button
                 onClick={openModal}
-                className="mt-4 px-4 py-2  rounded-md  focus:outline-none text-white bg-[#ad8a54]"
+                className="mt-4 px-4 py-2 rounded-md focus:outline-none text-white bg-[#ad8a54]"
             >
                 Apply Now
             </button>
@@ -96,35 +100,65 @@ const OpenningDetails = () => {
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Apply for Job"
-                className="relative bg-white rounded-lg shadow-lg max-w-lg mx-auto p-6 overflow-hidden"
+                className="relative border-4 bg-indigo-400 border-gray-700 rounded-lg shadow-lg max-w-lg mx-auto p-6 overflow-hidden w-[400px] text-gray-800 h-[450px]"
                 overlayClassName="bg-gray-800 bg-opacity-75 fixed inset-0 flex justify-center items-center"
             >
-                <h2 className="text-lg font-semibold text-gray-800 capitalize" id="modal-title">
-                    Invite your team
-                </h2>
-                <p className="mt-2 text-sm text-gray-500">
-                    Your new project has been created. Invite your team to collaborate on this project.
-                </p>
+                <h2 className="text-lg font-semibold text-gray-800 capitalize">Apply for the Job</h2>
                 <form onSubmit={handleApply} className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mt-3">
-                        Email Address
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mt-3">Email Address</label>
                     <input
                         value={user.email}
                         readOnly
                         type="email"
-                        placeholder="user@example.com"
                         className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md mt-3"
                     />
-                    <label className="block mt-3" htmlFor="resume">
-                        <input
-                            type="file"
-                            accept=".pdf,.doc,.docx"
-                            onChange={handleResumeChange}
-                            className="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none"
-                        />
-                    </label>
-                    <label className="block mt-3" htmlFor="portfolio">
+
+                    {/* Resume Type Selection as Tabs */}
+                    <div className="mt-4 ">
+                        <label className="block text-sm font-medium text-gray-700">Resume Option</label>
+                        <div className="flex mt-2 border-b border-gray-300">
+                            <button
+                                type="button"
+                                onClick={() => setResumeType('file')}
+                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'file' ? 'text-white bg-indigo-600' : 'text-gray-600 bg-gray-100'
+                                    } rounded-t`}
+                            >
+                                Upload Resume
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setResumeType('link')}
+                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'link' ? 'text-white bg-indigo-600' : 'text-gray-600 bg-gray-100'
+                                    } rounded-t`}
+                            >
+                                Resume Link
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Conditional Inputs */}
+                    {resumeType === 'file' ? (
+                        <label className="block mt-3 h-10" htmlFor="resume">
+                            <input
+                                type="file"
+                                accept=".pdf,.doc,.docx"
+                                onChange={handleResumeChange}
+                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer "
+                            />
+                        </label>
+                    ) : (
+                        <label className="block mt-3 h-10" htmlFor="resumeLink">
+                            <input
+                                type="url"
+                                placeholder="https://yourresume.com"
+                                value={resumeLink}
+                                onChange={handleResumeLinkChange}
+                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
+                            />
+                        </label>
+                    )}
+
+                    <label className="block mt-5 " htmlFor="portfolio">
                         <input
                             type="url"
                             placeholder="https://yourportfolio.com"
@@ -145,7 +179,7 @@ const OpenningDetails = () => {
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2  text-white bg-[#ad8a54] hover:bg-[#ad8a54] rounded"
+                            className="px-4 py-2 text-white bg-[#ad8a54] hover:bg-[#ad8a54] rounded"
                         >
                             Apply Now
                         </button>
