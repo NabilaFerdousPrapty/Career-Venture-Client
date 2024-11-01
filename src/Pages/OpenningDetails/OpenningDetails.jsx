@@ -46,10 +46,29 @@ const OpenningDetails = () => {
             return;
         }
 
-        const formData = new FormData();
-        if (resumeType === 'file') formData.append("resume", resume);
-        else formData.append("resumeLink", resumeLink);
+        let resumeUrl = resumeLink;
 
+        if (resumeType === 'file') {
+            try {
+                const cloudinaryFormData = new FormData();
+                cloudinaryFormData.append("file", resume);
+                cloudinaryFormData.append("upload_preset", "your_upload_preset"); // Replace with your Cloudinary upload preset
+
+                const response = await fetch(`https://api.cloudinary.com/v1_1/your_cloud_name/upload`, {
+                    method: 'POST',
+                    body: cloudinaryFormData
+                });
+                const data = await response.json();
+                resumeUrl = data.secure_url;
+            } catch (error) {
+                console.error("Error uploading file to Cloudinary:", error);
+                setSubmitError("Failed to upload resume. Please try again.");
+                return;
+            }
+        }
+
+        const formData = new FormData();
+        formData.append("resumeLink", resumeUrl);
         formData.append("portfolio", portfolio);
 
         try {
@@ -61,7 +80,6 @@ const OpenningDetails = () => {
                 title: 'Application Submitted',
                 text: 'Your application has been submitted successfully.',
             });
-
             closeModal();
         } catch (error) {
             console.error("Error applying for job:", error);
@@ -100,27 +118,26 @@ const OpenningDetails = () => {
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Apply for Job"
-                className="relative border-4 bg-indigo-400 border-gray-700 rounded-lg shadow-lg max-w-lg mx-auto p-6 overflow-hidden w-[400px] text-gray-800 h-[450px]"
+                className="relative border-4 bg-[#333333] border-gray-700 rounded-lg shadow-lg max-w-lg mx-auto p-6 overflow-hidden w-[400px] text-slate-300 h-[450px]"
                 overlayClassName="bg-gray-800 bg-opacity-75 fixed inset-0 flex justify-center items-center"
             >
-                <h2 className="text-lg font-semibold text-gray-800 capitalize">Apply for the Job</h2>
+                <h2 className="text-lg font-semibold capitalize">Apply for the Job</h2>
                 <form onSubmit={handleApply} className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mt-3">Email Address</label>
+                    <label className="block text-sm font-medium  mt-3">Email Address</label>
                     <input
                         value={user.email}
                         readOnly
                         type="email"
-                        className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md mt-3"
+                        className="block w-full px-4 py-3 text-sm text-gray-600  bg-white border border-gray-200 rounded-md mt-3"
                     />
 
-                    {/* Resume Type Selection as Tabs */}
                     <div className="mt-4 ">
-                        <label className="block text-sm font-medium text-gray-700">Resume Option</label>
+                        <label className="block text-sm font-medium ">Resume Option</label>
                         <div className="flex mt-2 border-b border-gray-300">
                             <button
                                 type="button"
                                 onClick={() => setResumeType('file')}
-                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'file' ? 'text-white bg-indigo-600' : 'text-gray-600 bg-gray-100'
+                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'file' ? 'text-gray-800 bg-indigo-600' : 'text-slate-950 bg-gray-100'
                                     } rounded-t`}
                             >
                                 Upload Resume
@@ -136,7 +153,6 @@ const OpenningDetails = () => {
                         </div>
                     </div>
 
-                    {/* Conditional Inputs */}
                     {resumeType === 'file' ? (
                         <label className="block mt-3 h-10" htmlFor="resume">
                             <input
