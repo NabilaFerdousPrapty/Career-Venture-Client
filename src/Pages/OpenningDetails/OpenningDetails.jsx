@@ -5,6 +5,8 @@ import { useQuery } from '@tanstack/react-query';
 import Modal from 'react-modal';
 import UseAuth from './../../hooks/UseAuth/UseAuth';
 import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
+
 Modal.setAppElement('#root');
 
 const OpenningDetails = () => {
@@ -12,10 +14,8 @@ const OpenningDetails = () => {
     const { user } = UseAuth();
     const axiosCommon = UseAxiosCommon();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [resumeType, setResumeType] = useState('file'); // New state to manage resume type selection
+    const [resumeType, setResumeType] = useState('file'); // Manage resume type selection
     const [resume, setResume] = useState(null);
-    const [resumeLink, setResumeLink] = useState('');
-    const [portfolio, setPortfolio] = useState('');
     const [submitError, setSubmitError] = useState('');
 
     const { data: openingData = {}, isLoading, isError, error, refetch } = useQuery({
@@ -33,33 +33,39 @@ const OpenningDetails = () => {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
-    const handleResumeChange = (e) => setResume(e.target.files[0]);
-    const handleResumeLinkChange = (e) => setResumeLink(e.target.value);
-    const handlePortfolioChange = (e) => setPortfolio(e.target.value);
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        formState: { errors }
+    } = useForm();
 
-    const handleApply = async (e) => {
-        e.preventDefault();
+    const handleResumeChange = (e) => {
+        setResume(e.target.files[0]);
+        setValue('resume', e.target.files[0]); // Update form state
+    };
+
+    const handleApply = async (data) => {
         setSubmitError("");
 
-        if ((resumeType === 'file' && !resume) || (resumeType === 'link' && !resumeLink) || !portfolio) {
+        if ((resumeType === 'file' && !resume) || (resumeType === 'link' && !data.resumeLink)) {
             setSubmitError("Please complete all fields.");
             return;
         }
 
-        let resumeUrl = resumeLink;
+        let resumeUrl = data.resumeLink;
 
         if (resumeType === 'file') {
             try {
                 const cloudinaryFormData = new FormData();
                 cloudinaryFormData.append("file", resume);
-                cloudinaryFormData.append("upload_preset", "your_upload_preset"); // Replace with your Cloudinary upload preset
+                cloudinaryFormData.append("upload_preset", "all_files_preset"); // Replace with your Cloudinary upload preset
 
-                const response = await fetch(`https://api.cloudinary.com/v1_1/your_cloud_name/upload`, {
-                    method: 'POST',
-                    body: cloudinaryFormData
-                });
-                const data = await response.json();
-                resumeUrl = data.secure_url;
+                const response = await axiosCommon.post(
+                    `https://api.cloudinary.com/v1_1/dadvrb8ri/upload`,
+                    cloudinaryFormData
+                );
+                resumeUrl = response.data.secure_url; // Access the response directly
             } catch (error) {
                 console.error("Error uploading file to Cloudinary:", error);
                 setSubmitError("Failed to upload resume. Please try again.");
@@ -69,7 +75,7 @@ const OpenningDetails = () => {
 
         const formData = new FormData();
         formData.append("resumeLink", resumeUrl);
-        formData.append("portfolio", portfolio);
+        formData.append("portfolio", data.portfolio);
 
         try {
             await axiosCommon.post(`/jobOpenning/${id}/apply`, formData, {
@@ -122,31 +128,29 @@ const OpenningDetails = () => {
                 overlayClassName="bg-gray-800 bg-opacity-75 fixed inset-0 flex justify-center items-center"
             >
                 <h2 className="text-lg font-semibold capitalize">Apply for the Job</h2>
-                <form onSubmit={handleApply} className="mt-4">
-                    <label className="block text-sm font-medium  mt-3">Email Address</label>
+                <form onSubmit={handleSubmit(handleApply)} className="mt-4">
+                    <label className="block text-sm font-medium mt-3">Email Address</label>
                     <input
                         value={user.email}
                         readOnly
                         type="email"
-                        className="block w-full px-4 py-3 text-sm text-gray-600  bg-white border border-gray-200 rounded-md mt-3"
+                        className="block w-full px-4 py-3 text-sm text-gray-600 bg-white border border-gray-200 rounded-md mt-3"
                     />
 
-                    <div className="mt-4 ">
-                        <label className="block text-sm font-medium ">Resume Option</label>
+                    <div className="mt-4">
+                        <label className="block text-sm font-medium">Resume Option</label>
                         <div className="flex mt-2 border-b border-gray-300">
                             <button
                                 type="button"
                                 onClick={() => setResumeType('file')}
-                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'file' ? 'text-gray-800 bg-indigo-600' : 'text-slate-950 bg-gray-100'
-                                    } rounded-t`}
+                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'file' ? 'text-gray-800 bg-indigo-600' : 'text-slate-950 bg-gray-100'} rounded-t`}
                             >
                                 Upload Resume
                             </button>
                             <button
                                 type="button"
                                 onClick={() => setResumeType('link')}
-                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'link' ? 'text-white bg-indigo-600' : 'text-gray-600 bg-gray-100'
-                                    } rounded-t`}
+                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'link' ? 'text-white bg-indigo-600' : 'text-gray-600 bg-gray-100'} rounded-t`}
                             >
                                 Resume Link
                             </button>
@@ -159,29 +163,31 @@ const OpenningDetails = () => {
                                 type="file"
                                 accept=".pdf,.doc,.docx"
                                 onChange={handleResumeChange}
-                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer "
+                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
+                                {...register('resume', { required: resumeType === 'file' })} // Register the resume field
                             />
+                            {errors.resume && <p className="text-red-500 text-sm">{errors.resume.message}</p>}
                         </label>
                     ) : (
                         <label className="block mt-3 h-10" htmlFor="resumeLink">
                             <input
                                 type="url"
                                 placeholder="https://yourresume.com"
-                                value={resumeLink}
-                                onChange={handleResumeLinkChange}
+                                {...register('resumeLink', { required: resumeType === 'link' })} // Register the resume link field
                                 className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
                             />
+                            {errors.resumeLink && <p className="text-red-500 text-sm">{errors.resumeLink.message}</p>}
                         </label>
                     )}
 
-                    <label className="block mt-5 " htmlFor="portfolio">
+                    <label className="block mt-5" htmlFor="portfolio">
                         <input
                             type="url"
                             placeholder="https://yourportfolio.com"
-                            value={portfolio}
-                            onChange={handlePortfolioChange}
+                            {...register('portfolio', { required: true })} // Register the portfolio field
                             className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
                         />
+                        {errors.portfolio && <p className="text-red-500 text-sm">Portfolio is required.</p>}
                     </label>
 
                     {submitError && <p className="text-red-500 text-sm">{submitError}</p>}
@@ -197,7 +203,7 @@ const OpenningDetails = () => {
                             type="submit"
                             className="px-4 py-2 text-white bg-[#ad8a54] hover:bg-[#ad8a54] rounded"
                         >
-                            Apply Now
+                            Apply
                         </button>
                     </div>
                 </form>
