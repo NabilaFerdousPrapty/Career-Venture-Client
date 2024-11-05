@@ -45,6 +45,15 @@ const OpenningDetails = () => {
         setValue('resume', e.target.files[0]); // Update form state
     };
 
+    // Add a useEffect to clear opposite field based on resumeType
+    useEffect(() => {
+        if (resumeType === 'file') {
+            setValue('resumeLink', ''); // Clear resume link if file is selected
+        } else {
+            setValue('resume', null); // Clear resume file if link is selected
+        }
+    }, [resumeType, setValue]);
+
     const handleApply = async (data) => {
         setSubmitError("");
 
@@ -59,13 +68,13 @@ const OpenningDetails = () => {
             try {
                 const cloudinaryFormData = new FormData();
                 cloudinaryFormData.append("file", resume);
-                cloudinaryFormData.append("upload_preset", "all_files_preset"); // Replace with your Cloudinary upload preset
+                cloudinaryFormData.append("upload_preset", "all_files_preset");
 
                 const response = await axiosCommon.post(
                     `https://api.cloudinary.com/v1_1/dadvrb8ri/upload`,
                     cloudinaryFormData
                 );
-                resumeUrl = response.data.secure_url; // Access the response directly
+                resumeUrl = response.data.secure_url;
             } catch (error) {
                 console.error("Error uploading file to Cloudinary:", error);
                 setSubmitError("Failed to upload resume. Please try again.");
@@ -164,7 +173,7 @@ const OpenningDetails = () => {
                                 accept=".pdf,.doc,.docx"
                                 onChange={handleResumeChange}
                                 className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
-                                {...register('resume', { required: resumeType === 'file' })} // Register the resume field
+                                {...register('resume', { required: resumeType === 'file' })}
                             />
                             {errors.resume && <p className="text-red-500 text-sm">{errors.resume.message}</p>}
                         </label>
@@ -173,7 +182,7 @@ const OpenningDetails = () => {
                             <input
                                 type="url"
                                 placeholder="https://yourresume.com"
-                                {...register('resumeLink', { required: resumeType === 'link' })} // Register the resume link field
+                                {...register('resumeLink', { required: resumeType === 'link' })}
                                 className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
                             />
                             {errors.resumeLink && <p className="text-red-500 text-sm">{errors.resumeLink.message}</p>}
@@ -184,27 +193,16 @@ const OpenningDetails = () => {
                         <input
                             type="url"
                             placeholder="https://yourportfolio.com"
-                            {...register('portfolio', { required: true })} // Register the portfolio field
+                            {...register('portfolio', { required: true })}
                             className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
                         />
                         {errors.portfolio && <p className="text-red-500 text-sm">Portfolio is required.</p>}
                     </label>
 
-                    {submitError && <p className="text-red-500 text-sm">{submitError}</p>}
-                    <div className="flex justify-end mt-4">
-                        <button
-                            type="button"
-                            onClick={closeModal}
-                            className="px-4 py-2 mr-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            type="submit"
-                            className="px-4 py-2 text-white bg-[#ad8a54] hover:bg-[#ad8a54] rounded"
-                        >
-                            Apply
-                        </button>
+                    {submitError && <p className="text-red-500 mt-2">{submitError}</p>}
+
+                    <div className="flex items-center mt-5 justify-center">
+                        <button type="submit" className="px-4 py-2 rounded-md text-white bg-[#ad8a54]">Apply Now</button>
                     </div>
                 </form>
             </Modal>
