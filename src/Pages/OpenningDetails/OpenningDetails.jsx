@@ -12,9 +12,10 @@ Modal.setAppElement('#root');
 const OpenningDetails = () => {
     const { id } = useParams();
     const { user } = UseAuth();
+
     const axiosCommon = UseAxiosCommon();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [resumeType, setResumeType] = useState('file'); // Manage resume type selection
+    const [resumeType, setResumeType] = useState('file');
     const [submitError, setSubmitError] = useState('');
 
     const { data: openingData = {}, isLoading, isError, error, refetch } = useQuery({
@@ -40,20 +41,20 @@ const OpenningDetails = () => {
         formState: { errors }
     } = useForm();
 
-    const resumeFile = watch('resume'); // Watching for resume file
+    const resumeFile = watch('resume');
 
-    // Add a useEffect to clear opposite field based on resumeType
     useEffect(() => {
         if (resumeType === 'file') {
-            setValue('resumeLink', ''); // Clear resume link if file is selected
+            setValue('resumeLink', '');
         } else {
-            setValue('resume', null); // Clear resume file if link is selected
+            setValue('resume', null);
         }
     }, [resumeType, setValue]);
 
     const handleApply = async (data) => {
         setSubmitError("");
 
+        // Check if required fields are filled
         if ((resumeType === 'file' && !resumeFile) || (resumeType === 'link' && !data.resumeLink)) {
             setSubmitError("Please complete all fields.");
             return;
@@ -61,6 +62,7 @@ const OpenningDetails = () => {
 
         let resumeUrl = data.resumeLink;
 
+        // Upload resume to Cloudinary if it's a file
         if (resumeType === 'file') {
             try {
                 const cloudinaryFormData = new FormData();
@@ -79,11 +81,15 @@ const OpenningDetails = () => {
             }
         }
 
-        // Include email, resumeLink, and portfolio in the application data
+        // Create application data including photo
         const applicationData = {
+            name: data.name,
             email: user.email,
             resumeLink: resumeUrl,
-            portfolio: data.portfolio,
+            portfolio: data.portfolio,  // Portfolio Link
+            phone: data.phone,
+            address: data.address,
+            photo: user.photoURL,  // Photo URL from user object
         };
 
         try {
@@ -104,6 +110,7 @@ const OpenningDetails = () => {
             });
         }
     };
+
 
 
     if (isLoading) return <p>Loading...</p>;
@@ -132,22 +139,69 @@ const OpenningDetails = () => {
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 contentLabel="Apply for Job"
-                className="relative border-4 bg-[#333333] border-gray-700 rounded-lg shadow-lg max-w-lg mx-auto p-6 overflow-hidden w-[400px] text-slate-300 h-[450px]"
+                className="relative border-4 bg-[#333333] border-gray-700 rounded-lg shadow-lg max-w-3xl mx-auto p-6 overflow-auto h-[500px] text-slate-300  max-h-[90vh] grid grid-cols-1 gap-4"
                 overlayClassName="bg-gray-800 bg-opacity-75 fixed inset-0 flex justify-center items-center"
             >
-                <h2 className="text-lg font-semibold capitalize">Apply for the Job</h2>
-                <form onSubmit={handleSubmit(handleApply)} className="mt-4">
-                    <label className="block text-sm font-medium mt-3">Email Address</label>
-                    <input
-                        value={user.email}
-                        readOnly
-                        type="email"
-                        className="block w-full px-4 py-3 text-sm text-gray-600 bg-white border border-gray-200 rounded-md mt-3"
-                    />
+                <h2 className="text-lg font-semibold capitalize text-center">Apply for the Job</h2>
+                <form onSubmit={handleSubmit(handleApply)} className="mt-4 space-y-4">
+                    {/* Name Field */}
+                    <div className="grid grid-cols-1 gap-4">
+                        <label className="block text-sm font-medium mt-3">Name</label>
+                        <input
+                            type="text"
+                            {...register('name', { required: true })}
+                            className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md mt-3"
+                        />
+                        {errors.name && <p className="text-red-500 text-sm">Name is required.</p>}
+                    </div>
 
-                    <div className="mt-4">
+                    {/* Email Address (Read Only) */}
+                    <div className="grid grid-cols-1 gap-4">
+                        <label className="block text-sm font-medium mt-3">Email Address</label>
+                        <input
+                            value={user.email}
+                            readOnly
+                            type="email"
+                            className="block w-full px-4 py-3 text-sm text-gray-600 bg-white border border-gray-200 rounded-md mt-3"
+                        />
+                    </div>
+
+                    {/* Phone Field */}
+                    <div className="grid grid-cols-1 gap-4">
+                        <label className="block text-sm font-medium mt-3">Phone Number</label>
+                        <input
+                            type="text"
+                            {...register('phone', { required: true })}
+                            className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md mt-3"
+                        />
+                        {errors.phone && <p className="text-red-500 text-sm">Phone is required.</p>}
+                    </div>
+
+                    {/* Address Field */}
+                    <div className="grid grid-cols-1 gap-4">
+                        <label className="block text-sm font-medium mt-3">Address</label>
+                        <input
+                            type="text"
+                            {...register('address', { required: true })}
+                            className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md mt-3"
+                        />
+                        {errors.address && <p className="text-red-500 text-sm">Address is required.</p>}
+                    </div>
+
+                    {/* Portfolio Field */}
+                    <div className="grid grid-cols-1 gap-4">
+                        <label className="block text-sm font-medium mt-3">Portfolio Link</label>
+                        <input
+                            type="url"
+                            {...register('portfolio', { required: false })}
+                            className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md mt-3"
+                        />
+                    </div>
+
+                    {/* Resume Option */}
+                    <div className="mt-4 grid grid-cols-2 gap-4">
                         <label className="block text-sm font-medium">Resume Option</label>
-                        <div className="flex mt-2 border-b border-gray-300">
+                        <div className="flex gap-2">
                             <button
                                 type="button"
                                 onClick={() => setResumeType('file')}
@@ -158,49 +212,48 @@ const OpenningDetails = () => {
                             <button
                                 type="button"
                                 onClick={() => setResumeType('link')}
-                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'link' ? 'text-white bg-indigo-600' : 'text-gray-600 bg-gray-100'} rounded-t`}
+                                className={`px-4 py-2 text-sm font-medium ${resumeType === 'link' ? 'text-white bg-indigo-600' : 'text-slate-950 bg-gray-100'} rounded-t`}
                             >
-                                Resume Link
+                                Provide Resume Link
                             </button>
                         </div>
                     </div>
 
+                    {/* Conditional Resume Upload Field */}
                     {resumeType === 'file' ? (
-                        <label className="block mt-3 h-10" htmlFor="resume">
+                        <div className="grid grid-cols-1 gap-4 mt-4">
+                            <label className="block text-sm font-medium mt-3">Upload Resume (PDF, DOCX)</label>
                             <input
                                 type="file"
-                                accept=".pdf,.doc,.docx"
-                                {...register('resume', { required: resumeType === 'file' })}
-                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
-                            />
-                            {errors.resume && <p className="text-red-500 text-sm">{errors.resume.message}</p>}
-                        </label>
-                    ) : (
-                        <label className="block mt-3 h-10" htmlFor="resumeLink">
-                            <input
-                                type="url"
-                                placeholder="https://yourresume.com"
-                                {...register('resumeLink', { required: resumeType === 'link' })}
+                                accept=".pdf,.docx"
+                                {...register('resume', { required: true })}
                                 className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
                             />
-                            {errors.resumeLink && <p className="text-red-500 text-sm">{errors.resumeLink.message}</p>}
-                        </label>
+                            {errors.resume && <p className="text-red-500 text-sm">Resume is required.</p>}
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 gap-4 mt-4">
+                            <label className="block text-sm font-medium mt-3">Resume Link</label>
+                            <input
+                                type="url"
+                                {...register('resumeLink', { required: true })}
+                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
+                            />
+                            {errors.resumeLink && <p className="text-red-500 text-sm">Resume link is required.</p>}
+                        </div>
                     )}
 
-                    <label className="block mt-5" htmlFor="portfolio">
-                        <input
-                            type="url"
-                            placeholder="https://yourportfolio.com"
-                            {...register('portfolio', { required: true })}
-                            className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md"
-                        />
-                        {errors.portfolio && <p className="text-red-500 text-sm">Portfolio is required.</p>}
-                    </label>
+                    {/* Error Message */}
+                    {submitError && <p className="text-red-500 text-sm">{submitError}</p>}
 
-                    {submitError && <p className="text-red-500 mt-2">{submitError}</p>}
-
-                    <div className="flex items-center mt-5 justify-center">
-                        <button type="submit" className="px-4 py-2 rounded-md text-white bg-[#ad8a54]">Apply Now</button>
+                    {/* Submit Button */}
+                    <div className="mt-4 text-center">
+                        <button
+                            type="submit"
+                            className="w-full px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none"
+                        >
+                            Apply
+                        </button>
                     </div>
                 </form>
             </Modal>
