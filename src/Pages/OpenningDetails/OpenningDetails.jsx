@@ -15,7 +15,6 @@ const OpenningDetails = () => {
     const axiosCommon = UseAxiosCommon();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [resumeType, setResumeType] = useState('file'); // Manage resume type selection
-    const [resume, setResume] = useState(null);
     const [submitError, setSubmitError] = useState('');
 
     const { data: openingData = {}, isLoading, isError, error, refetch } = useQuery({
@@ -37,13 +36,11 @@ const OpenningDetails = () => {
         register,
         handleSubmit,
         setValue,
+        watch,
         formState: { errors }
     } = useForm();
 
-    const handleResumeChange = (e) => {
-        setResume(e.target.files[0]);
-        setValue('resume', e.target.files[0]); // Update form state
-    };
+    const resumeFile = watch('resume'); // Watching for resume file
 
     // Add a useEffect to clear opposite field based on resumeType
     useEffect(() => {
@@ -57,7 +54,8 @@ const OpenningDetails = () => {
     const handleApply = async (data) => {
         setSubmitError("");
 
-        if ((resumeType === 'file' && !resume) || (resumeType === 'link' && !data.resumeLink)) {
+        // Validate based on resumeType
+        if ((resumeType === 'file' && !resumeFile) || (resumeType === 'link' && !data.resumeLink)) {
             setSubmitError("Please complete all fields.");
             return;
         }
@@ -67,7 +65,7 @@ const OpenningDetails = () => {
         if (resumeType === 'file') {
             try {
                 const cloudinaryFormData = new FormData();
-                cloudinaryFormData.append("file", resume);
+                cloudinaryFormData.append("file", resumeFile[0]); // Use the watched resume file
                 cloudinaryFormData.append("upload_preset", "all_files_preset");
 
                 const response = await axiosCommon.post(
@@ -171,9 +169,8 @@ const OpenningDetails = () => {
                             <input
                                 type="file"
                                 accept=".pdf,.doc,.docx"
-                                onChange={handleResumeChange}
-                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
                                 {...register('resume', { required: resumeType === 'file' })}
+                                className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md cursor-pointer"
                             />
                             {errors.resume && <p className="text-red-500 text-sm">{errors.resume.message}</p>}
                         </label>
