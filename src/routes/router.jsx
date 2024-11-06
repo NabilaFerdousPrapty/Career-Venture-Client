@@ -27,6 +27,7 @@ import AppliedMentor from '../Pages/Admin/AppliedMentor/AppliedMentor';
 import MentorsOverview from '../Pages/Admin/MentorsOverview/MentorsOverview';
 import PaymentPage from '../../components/Payments/PaymentPage';
 import OpenningDetails from '../Pages/OpenningDetails/OpenningDetails';
+import AllJobApplications from '../Pages/Admin/AllJobApplications/AllJobApplications';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
       }, {
         path: 'add-job-openings',
         element: <AddJobOpening />
+      }, {
+
+        path: 'allJobApplications',
+        element: <AllJobApplications />
       }, {
         path: 'transaction-overview',
         element: <TransactionOverview />
