@@ -54,7 +54,6 @@ const OpenningDetails = () => {
     const handleApply = async (data) => {
         setSubmitError("");
 
-        // Validate based on resumeType
         if ((resumeType === 'file' && !resumeFile) || (resumeType === 'link' && !data.resumeLink)) {
             setSubmitError("Please complete all fields.");
             return;
@@ -65,7 +64,7 @@ const OpenningDetails = () => {
         if (resumeType === 'file') {
             try {
                 const cloudinaryFormData = new FormData();
-                cloudinaryFormData.append("file", resumeFile[0]); // Use the watched resume file
+                cloudinaryFormData.append("file", resumeFile[0]);
                 cloudinaryFormData.append("upload_preset", "all_files_preset");
 
                 const response = await axiosCommon.post(
@@ -80,14 +79,15 @@ const OpenningDetails = () => {
             }
         }
 
-        const formData = new FormData();
-        formData.append("resumeLink", resumeUrl);
-        formData.append("portfolio", data.portfolio);
+        // Include email, resumeLink, and portfolio in the application data
+        const applicationData = {
+            email: user.email,
+            resumeLink: resumeUrl,
+            portfolio: data.portfolio,
+        };
 
         try {
-            await axiosCommon.post(`/jobOpenning/${id}/apply`, formData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
+            await axiosCommon.post(`/jobOpenning/${id}/apply`, applicationData);
             Swal.fire({
                 icon: 'success',
                 title: 'Application Submitted',
@@ -104,6 +104,7 @@ const OpenningDetails = () => {
             });
         }
     };
+
 
     if (isLoading) return <p>Loading...</p>;
     if (isError) return <p>Error: {error.message}</p>;
