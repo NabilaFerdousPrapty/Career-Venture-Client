@@ -2,11 +2,13 @@ import { Link, useLoaderData } from "react-router-dom";
 import UseAuth from "../../../hooks/UseAuth/UseAuth";
 import PaymentPage from "../../../../components/Payments/PaymentPage";
 import { useState } from "react"; // Import useState
+import UseAxiosCommon from "../../../hooks/UseAxiosCommon/UseAxiosCommon";
+import Swal from "sweetalert2";
 
 const BootCampDetails = () => {
   const bootCampDetails = useLoaderData();
   const user = UseAuth();
-
+  const axiosCommon = UseAxiosCommon();
   const {
     name,
     description,
@@ -32,6 +34,7 @@ const BootCampDetails = () => {
 
   // Function to handle the button click
   const handleEnrollClick = () => {
+
     if (showPaymentPage) {
       setShowPaymentPage(false); // Hide payment page if it's currently shown
     } else {
@@ -49,6 +52,37 @@ const BootCampDetails = () => {
       clearTimeout(clickTimeout); // Clear the single click timer
       setShowPaymentPage(false); // Hide payment page on double click
     }
+  };
+  const handleWishListClick = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to add this bootcamp to your wishlist?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosCommon
+          .post("/wishlist", {
+            user: user,
+            bootCampName: name,
+            bootCampPrice: price,
+            bootCampMentors: mentors,
+          })
+          .then((response) => {
+            Swal.fire("Success!", response.data.message, "success");
+          })
+          .catch((error) => {
+            // Check if the bootcamp is already in the wishlist
+            if (error.response && error.response.data.message === "This bootcamp is already in your wishlist.") {
+              Swal.fire("Already Added", "This bootcamp is already in your wishlist.", "info");
+            } else {
+              Swal.fire("Error!", error.response?.data?.message || "An error occurred.", "error");
+            }
+          });
+      }
+    });
   };
 
   // Function to extract video ID from the YouTube URL
@@ -134,20 +168,23 @@ const BootCampDetails = () => {
             </button>
             <button
               type="button"
+              onClick={
+                handleWishListClick
+              }
               className="flex items-center focus:outline-none btn bg-[#ad8a54]"
             >
-              <Link to="/start_trial" className="text-white">
-                Give a try
-              </Link>
+
+              WishList
+
             </button>
           </div>
-          
+
           {/* Conditionally render the PaymentPage */}
           {showPaymentPage && <PaymentPage bookingData={bookingData} />}
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default BootCampDetails;
