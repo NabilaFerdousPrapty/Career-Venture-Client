@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { FiCheck } from "react-icons/fi"; // Import the check icon
-import "./index.css"; // Include Tailwind or additional styles here
 
 const plans = [
     {
@@ -60,67 +59,83 @@ const plans = [
 const PricingPlan = ({ plan, billingCycle }) => {
     const { price, frequency } = plan.billingOptions[billingCycle];
     return (
-        <div className="w-full px-6 py-4 transition-colors duration-300 transform rounded-lg bg-gray-50 dark:bg-gray-800">
+        <div className="w-full px-6 py-4 transition-colors duration-300 transform rounded-lg bg-gray-50 dark:bg-gray-800 flex flex-col justify-between">
             <div className="text-center">
                 <p className="text-2xl font-semibold text-gray-800 dark:text-gray-100">{plan.name}</p>
                 <h4 className="mt-2 text-4xl font-semibold text-gray-800 dark:text-gray-100">${price}</h4>
                 <p className="mt-2 text-gray-500 dark:text-gray-300">{frequency}</p>
             </div>
-
-            <div className="mt-8 space-y-4">
+            <ul className="mt-6 space-y-4">
                 {plan.features.map((feature, index) => (
-                    <div key={index} className="flex items-center">
-                        <FiCheck className="w-5 h-5 text-blue-500" /> {/* React Icon used here */}
-                        <span className="mx-4 text-gray-700 dark:text-gray-300">{feature}</span>
-                    </div>
+                    <li key={index} className="flex items-center text-gray-700 dark:text-gray-300">
+                        <FiCheck className="w-5 h-5 text-green-500" />
+                        <span className="ml-2">{feature}</span>
+                    </li>
                 ))}
-            </div>
+            </ul>
 
-            <button className="w-full px-4 py-2 mt-6 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
-                Choose {plan.name}
+            <button className="mt-6 w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600">
+                Select Plan
             </button>
         </div>
     );
 };
 
 const PricingPlans = () => {
-    const [billingCycle, setBillingCycle] = useState("monthly");
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const slotId = searchParams.get('slotId');
+    const mentorId = searchParams.get('mentorId');
+    const mentorName = searchParams.get('mentorName');
+
+    const [billingCycle, setBillingCycle] = useState('monthly');
+
+    useEffect(() => {
+        if (slotId && mentorId && mentorName) {
+            console.log(`Booking slot for mentor ${mentorName} with Slot ID: ${slotId} and Mentor ID: ${mentorId}`);
+        }
+    }, [slotId, mentorId, mentorName]);
+    console.log("booking slot for mentor", mentorName, "with slot id", slotId, "and mentor id", mentorId);
 
     return (
-        <section className="bg-white dark:bg-gray-900">
-            <div className="container px-6 py-8 mx-auto">
-                <div className="flex justify-center mb-8 space-x-4">
-                    <button
-                        onClick={() => setBillingCycle("monthly")}
-                        className={`px-4 py-2 rounded-md ${billingCycle === "monthly" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}
+        <div className="max-w-6xl mx-auto p-6 bg-slate-950">
+            <h1 className="text-3xl font-semibold text-center text-white mb-8">Choose Your Plan</h1>
+
+            {/* Billing Cycle Selector */}
+            <div className="flex justify-center mb-8">
+                <div className="bg-gray-800 rounded-full p-2 flex">
+                    <div
+                        onClick={() => setBillingCycle('monthly')}
+                        className={`cursor-pointer rounded-full px-6 py-2 transition duration-300 relative ${billingCycle === 'monthly' ? 'bg-blue-500 text-white border-2 border-blue-600' : 'text-gray-300 hover:bg-blue-600 border-t-2 border-b-2 border-transparent'}`}
                     >
                         Monthly
-                    </button>
-                    <button
-                        onClick={() => setBillingCycle("yearly")}
-                        className={`px-4 py-2 rounded-md ${billingCycle === "yearly" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}
+                        {billingCycle === 'monthly' && <div className="absolute top-0 left-0 right-0 bottom-0 bg-blue-500 rounded-full opacity-30" />}
+                    </div>
+                    <div
+                        onClick={() => setBillingCycle('yearly')}
+                        className={`cursor-pointer rounded-full px-6 py-2 transition duration-300 relative ${billingCycle === 'yearly' ? 'bg-blue-500 text-white border-2 border-blue-600' : 'text-gray-300 hover:bg-blue-600 border-t-2 border-b-2 border-transparent'}`}
                     >
                         Yearly
-                    </button>
-                    <button
-                        onClick={() => setBillingCycle("biennial")}
-                        className={`px-4 py-2 rounded-md ${billingCycle === "biennial" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"}`}
+                        {billingCycle === 'yearly' && <div className="absolute top-0 left-0 right-0 bottom-0 bg-blue-500 rounded-full opacity-30" />}
+                    </div>
+                    <div
+                        onClick={() => setBillingCycle('biennial')}
+                        className={`cursor-pointer rounded-full px-6 py-2 transition duration-300 relative ${billingCycle === 'biennial' ? 'bg-blue-500 text-white border-2 border-blue-600' : 'text-gray-300 hover:bg-blue-600 border-t-2 border-b-2 border-transparent'}`}
                     >
                         Biennial
-                    </button>
+                        {billingCycle === 'biennial' && <div className="absolute top-0 left-0 right-0 bottom-0 bg-blue-500 rounded-full opacity-30" />}
+                    </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center space-y-6 md:items-end md:-mx-5 md:space-y-0 md:flex-row">
-                    {plans.map((plan) => (
-                        <div key={plan.id} className="md:mx-5 md:w-96">
-                            <PricingPlan plan={plan} billingCycle={billingCycle} />
-                        </div>
-                    ))}
-                </div>
             </div>
-        </section>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                {plans.map((plan) => (
+                    <PricingPlan key={plan.id} plan={plan} billingCycle={billingCycle} />
+                ))}
+            </div>
+        </div>
     );
 };
 
 export default PricingPlans;
-

@@ -28,6 +28,7 @@ import MentorsOverview from '../Pages/Admin/MentorsOverview/MentorsOverview';
 import PaymentPage from '../../components/Payments/PaymentPage';
 import OpenningDetails from '../Pages/OpenningDetails/OpenningDetails';
 import AllJobApplications from '../Pages/Admin/AllJobApplications/AllJobApplications';
+import PricingPlans from '../Pages/MentorDetails/PricingPlans/PricingPlans';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -93,7 +94,16 @@ const router = createBrowserRouter([
             throw new Error('Failed to load item data');
           }
         }
-      }
+      }, {
+        path: "/pricingPlans",
+        element:
+          < PrivateRoute >
+            <PricingPlans />
+          </ PrivateRoute>
+      },
+
+
+
     ],
     errorElement: <ErrorPage />
 

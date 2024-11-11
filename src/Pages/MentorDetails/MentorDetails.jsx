@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import UseAxiosCommon from '../../hooks/UseAxiosCommon/UseAxiosCommon';
 import { FaCalendarAlt, FaEnvelope, FaMapPin, FaSuitcase } from 'react-icons/fa';
 
 const MentorDetails = () => {
     const axiosCommon = UseAxiosCommon();
     const { id } = useParams();
+    const navigate = useNavigate(); // for redirection
 
     // Fetch mentor data
     const { data: mentorData = {}, isLoading, isError, error, refetch } = useQuery({
@@ -19,7 +20,7 @@ const MentorDetails = () => {
 
     // Fetch mentor's available slots
     const { data: mentorSlots = [], isLoading: isSlotLoading, isError: isSlotError, error: slotError } = useQuery({
-        queryKey: ["mentorSlots", id], // Unique query key for mentor slots
+        queryKey: ["mentorSlots", id],
         queryFn: async () => {
             const { data } = await axiosCommon.get(`/mentor/slots/${id}`);
             return data;
@@ -28,15 +29,15 @@ const MentorDetails = () => {
 
     useEffect(() => {
         refetch();
-    }, [mentorData]);
+    }, [mentorData, mentorSlots]);
+
+    const handleBookSlot = (slotId) => {
+        // Redirect to Pricing Plans page with query parameters
+        navigate(`/pricingPlans?slotId=${slotId}&mentorId=${id}&mentorName=${mentorData.name}`);
+    };
 
     if (isLoading || isSlotLoading) return <p>Loading...</p>;
     if (isError) return <p>Error: {error.message}</p>;
-
-    const handleBookSlot = (slotId) => {
-        // You can implement your booking logic here
-        console.log("Booking slot with ID:", slotId);
-    };
 
     return (
         <div className="max-w-5xl mx-auto p-5 text-center bg-slate-950">
@@ -112,7 +113,7 @@ const MentorDetails = () => {
                         slot.status === "available" && (
                             <div
                                 key={slot._id}
-                                className="bg-gray-200 dark:bg-gray-700 p-4 rounded-lg shadow-md flex justify-between items-center"
+                                className="bg-gray-200 dark:bg-gray-700 p-4 rounded-lg shadow-md flex justify-between items-center max-w-md mx-auto"
                             >
                                 <div>
                                     <p className="text-gray-700 dark:text-gray-400">{slot.day_of_week}</p>
