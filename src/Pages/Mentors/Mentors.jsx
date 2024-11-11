@@ -161,6 +161,32 @@ const Mentors = () => {
             </button>
           ))}
         </div>
+        <div className="max-w-3xl px-6 py-12 lg:max-w-5xl  mx-auto flex justify-between items-center bg-amber-100 my-5 rounded-2xl">
+          <div className="">
+            <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
+              Ready to take the next step? <br />
+              <span className="text-blue-500">
+                Be a mentor you wish you had.
+              </span>
+            </h2>
+
+            <p className="mt-4 text-gray-700 ">
+              Join our community of mentors and help guide the next generation of tech professionals
+              Make a difference in someone's life today. What are you waiting for?
+
+            </p>
+
+            <div className="inline-flex w-full mt-6 sm:w-auto">
+              <Link
+                to="/becomeAMentor"
+                className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+              >
+                Become a Mentor
+              </Link>
+            </div>
+          </div>
+          <img className="rounded-3xl" src="https://artofmentoring.net/wp-content/uploads/2015/11/mentor.jpg" alt="" />
+        </div>
       </div>
     </div>
   );
