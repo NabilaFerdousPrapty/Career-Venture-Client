@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { FiCheck, FiX } from "react-icons/fi"; // Import the check icon
-import CheckoutForm from "../../../../components/Checkout/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
 import Modal from "react-modal";
 import UseAuth from "../../../hooks/UseAuth/UseAuth";
+import CheckoutMentorForm from "../../../../components/Checkout/CheckoutMentorForm";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
 const plans = [
     {
@@ -61,6 +61,7 @@ const plans = [
     },
 ];
 
+
 const PricingPlan = ({ plan, billingCycle, onSelect }) => {
     const { price, frequency } = plan.billingOptions[billingCycle];
     return (
@@ -80,7 +81,7 @@ const PricingPlan = ({ plan, billingCycle, onSelect }) => {
             </ul>
             <button
                 className="mt-6 w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600"
-                onClick={() => onSelect(plan)} // Trigger modal opening with selected plan
+                onClick={() => onSelect(plan)}
             >
                 Select For Booking
             </button>
@@ -107,13 +108,18 @@ const PricingPlans = () => {
 
     const handlePlanSelect = (plan) => {
         setSelectedPlan(plan);
-        setIsModalOpen(true); // Open modal
+        setIsModalOpen(true);
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setSelectedPlan(null); // Reset selected plan after closing
+        setSelectedPlan(null);
     };
+
+    const handleBookingSuccess = () => {
+        closeModal(); // Close the modal when booking is successful
+    };
+
     const { user } = UseAuth();
 
     return (
@@ -154,7 +160,6 @@ const PricingPlans = () => {
                 <Modal isOpen={isModalOpen} onRequestClose={closeModal} className="modal-class">
                     <div className="flex items-center justify-center fixed inset-0 z-50">
                         <div className=" bg-white rounded-lg p-6 max-w-3xl w-full mx-auto my-auto max-h-60 overflow-auto shadow-lg relative">
-                            {/* Close icon */}
                             <FiX
                                 onClick={closeModal}
                                 className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 cursor-pointer text-2xl"
@@ -162,13 +167,16 @@ const PricingPlans = () => {
 
                             <h2 className="text-2xl font-semibold mb-4 text-gray-950">Complete Your Booking</h2>
                             <Elements stripe={stripePromise}>
-                                <CheckoutForm
+                                <CheckoutMentorForm
                                     bookingData={{
+                                        mentorId: mentorId, slotId: slotId
+                                        , date: new Date().toLocaleDateString(),
                                         bootCampPrice: selectedPlan.billingOptions[billingCycle].price,
                                         user: user,
                                         bootCampName: selectedPlan.name,
                                         bootCampMentors: mentorName,
                                     }}
+                                    onBookingSuccess={handleBookingSuccess}
                                 />
                             </Elements>
                         </div>
@@ -176,7 +184,6 @@ const PricingPlans = () => {
                     <div className="fixed inset-0 bg-black opacity-50"></div> {/* Background overlay */}
                 </Modal>
             )}
-
         </div>
     );
 };
