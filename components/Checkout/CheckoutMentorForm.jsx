@@ -134,6 +134,10 @@ const CheckoutMentorForm = ({ bookingData, onBookingSuccess }) => {
                 const payment = {
                     email: user?.email || "anonymous@example.com",
                     price: bootCampPrice,
+                    planName: bootCampName,
+                    mentorId,
+                    slotId,
+
                     date: new Date().toLocaleDateString(),
                     status: "pending",
                     transactionId: paymentIntent.id,
