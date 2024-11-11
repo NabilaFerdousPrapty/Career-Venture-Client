@@ -110,7 +110,7 @@ const MentorDetails = () => {
                 <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">Available Slots</h2>
                 <div className="flex flex-col lg:flex-row flex-wrap gap-4 mt-4">
                     {mentorSlots.map((slot) => (
-                        slot.status === "available" && (
+                        (
                             <div
                                 key={slot._id}
                                 className="bg-gray-200 dark:bg-gray-700 p-4 rounded-lg shadow-md flex justify-between items-center max-w-md mx-auto"
@@ -129,6 +129,35 @@ const MentorDetails = () => {
                             </div>
                         )
                     ))}
+                    {
+                        mentorSlots.length === 0 && (
+                            <div className="flex items-center justify-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md max-w-md mx-auto">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    className="w-12 h-12 text-gray-500 dark:text-gray-400 mr-4"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M9 12h6m2-2l-2 2m0 0l2 2m-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2h-2"
+                                    />
+                                </svg>
+                                <p className="text-lg font-semibold text-gray-700 dark:text-gray-400 text-center">
+                                    No slots available
+                                    <br />
+                                    <span className="text-md font-medium text-blue-600 dark:text-blue-800">
+                                        Please try another Mentor.
+                                    </span>
+                                </p>
+
+                            </div>
+                        )
+                    }
+
                 </div>
             </div>
         </div>
