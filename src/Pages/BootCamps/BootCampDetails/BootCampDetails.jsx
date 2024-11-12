@@ -65,7 +65,7 @@ const BootCampDetails = () => {
       if (result.isConfirmed) {
         axiosCommon
           .post("/wishlist", {
-            user: user,
+            userId: user._id,  // Send userId directly
             bootCampName: name,
             bootCampPrice: price,
             bootCampMentors: mentors,
@@ -84,6 +84,7 @@ const BootCampDetails = () => {
       }
     });
   };
+
 
   // Function to extract video ID from the YouTube URL
   const extractVideoId = (url) => {

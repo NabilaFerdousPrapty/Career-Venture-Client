@@ -29,6 +29,7 @@ import PaymentPage from '../../components/Payments/PaymentPage';
 import OpenningDetails from '../Pages/OpenningDetails/OpenningDetails';
 import AllJobApplications from '../Pages/Admin/AllJobApplications/AllJobApplications';
 import PricingPlans from '../Pages/MentorDetails/PricingPlans/PricingPlans';
+import TestimonialDetails from '../Pages/Home/Testimonials/TestimonialDetails/TestimonialDetails';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      }, {
+
+        path: '/testimonial/:id',
+        element: <PrivateRoute>
+          <TestimonialDetails />
+        </PrivateRoute>
       }, {
         path: '/bootCamps',
         element: <BootCamps />
