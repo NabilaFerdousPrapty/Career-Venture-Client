@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const BootCampDetails = () => {
   const bootCampDetails = useLoaderData();
-  const user = UseAuth();
+  const { user } = UseAuth();
   const axiosCommon = UseAxiosCommon();
   const {
     name,
@@ -45,7 +45,6 @@ const BootCampDetails = () => {
       }, 300); // Adjust timeout as needed
     }
   };
-
   // Function to handle double click
   const handleDoubleClick = () => {
     if (clickTimeout) {
@@ -65,7 +64,7 @@ const BootCampDetails = () => {
       if (result.isConfirmed) {
         axiosCommon
           .post("/wishlist", {
-            userId: user._id,  // Send userId directly
+            userEmail: user.email,  // Send userId directly
             bootCampName: name,
             bootCampPrice: price,
             bootCampMentors: mentors,

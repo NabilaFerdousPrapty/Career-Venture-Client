@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UseAxiosCommon from '../../hooks/UseAxiosCommon/UseAxiosCommon';
 import UseAuth from './../../hooks/UseAuth/UseAuth';
+import Swal from 'sweetalert2';
 
 const ResourceDetail = () => {
     const { id } = useParams();
     const axiosCommon = UseAxiosCommon();
-    const user = UseAuth();
+    const { user } = UseAuth();
 
     const [comment, setComment] = useState("");
     const [commentError, setCommentError] = useState("");
@@ -37,18 +38,30 @@ const ResourceDetail = () => {
         }
         setCommentError("");
 
+        // Log the data being sent
+        console.log("User:", user.displayName);
+        console.log("Comment:", comment);
+
         try {
             const { data } = await axiosCommon.post(`/resources/${id}/comments`, {
-                author: user.displayName,
-                text: comment,
+                user: user.displayName,
+                u_image: user.photoURL,
+                comment: comment,
                 date: new Date().toISOString(),
             });
-            setComments([...comments, data.comment]); // Append the new comment to the existing comments
-            setComment(""); // Clear the input field
+            refetch();
+            Swal.fire({
+                icon: "success",
+                title: "Comment added successfully!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            setComment("");
         } catch (err) {
             console.error("Error adding comment:", err);
         }
     };
+
 
 
     if (isLoading) return <p>Loading...</p>;
@@ -108,7 +121,8 @@ const ResourceDetail = () => {
                         <ul className="mt-2 space-y-4">
                             {comments.map((comment, index) => (
                                 <li key={index} className="p-2 bg-gray-100 rounded dark:bg-gray-700">
-                                    <p className="text-sm text-gray-700 dark:text-gray-300"><strong>{comment.user}:</strong> {comment.comment}</p>
+                                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                                        <strong className='flex justify-center items-center gap-2'><img className='h-4 w-4 rounded-3xl' src={comment.u_image} alt="" />{comment.user}:</strong> {comment.comment}</p>
                                     <span className="text-xs text-gray-500 dark:text-gray-400">{new Date(comment.date).toLocaleDateString()}</span>
                                 </li>
                             ))}
