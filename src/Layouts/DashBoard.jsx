@@ -59,7 +59,7 @@ const Dashboard = () => {
         <span className="mx-2 text-sm font-medium">Mentors Overview</span>
       </Link>
       <Link
-        to={"add-job-openings"}
+        to={"add-new-bootcamp"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
       ><GiOfficeChair />

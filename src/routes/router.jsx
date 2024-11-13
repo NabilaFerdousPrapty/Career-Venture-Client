@@ -30,6 +30,7 @@ import OpenningDetails from '../Pages/OpenningDetails/OpenningDetails';
 import AllJobApplications from '../Pages/Admin/AllJobApplications/AllJobApplications';
 import PricingPlans from '../Pages/MentorDetails/PricingPlans/PricingPlans';
 import TestimonialDetails from '../Pages/Home/Testimonials/TestimonialDetails/TestimonialDetails';
+import AddBootCamp from '../Pages/Admin/AddBootCamp/AddBootCamp';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -142,6 +143,9 @@ const router = createBrowserRouter([
       }, {
         path: 'mentors-overview',
         element: <MentorsOverview />
+      }, {
+        path: 'add-new-bootcamp',
+        element: <AddBootCamp />
       }
     ],
     errorElement: <ErrorPage />
