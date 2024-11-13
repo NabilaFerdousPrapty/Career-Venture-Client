@@ -144,7 +144,7 @@ const router = createBrowserRouter([
         path: 'mentors-overview',
         element: <MentorsOverview />
       }, {
-        path: 'add-new-bootcamp',
+        path: 'add-new-bootCamp',
         element: <AddBootCamp />
       }
     ],

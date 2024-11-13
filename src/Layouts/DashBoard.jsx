@@ -14,6 +14,7 @@ import { TbReport } from "react-icons/tb";
 import { FcFeedback } from "react-icons/fc";
 import { IoSettings } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
+import { MdAssignmentAdd } from "react-icons/md";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -59,11 +60,20 @@ const Dashboard = () => {
         <span className="mx-2 text-sm font-medium">Mentors Overview</span>
       </Link>
       <Link
-        to={"add-new-bootcamp"}
+        to={"add-job-openings"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
       ><GiOfficeChair />
         <span className="mx-2 text-sm font-medium">Add job openings</span>
+      </Link>
+      <Link
+        to={"add-new-bootCamp"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><MdAssignmentAdd />
+        <span className="mx-2 text-sm font-medium">Add
+          BootCamp</span>
+
       </Link>
 
       <Link to={'transaction-overview'}
