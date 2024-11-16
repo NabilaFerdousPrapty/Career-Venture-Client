@@ -6,89 +6,89 @@ import UseAxiosCommon from '../../hooks/UseAxiosCommon/UseAxiosCommon';
 import Swal from 'sweetalert2';
 const Login = () => {
 
-    const { signInWithEmail,signInWithGoogle}=UseAuth();
+    const { signInWithEmail, signInWithGoogle } = UseAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset
-      } = useForm()
-    
-      const onSubmit = (data) =>{
-        const {email,password}=data;
-        signInWithEmail(email,password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          Swal.fire({
-            icon: 'success',
-            title: 'Login Success',
-            text: `Welcome back ${user.displayName}!`,
-          });
-          
-          navigate( '/');
-        })
-        .catch((error) => {
-          const errorMessage = error.message;
-          console.error('Error signing in with email:', errorMessage);
-          Swal.fire({
-            icon: 'error',
-            title: 'Login Failed',
-            text: errorMessage,
-          });
-          reset();
-        });
+    } = useForm()
 
-        
-    
-      }
-      const navigate=useNavigate();
-      const axiosCommon=UseAxiosCommon();
-      const handleGoogleSignIn = () => {
-        signInWithGoogle()
-          .then((userCredential) => {
-            const user = userCredential.user;
-            const userInfo = {
-              name: user.displayName,
-              email: user.email,
-              role: 'member',
-              photo: user.photoURL,
-              status: 'active',
-            };
-    
-            axiosCommon.post('/users', userInfo)
-              .then((res) => {
-                if (res.data.insertedId) {
-                  Swal.fire({
-                    icon: "success",
-                    title: "Congratulations",
-                    text: "Your account has been created successfully!",
-                  });
-                 
-                  navigate(location?.state ? location.state : "/");
-                }
-              })
-              .catch((error) => {
-                console.error('Error creating user:', error);
-              });
-              Swal.fire({
-                icon: 'success',
-                title: 'Login Success',
-                text: `Welcome back ${user.displayName}!`,
-              });
-              navigate('/');
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            reset();
-            Swal.fire({
-              icon: 'error',
-              title: 'Login Failed',
-              text: errorMessage,
+    const onSubmit = (data) => {
+        const { email, password } = data;
+        signInWithEmail(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Success',
+                    text: `Welcome back ${user.displayName}!`,
+                });
+
+                navigate('/');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.error('Error signing in with email:', errorMessage);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: errorMessage,
+                });
+                reset();
             });
-          });
-      };
-    
-     
+
+
+
+    }
+    const navigate = useNavigate();
+    const axiosCommon = UseAxiosCommon();
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then((userCredential) => {
+                const user = userCredential.user;
+                const userInfo = {
+                    name: user.displayName,
+                    email: user.email,
+                    role: 'member',
+                    photo: user.photoURL,
+                    status: 'active',
+                };
+
+                axiosCommon.post('/users', userInfo)
+                    .then((res) => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Congratulations",
+                                text: "Your account has been created successfully!",
+                            });
+
+                            navigate(location?.state ? location.state : "/");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error creating user:', error);
+                    });
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Success',
+                    text: `Welcome back ${user.displayName}!`,
+                });
+                navigate('/');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                reset();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: errorMessage,
+                });
+            });
+    };
+
+
     return (
         <div className='flex justify-between items-center h-screen rounded-2xl'>
             <div className="flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1c2940] lg:max-w-6xl ">
@@ -153,54 +153,54 @@ const Login = () => {
                         <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
                     </div>
 
-                   <form action="" onSubmit={handleSubmit(onSubmit)}>
-                   <div className="mt-4">
-                        <label
-                            className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-                            htmlFor="LoggingEmailAddress"
-                        >
-                            Email Address
-                        </label>
-                        <input
-                        {...register("email", { required: true })}
-                            id="LoggingEmailAddress"
-                            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-                            type="email"
-                        />
-                         {errors.email && <span>This field is required</span>}
-                    </div>
-
-                    <div className="mt-4">
-                        <div className="flex justify-between">
+                    <form action="" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="mt-4">
                             <label
                                 className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
-                                htmlFor="loggingPassword"
+                                htmlFor="LoggingEmailAddress"
                             >
-                                Password
+                                Email Address
                             </label>
-                            <a
-                                href="#"
-                                className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
-                            >
-                                Forget Password?
-                            </a>
+                            <input
+                                {...register("email", { required: true })}
+                                id="LoggingEmailAddress"
+                                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                                type="email"
+                            />
+                            {errors.email && <span>This field is required</span>}
                         </div>
 
-                        <input
-                        {...register("password", { required: true })}
-                            id="loggingPassword"
-                            className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
-                            type="password"
-                        />
-                         {errors.password && <span>This field is required</span>}
-                    </div>
+                        <div className="mt-4">
+                            <div className="flex justify-between">
+                                <label
+                                    className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                                    htmlFor="loggingPassword"
+                                >
+                                    Password
+                                </label>
+                                <a
+                                    href="#"
+                                    className="text-xs text-gray-500 dark:text-gray-300 hover:underline"
+                                >
+                                    Forget Password?
+                                </a>
+                            </div>
 
-                    <div className="mt-6">
-                        <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                            Sign In
-                        </button>
-                    </div>
-                   </form>
+                            <input
+                                {...register("password", { required: true })}
+                                id="loggingPassword"
+                                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                                type="password"
+                            />
+                            {errors.password && <span>This field is required</span>}
+                        </div>
+
+                        <div className="mt-6">
+                            <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                                Sign In
+                            </button>
+                        </div>
+                    </form>
 
                     <div className="flex items-center justify-between mt-4">
                         <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>

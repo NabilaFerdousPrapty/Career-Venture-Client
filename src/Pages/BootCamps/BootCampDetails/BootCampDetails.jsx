@@ -140,7 +140,7 @@ const BootCampDetails = () => {
               <div key={index} className="flex items-center justify-center mt-2">
                 <img
                   className="object-cover h-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  src={mentor.m_image || "https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"}
                   alt={mentor.name}
                 />
                 <a
@@ -152,7 +152,7 @@ const BootCampDetails = () => {
                   {mentor.name}
                 </a>
                 <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
-                  {mentor.experience} - {mentor.expertise}
+                  {mentor.experience} years - {mentor.expertise}
                 </span>
               </div>
             ))}
