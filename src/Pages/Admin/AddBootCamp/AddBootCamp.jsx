@@ -13,7 +13,7 @@ const AddBootCamp = () => {
             duration: '',
             price: '',
             location: '',
-            rating: 0,
+            rating: 'unrated',
             mentors: [{ name: '', experience: '', expertise: '', m_image: '' }],
             classImage: '',
             classVideo: '',

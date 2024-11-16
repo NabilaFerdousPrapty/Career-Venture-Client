@@ -16,6 +16,9 @@ const SingleBootcamp = ({ bootCamp, index }) => {
         classImage,
     } = bootCamp
 
+    // Check if rating is a valid number
+    const validRating = !isNaN(rating) && rating !== "unrated" ? rating : null;
+
     return (
         <div
             key={_id}
@@ -48,20 +51,26 @@ const SingleBootcamp = ({ bootCamp, index }) => {
                 </p>
 
                 <div className="flex items-center mb-4">
-                    <span className="text-sm text-gray-400 mr-2">Rating: {rating}</span>
-                    <div className="flex">
-                        {[...Array(Math.round(rating))].map((_, i) => (
-                            <svg
-                                key={i}
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="w-5 h-5 text-yellow-500"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                        ))}
-                    </div>
+                    {validRating !== null ? (
+                        <>
+                            <span className="text-sm text-gray-400 mr-2">Rating: {rating}</span>
+                            <div className="flex">
+                                {[...Array(Math.round(rating))].map((_, i) => (
+                                    <svg
+                                        key={i}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="w-5 h-5 text-yellow-500"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <span className="text-sm text-gray-400 mr-2">Rating: Not rated yet</span>
+                    )}
                 </div>
 
                 <div className="mb-4">
@@ -98,7 +107,7 @@ SingleBootcamp.propTypes = {
         duration: PropTypes.number.isRequired,
         price: PropTypes.number.isRequired,
         location: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
+        rating: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
         mentors: PropTypes.arrayOf(
             PropTypes.shape({
                 name: PropTypes.string.isRequired,
