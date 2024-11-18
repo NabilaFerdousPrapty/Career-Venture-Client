@@ -9,14 +9,14 @@ import { BounceLoader, RotateLoader } from "react-spinners";
 import { LuLogOut } from "react-icons/lu";
 import { PiListStarThin } from "react-icons/pi";
 import { FaFileInvoiceDollar, FaUsersGear } from "react-icons/fa6";
-import { GrOverview } from "react-icons/gr";
+import { GrOverview, GrResources } from "react-icons/gr";
 import { TbReport } from "react-icons/tb";
 import { FcFeedback } from "react-icons/fc";
 import { IoSettings } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
 import { MdAssignmentAdd } from "react-icons/md";
 import UpperNavbar from "./UpperNavbar";
-
+import { SiCodementor } from "react-icons/si"
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [loader, setLoading] = useState(true);
@@ -93,11 +93,22 @@ const Dashboard = () => {
           Job Applications
         </span>
       </Link>
+      <Link
+        to={'ApplyForMentor'}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><IoSettings />
+      ><SiCodementor />
         <span className="mx-2 text-sm font-medium">
-          Update Settings
+          Be a mentor
+        </span>
+      </Link>
+
+
+      <Link
+        to={'profile'}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><IoSettings />
+        <span className="mx-2 text-sm font-medium">
+          Profile
         </span>
       </Link>
       <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><FaHome />
@@ -114,48 +125,34 @@ const Dashboard = () => {
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
       >
+        <PiListStarThin />
         <span className="mx-2 text-sm font-medium">
           Introduction
         </span>
+
       </Link>
 
       <Link
-        to={"/manage-users"}
+        to={"add-new-bootCamp"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      >
-        <span className="mx-2 text-sm font-medium">
-          Insert new bootcamp
-        </span>
-      </Link>
+      ><MdAssignmentAdd />
+        <span className="mx-2 text-sm font-medium">Add
+          BootCamp</span>
 
+      </Link>
       <Link
+        to={"add-new-resource"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      >
-        <span className="mx-2 text-sm font-medium">
-          Insert new resources
-        </span>
+      ><GrResources />
+        <span className="mx-2 text-sm font-medium">Add
+          New Resource</span>
+
       </Link>
 
-      <Link
-        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-
-      >
-        <span className="mx-2 text-sm font-medium">
-          Insert new openings
-        </span>
-      </Link>
-
-      <Link
-        to={"/overview"}
-        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-
-      >
-        <span className="mx-2 text-sm font-medium">All booked courses</span>
-      </Link>
-
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+      <Link to={'transaction-overview'}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
         <span className="mx-2 text-sm font-medium">Transaction History</span>
       </Link>
 
@@ -242,6 +239,8 @@ const Dashboard = () => {
   const { user, LogOut, loading } = UseAuth();
 
   const [role, isLoading, refetch] = UseRole(user?.email);
+  console.log(role);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {

@@ -40,6 +40,7 @@ const CheckoutMentorForm = ({ bookingData, onBookingSuccess }) => {
                 user,
                 slotId,
                 date,
+
             });
 
             if (response.data) {
@@ -119,6 +120,7 @@ const CheckoutMentorForm = ({ bookingData, onBookingSuccess }) => {
                     name: user?.displayName || "Anonymous",
                     email: user?.email || "anonymous@example.com",
 
+
                 },
             },
         });
@@ -137,7 +139,7 @@ const CheckoutMentorForm = ({ bookingData, onBookingSuccess }) => {
                     planName: bootCampName,
                     mentorId,
                     slotId,
-
+                    MentorName: bootCampMentors,
                     date: new Date().toLocaleDateString(),
                     status: "pending",
                     transactionId: paymentIntent.id,

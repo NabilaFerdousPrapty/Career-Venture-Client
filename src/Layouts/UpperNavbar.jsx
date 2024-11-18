@@ -3,8 +3,8 @@ import { FaBell } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import useTheme from "../hooks/UseTheme/UseTheme";
-import { Dropdown } from "react-day-picker";
 import Options from "../Pages/Shared/Navbar/Dropdown/Options";
+import Dropdown from './../Pages/Shared/Navbar/Dropdown/Dropdown';
 
 
 function UpperNavbar() {
@@ -48,6 +48,7 @@ function UpperNavbar() {
                 <span className="font-semibold">{time}</span>
             </div>
             <Options />
+            <Dropdown />
 
             {/* Notification & Dropdown */}
             <div className="flex items-center space-x-4">

@@ -3,7 +3,9 @@ import React from 'react'
 const BeAMentor = () => {
     return (
         <div>
-            BeAMentor
+            Be A Mentor
+
+
         </div>
     )
 }
