@@ -8,13 +8,18 @@ import UseAxiosSecure from "../../src/hooks/UseAxiosSecure/UseAxiosSecure";
 const CheckoutForm = ({ bookingData }) => {
   const {
     bootCampPrice, // Use correct variable name
-    user, // Only one user variable
+    user,
     bootCampName,
     bootCampMentors,
   } = bookingData;
 
+  console.log(bookingData);
+
+
+
+
   const stripe = useStripe();
-  
+
 
   const elements = useElements();
   const [transactionId, setTransactionId] = useState("");
@@ -69,8 +74,9 @@ const CheckoutForm = ({ bookingData }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: user?.user?.displayName || "Anonymous",
-            email: user?.user?.email || "Anonymous",
+            name: user?.displayName || "Anonymous",
+            email: user?.email || "Anonymous",
+
           },
         },
       });
@@ -86,7 +92,8 @@ const CheckoutForm = ({ bookingData }) => {
         setTransactionId(paymentIntent.id);
         const payment = {
           email: user?.email || "Anonymous",
-          price: bootCampPrice, 
+          price: bootCampPrice,
+          planName: bootCampName,
           date: new Date().toLocaleDateString(),
           status: "pending",
           transactionId: paymentIntent.id,

@@ -94,7 +94,10 @@ function AllJobApplications() {
                         </tbody>
                     </table>
                 ) : (
-                    <p className="text-center text-gray-500">No job applications found.</p>
+                    <p className="text-center text-gray-500">
+                        No job applications found
+                        May be you reviewed all the applications
+                    </p>
                 )}
             </div>
 

@@ -19,6 +19,7 @@ const BootCampDetails = () => {
     classImage,
     mentors,
   } = bootCampDetails;
+  // console.log(user);
 
   const bookingData = {
     user,
@@ -26,7 +27,7 @@ const BootCampDetails = () => {
     bootCampPrice: price,
     bootCampMentors: mentors,
   };
-  console.log("Booking Data:", bookingData);
+  // console.log("Booking Data:", bookingData);
 
   // State to manage payment page visibility
   const [showPaymentPage, setShowPaymentPage] = useState(false);

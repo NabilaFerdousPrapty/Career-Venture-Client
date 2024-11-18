@@ -6,13 +6,14 @@ import CheckoutForm from "../Checkout/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
-const PaymentPage = ({bookingData}) => {
+const PaymentPage = ({ bookingData }) => {
 
- if(!bookingData) {
-    return <div> 
+  if (!bookingData) {
+    return <div>
       <h1> No Booking Data Found</h1>
     </div>
   }
+  console.log(bookingData);
 
 
 
@@ -20,7 +21,7 @@ const PaymentPage = ({bookingData}) => {
   // console.log(bookingData);
   return (
     <div>
-      
+
       <header className="bg-white dark:bg-gray-900">
         <nav className="px-6 py-4 shadow">
           <div className="lg:items-center lg:justify-between lg:flex">
@@ -36,11 +37,11 @@ const PaymentPage = ({bookingData}) => {
           <div className="flex items-center justify-center w-full px-6 py-8 lg:h-[32rem] lg:w-1/2">
             <div className="max-w-xl">
               <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-                Get 
+                Get
                 <span className="text-blue-600 dark:text-blue-400">
-                Your desired service
+                  Your desired service
                 </span>
-                 After a small payment
+                After a small payment
               </h2>
 
               <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base">
