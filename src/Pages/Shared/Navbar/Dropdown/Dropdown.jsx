@@ -10,7 +10,6 @@ const Dropdown = () => {
   };
 
   const { user, setUser, LogOut } = UseAuth();
-  console.log(user.photoURL);
 
   return (
     <div className="relative inline-block  text-center">

@@ -4,27 +4,23 @@ import UseAxiosCommon from "../../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { ClockLoader } from "react-spinners";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function AllJobApplications() {
-    const [search, setSearch] = useState("");
-    const [applicationsWithDetails, setApplicationsWithDetails] = useState([]);
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    const onSubmit = (data) => {
-        setSearch(data.search);
-    };
+    const [applicationsWithDetails, setApplicationsWithDetails] = useState([]);
+
 
     const axiosCommon = UseAxiosCommon();
     const [page, setPage] = useState(1); // Track the current page
     const [limit] = useState(6); // Set the number of items per page
 
     const { data, isLoading, isError, error } = useQuery({
-        queryKey: ["jobApplications", page, search],
+        queryKey: ["jobApplications", page,],
         queryFn: async () => {
             const response = await axiosCommon.get(
-                `/jobApplications?page=${page}&limit=${limit}&search=${search}`
+                `/jobApplications?page=${page}&limit=${limit}`
             );
-            console.log("Job Applications Data:", response.data);  // Log the fetched job applications
             return response.data;
         },
     });
@@ -33,7 +29,6 @@ function AllJobApplications() {
 
     useEffect(() => {
         if (jobApplications && jobApplications.length > 0) {
-            // Fetch job details for each job application
             const fetchJobDetailsForApplications = async () => {
                 const applicationsWithDetails = await Promise.all(
                     jobApplications.map(async (application) => {
@@ -64,51 +59,36 @@ function AllJobApplications() {
     }
 
     return (
-        <div className="container mx-auto p-6 bg-[#1a103d] text-white"> {/* Dark background with white text */}
-            <form onSubmit={handleSubmit(onSubmit)} className="mb-6 flex items-center justify-between p-4 rounded-lg shadow-md bg-[#1a103d]">
-                <input
-                    type="text"
-                    placeholder="Search job applications"
-                    {...register('search')}
-                    className="border p-2 rounded-lg w-2/3 text-lg bg-[#1a103d] text-white" // Input field with dark background and white text
-                />
-                <button type="submit" className="ml-4 p-2 bg-blue-600 text-white rounded-lg text-lg">Search</button>
-            </form>
+        <div className="container mx-auto p-6 bg-[#1a103d] text-white">
 
-            <div className="p-4 rounded-lg shadow-md bg-[#1a103d]">
+
+            <div className="p-4 rounded-lg shadow-md border-2 bg-gray-300 text-gray-950 border-[#1a103d]">
                 {applicationsWithDetails && applicationsWithDetails.length > 0 ? (
                     <table className="min-w-full table-auto border-collapse text-left">
                         <thead className="bg-[#1a103d] text-white">
                             <tr>
-                                <th className="px-4 py-2">Position</th>
-                                <th className="px-4 py-2">Candidate Name</th>
-                                <th className="px-4 py-2">Email</th>
-                                <th className="px-4 py-2">Applied At</th>
-                                <th className="px-4 py-2">Resume</th>
-                                <th className="px-4 py-2">Portfolio</th>
+                                <th className="px-4 py-2">Applicant Name</th>
                                 <th className="px-4 py-2">Job Title</th>
-                                <th className="px-4 py-2">Company</th>
-                                <th className="px-4 py-2">Location</th>
-
+                                <th className="px-4 py-2">Company Name</th>
+                                <th className="px-4 py-2">
+                                    See Details
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             {applicationsWithDetails.map((application) => (
-                                <tr key={application._id} className="border-b ">
-                                    <td className="px-4 py-2">{application.position}</td>
-                                    <td className="px-4 py-2">{application.candidateName}</td>
-                                    <td className="px-4 py-2">{application.email}</td>
-                                    <td className="px-4 py-2">{new Date(application.appliedAt).toLocaleString()}</td>
-                                    <td className="px-4 py-2">
-                                        <a href={application.resumeLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View Resume</a>
+                                <tr key={application._id} className="">
+                                    <td className="px-4 py-2 border-2 border-[#1a103d]">{application.applicant_name}</td>
+                                    <td className="px-4 py-2 border-2 border-[#1a103d]">{application.jobDetails?.title}</td>
+                                    <td className="px-4 py-2 border-2 border-[#1a103d]">{application.jobDetails?.company}</td>
+                                    <td className="px-4 py-2 border-2 border-[#1a103d]">
+                                        <Link
+                                            to={`/dashboard/application/${application.jobId}/${application._id}`}
+                                            className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                                        >
+                                            View
+                                        </Link>
                                     </td>
-                                    <td className="px-4 py-2">
-                                        <a href={application.portfolio} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">View Portfolio</a>
-                                    </td>
-                                    <td className="px-4 py-2">{application.jobDetails?.title}</td>
-                                    <td className="px-4 py-2">{application.jobDetails?.company}</td>
-                                    <td className="px-4 py-2">{application.jobDetails?.location}</td>
-
                                 </tr>
                             ))}
                         </tbody>

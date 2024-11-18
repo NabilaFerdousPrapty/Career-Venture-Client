@@ -15,6 +15,7 @@ import { FcFeedback } from "react-icons/fc";
 import { IoSettings } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
 import { MdAssignmentAdd } from "react-icons/md";
+import UpperNavbar from "./UpperNavbar";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -283,14 +284,7 @@ const Dashboard = () => {
 
             <div className="flex flex-col justify-between flex-1 mt-6">
               <nav className="flex-1 -mx-3 space-y-3 ">
-                <li className="lg:hidden block">
-                  <button
-                    className="absolute left-1 top-1"
-                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                  >
-                    <GiHamburger className=" fill-current text-amber-400 text-lg" />
-                  </button>
-                </li>
+
               </nav>
               {role.isAdmin && renderAdminLinks()}
               {role.isMentor && renderMentorLinks()}
@@ -347,13 +341,16 @@ const Dashboard = () => {
           <div className="flex-1 overflow-y-auto">
             <div className="h-full p-4 flex flex-col">
               {/* Button to open/close sidebar on small screens */}
-              <button
-                className="lg:hidden text-xl p-2 text-gray-500 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={toggleSidebar}
-              >
-                <GiHamburger />
-              </button>
+              <div className="relative">
+                <button
+                  className="lg:hidden absolute left-0 top-0  text-xl p-2 text-gray-500 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  onClick={toggleSidebar}
+                >
+                  <GiHamburger />
+                </button>
+                <UpperNavbar />
 
+              </div>
               {/* Outlet for main content */}
               <div className="flex-grow overflow-y-auto">
                 <Outlet />

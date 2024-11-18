@@ -32,6 +32,7 @@ import PricingPlans from '../Pages/MentorDetails/PricingPlans/PricingPlans';
 import TestimonialDetails from '../Pages/Home/Testimonials/TestimonialDetails/TestimonialDetails';
 import AddBootCamp from '../Pages/Admin/AddBootCamp/AddBootCamp';
 import BeAMentor from '../Pages/User/BeAMentor/BeAMentor';
+import ApplicationDetails from '../Pages/Admin/AllJobApplications/ApplicationDetails';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -150,7 +151,11 @@ const router = createBrowserRouter([
       }, {
         path: 'ApplyForMentor',
         errorElement: <BeAMentor />
+      }, {
+        path: 'application/:jobId/:id',
+        element: <ApplicationDetails />
       }
+
     ],
     errorElement: <ErrorPage />
 
