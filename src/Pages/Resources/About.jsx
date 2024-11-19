@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
 
     return (
-        <div className="w-full h-full  rounded-md" style={{
-            backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/029/767/646/non_2x/career-with-businessman-on-office-background-2021-finance-concept-photo.jpg')",
+        <div className="w-full h-full opacity-90 rounded-md" style={{
+            backgroundImage: "url('https://images.stockcake.com/public/f/d/8/fd8af3a2-0c15-4e04-a9c3-c39bb0ea9599_large/ascending-career-path-stockcake.jpg')",
             backgroundSize: "cover"
         }}>
 

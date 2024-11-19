@@ -37,6 +37,10 @@ import Profile from '../Pages/User/Profile/Profile';
 import AddNewResource from '../Pages/AddNewResource/AddNewResource';
 import AboutUs from '../Pages/AboutUs/AboutUsPage';
 import AboutUsPage from '../Pages/AboutUs/AboutUsPage';
+import ManageSlots from '../Pages/MentorDashboard/ManageSlots/ManageSlots';
+import MyCourseTransactions from '../Pages/MentorDashboard/MyWork/MyCourseTransactions';
+import MyTransactions from '../Pages/MemberDashboard/MyTransactions/MyTransactions';
+import Feedback from '../Pages/MemberDashboard/Feedback/Feedback';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -168,6 +172,18 @@ const router = createBrowserRouter([
       }, {
         path: 'add-new-resource',
         element: <AddNewResource />
+      }, {
+        path: 'manage-slots',
+        element: <ManageSlots />
+      }, {
+        path: 'my-course-trasactions',
+        element: <MyCourseTransactions />
+      }, {
+        path: 'my-transactions',
+        element: <MyTransactions />
+      }, {
+        path: 'feedback',
+        element: <Feedback />
       }
 
     ],

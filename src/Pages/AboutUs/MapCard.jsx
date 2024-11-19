@@ -70,8 +70,9 @@ const MapCard = () => {
                             marginHeight="0"
                             marginWidth="0"
                             scrolling="no"
-                            src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Career%20Venture%20HQ&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
-                        ></iframe>
+                            src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=New%20York%2C%20USA&ie=UTF8&t=&z=14&iwloc=B&output=embed"
+                        />
+
                     </div>
                 </div>
             </div>
