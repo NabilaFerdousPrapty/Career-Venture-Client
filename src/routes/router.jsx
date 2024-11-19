@@ -41,6 +41,7 @@ import ManageSlots from '../Pages/MentorDashboard/ManageSlots/ManageSlots';
 import MyCourseTransactions from '../Pages/MentorDashboard/MyWork/MyCourseTransactions';
 import MyTransactions from '../Pages/MemberDashboard/MyTransactions/MyTransactions';
 import Feedback from '../Pages/MemberDashboard/Feedback/Feedback';
+import MyBookedSlot from '../Pages/MemberDashboard/MyBookedSlot/MyBookedSlot';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -184,6 +185,9 @@ const router = createBrowserRouter([
       }, {
         path: 'feedback',
         element: <Feedback />
+      }, {
+        path: 'my-booked-slots',
+        element: <MyBookedSlot />
       }
 
     ],

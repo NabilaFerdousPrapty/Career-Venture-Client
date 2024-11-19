@@ -13,7 +13,7 @@ import DatePicker from 'react-datepicker';
 
 const ManageSlots = () => {
     const { user } = UseAuth();
-
+    const mentorEmail = user.email;
     const axiosCommon = UseAxiosCommon();
     const [newSlotData, setNewSlotData] = useState({
         day_of_week: "",
@@ -29,6 +29,7 @@ const ManageSlots = () => {
             return data;
         },
     });
+    console.log(mentorData);
 
     const { _id } = mentorData;
 
@@ -41,6 +42,7 @@ const ManageSlots = () => {
         enabled: !!_id,
     });
 
+    console.log(mentorSlots);
 
 
     const [editingSlot, setEditingSlot] = useState(null);
