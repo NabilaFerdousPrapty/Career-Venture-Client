@@ -6,6 +6,7 @@ import UseAxiosCommon from "../../hooks/UseAxiosCommon/UseAxiosCommon";
 import ResourcesCard from "./ResourcesCard";
 import Hero from "./Hero/Hero";
 import { useQuery } from "@tanstack/react-query";
+import About from "./About";
 
 const Resources = () => {
   const axiosCommon = UseAxiosCommon();
@@ -79,14 +80,14 @@ const Resources = () => {
           <button
             key={page + 1}
             onClick={() => handlePageChange(page + 1)}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === page + 1 ? "bg-blue-500 text-white" : "bg-gray-300"
-            }`}
+            className={`px-4 py-2 rounded-md ${currentPage === page + 1 ? "bg-blue-500 text-white" : "bg-gray-300"
+              }`}
           >
             {page + 1}
           </button>
         ))}
       </div>
+      <About />
     </div>
   );
 };

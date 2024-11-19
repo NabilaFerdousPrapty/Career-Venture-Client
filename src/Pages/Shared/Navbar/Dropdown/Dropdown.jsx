@@ -52,15 +52,7 @@ const Dropdown = () => {
 
           <hr className="border-gray-200 dark:border-gray-700" />
 
-          <Link to={'dashboard/profilePage'} className="block px-2 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white text-center">
-            view profile
-          </Link>
 
-          <Link to={'dashboard/profilePage'} className="block px-2 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white text-center">
-            Update Profile
-          </Link>
-
-          <hr className="border-gray-200 dark:border-gray-700" />
 
           <button onClick={LogOut} className="block px-2 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white text-center w-full">
             log out

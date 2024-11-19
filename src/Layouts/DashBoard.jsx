@@ -1,7 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../assets/logo2w.png";
 import { useEffect, useState } from "react";
-import { GiHamburger, GiOfficeChair } from "react-icons/gi";
+import { GiHamburger, GiNotebook, GiOfficeChair } from "react-icons/gi";
 import UseRole from "../hooks/UseRole/UseRole";
 import UseAuth from "./../hooks/UseAuth/UseAuth";
 import Swal from "sweetalert2";
@@ -13,10 +13,11 @@ import { GrOverview, GrResources } from "react-icons/gr";
 import { TbReport } from "react-icons/tb";
 import { FcFeedback } from "react-icons/fc";
 import { IoSettings } from "react-icons/io5";
-import { FaHome } from "react-icons/fa";
-import { MdAssignmentAdd } from "react-icons/md";
+import { FaHome, FaMoneyBillAlt } from "react-icons/fa";
+import { MdAddchart, MdAssignmentAdd, MdOutlineBrowserUpdated } from "react-icons/md";
 import UpperNavbar from "./UpperNavbar";
 import { SiCodementor } from "react-icons/si"
+import { AiOutlineTransaction } from "react-icons/ai";
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [loader, setLoading] = useState(true);
@@ -151,17 +152,57 @@ const Dashboard = () => {
 
       </Link>
 
-      <Link to={'transaction-overview'}
-        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
-        <span className="mx-2 text-sm font-medium">Transaction History</span>
+      <Link
+        to={"manage-slots"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><MdAddchart />
+        <span className="mx-2 text-sm font-medium">
+          Manage Slots
+        </span>
+
+      </Link>
+      <Link
+        to={"my-work-trasactions"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><AiOutlineTransaction />
+        <span className="mx-2 text-sm font-medium">
+          My Work Transactions
+        </span>
+
+      </Link>
+      <Link
+        to={"my-trasactions"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><AiOutlineTransaction />
+        <span className="mx-2 text-sm font-medium">
+          My Transactions
+        </span>
+
+      </Link>
+      <Link
+        to={"feedback"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><FcFeedback />
+        <span className="mx-2 text-sm font-medium">
+          Feedback
+        </span>
+
       </Link>
 
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+
+
+      <Link
+        to={'profile'}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><MdOutlineBrowserUpdated />
         <span className="mx-2 text-sm font-medium">
-          Update Settings
+          Profile
         </span>
       </Link>
-      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><FaHome />
         <span className="mx-2 text-sm font-medium">Go to Home</span>
       </Link>
     </ul>
@@ -174,66 +215,76 @@ const Dashboard = () => {
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
       >
+        <PiListStarThin />
         <span className="mx-2 text-sm font-medium">
           Introduction
         </span>
-      </Link>
 
+      </Link>
       <Link
-        to={"/cash-in"}
+        to={"my-trasactions"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      >
+      ><AiOutlineTransaction />
         <span className="mx-2 text-sm font-medium">
-          Booked Bootcamps
+          My Transactions
         </span>
-      </Link>
 
+      </Link>
       <Link
-        to={"/cash-out"}
+        to={"my-booked-slots"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      >
+      ><GiNotebook />
         <span className="mx-2 text-sm font-medium">
-          Applied Openings status
+          My Booked Slots
         </span>
-      </Link>
 
+      </Link>
       <Link
-        to={"/send-money"}
+        to={"add-new-resource"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      >
-        <span className="mx-2 text-sm font-medium">
-          Votes on resources
-        </span>
-      </Link>
+      ><GrResources />
+        <span className="mx-2 text-sm font-medium">Add
+          New Resource</span>
 
+      </Link>
       <Link
-        to={"/balance"}
+        to={"ApplyForMentor"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      >
+      ><SiCodementor />
         <span className="mx-2 text-sm font-medium">
-          Transaction History
+          Be a Mentor
         </span>
+
       </Link>
+      <Link
+        to={"feedback"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><FcFeedback />
+        <span className="mx-2 text-sm font-medium">
+          Feedback
+        </span>
+
+      </Link>
+
+
 
       <Link
-        to={"/overview"}
-        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-      >
-        <span className="mx-2 text-sm font-medium">OverView</span>
-      </Link>
-
-      <Link className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+        to={'profile'}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><MdOutlineBrowserUpdated />
         <span className="mx-2 text-sm font-medium">
-          Be a mentor
+          Profile
         </span>
       </Link>
-      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700">
+      <Link to={'/'} className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"><FaHome />
         <span className="mx-2 text-sm font-medium">Go to Home</span>
       </Link>
+
+
     </ul>
   );
   const { user, LogOut, loading } = UseAuth();

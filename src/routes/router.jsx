@@ -35,6 +35,8 @@ import BeAMentor from '../Pages/User/BeAMentor/BeAMentor';
 import ApplicationDetails from '../Pages/Admin/AllJobApplications/ApplicationDetails';
 import Profile from '../Pages/User/Profile/Profile';
 import AddNewResource from '../Pages/AddNewResource/AddNewResource';
+import AboutUs from '../Pages/AboutUs/AboutUsPage';
+import AboutUsPage from '../Pages/AboutUs/AboutUsPage';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -112,7 +114,10 @@ const router = createBrowserRouter([
           < PrivateRoute >
             <PricingPlans />
           </ PrivateRoute>
-      },
+      }, {
+        path: '/aboutUs',
+        element: <AboutUsPage />
+      }
 
 
 
