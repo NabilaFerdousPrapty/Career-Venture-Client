@@ -18,7 +18,7 @@ const OpeningCard = ({ opening }) => {
   } = opening;
 
   return (
-    <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div className="max-w-2xl overflow-hidden bg-stone-600 rounded-lg shadow-md ">
       <img
         className="object-cover w-full h-56 rounded-t-lg"
         src={jobImage || 'https://via.placeholder.com/500'}

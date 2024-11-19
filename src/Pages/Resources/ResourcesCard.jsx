@@ -85,7 +85,7 @@ const ResourcesCard = ({ resource, refetch }) => {
 
   return (
 
-    <div className="max-w-3xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 xl:h-[600px] lg:h-[680px]">
+    <div className="max-w-3xl overflow-hidden bg-stone-600 rounded-lg shadow-md  xl:h-[600px] lg:h-[680px]">
       {/* Use the imageLink from the fetched data */}
       <img
         className="object-cover w-full h-64"

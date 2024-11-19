@@ -12,9 +12,9 @@ const Options = () => {
 
     return (
         <div>
-            <div className="text-sm">
+            <div className="text-sm bg-gray-900">
                 <select
-                    className="py-1 px-2 rounded-md transition-colors duration-300 "
+                    className="py-1 px-2 rounded-md transition-colors duration-300  bg-gray-800"
                     onChange={handleLanguageChange} // Handle language change
                     defaultValue="en" // Default language
                 >
@@ -27,8 +27,8 @@ const Options = () => {
                     <option value="es">Español</option>
 
                 </select>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

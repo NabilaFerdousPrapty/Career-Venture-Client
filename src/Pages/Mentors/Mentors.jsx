@@ -46,18 +46,18 @@ const Mentors = () => {
           alt="Mentors"
         />
       </div>
-      <div className="container px-6 py-16 mx-auto text-center">
+      <div className="container px-6 py-6 mx-auto text-center">
         <div className="max-w-lg mx-auto">
-          <h1 className="text-3xl font-semibold text-white lg:text-4xl">
+          <h1 className="text-3xl font-semibold lg:text-4xl">
             Meet Our Mentors
           </h1>
           <p className="mt-6 text-gray-400">
             Learn from industry experts and elevate your career.
           </p>
-          <button className="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:outline-none">
+          <button className="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center capitalize bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:outline-none">
             Start 14-Day Free Trial
           </button>
-          <p className="mt-3 text-sm text-gray-500">No credit card required</p>
+          <p className="mt-3 text-sm ">No credit card required</p>
         </div>
 
         <div className="my-5 mt-14">
@@ -73,7 +73,7 @@ const Mentors = () => {
 
                   className="relative mt-16 mb-32 sm:mb-24 transform transition-transform duration-300 hover:scale-105"
                 >
-                  <div className="rounded overflow-hidden shadow-md bg-gray-800 hover:bg-gray-700 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
+                  <div className="rounded overflow-hidden shadow-md bg-stone-600 border-amber-700 border-x-2 border-b-2 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
                     <div className="absolute -mt-24 w-full flex justify-center">
                       <div className="h-36 w-36 ">
                         <img
@@ -85,7 +85,7 @@ const Mentors = () => {
                     </div>
                     <div className="px-6 mt-16 flex-grow flex flex-col justify-between items-start text-justify">
                       <div>
-                        <h1 className="font-bold text-3xl text-center mb-1 text-white">
+                        <h1 className="font-bold text-3xl text-center mb-1 ">
                           {mentor.name}
                         </h1>
                         <p className="text-gray-400 text-sm text-center">
@@ -163,7 +163,7 @@ const Mentors = () => {
         </div>
         <div className="max-w-3xl px-6 py-12 lg:max-w-5xl  mx-auto flex justify-between items-center bg-amber-100 my-5 rounded-2xl">
           <div className="">
-            <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
+            <h2 className="text-2xl font-semibold  md:text-3xl">
               Ready to take the next step? <br />
               <span className="text-blue-500">
                 Be a mentor you wish you had.

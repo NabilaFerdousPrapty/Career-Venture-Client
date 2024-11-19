@@ -22,7 +22,7 @@ const SingleBootcamp = ({ bootCamp, index }) => {
     return (
         <div
             key={_id}
-            className="flex flex-col bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            className="flex flex-col bg-stone-600 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             data-aos="fade-up"
             data-aos-delay={index * 100}
         >

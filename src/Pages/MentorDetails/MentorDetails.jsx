@@ -40,7 +40,7 @@ const MentorDetails = () => {
     if (isError) return <p>Error: {error.message}</p>;
 
     return (
-        <div className="max-w-5xl mx-auto p-5 text-center bg-slate-950">
+        <div className="max-w-5xl mx-auto p-5 text-center ">
             <div className="w-full max-w-5xl overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 flex flex-col lg:flex-row justify-between items-center px-5 gap-3">
                 <div>
                     <img

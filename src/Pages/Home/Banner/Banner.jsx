@@ -39,7 +39,7 @@ const Banner = () => {
             }}
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-700 text-gray-900  ">
-              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5 text-black">
                 {t('discoverCareer')}
               </h1>
               <p className="lg:text-xl text-sm text-slate-900 font-semibold">
@@ -67,10 +67,10 @@ const Banner = () => {
             }}
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent lg:p-6 p-2 rounded-2xl border-2 border-amber-300">
-              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
+              <h1 className="lg:text-4xl text-white md:text-2xl text-lg font-bold lg:my-5">
                 {t('upskillFuture')}
               </h1>
-              <p className="lg:text-xl text-sm">
+              <p className="lg:text-xl text-sm text-white">
                 {t('enrollCourses')}
               </p>
               <Link
@@ -95,10 +95,10 @@ const Banner = () => {
             }}
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
-              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
+              <h1 className="lg:text-4xl text-white md:text-2xl text-lg font-bold lg:my-5">
                 {t('connectExperts')}
               </h1>
-              <p className="lg:text-xl text-sm">
+              <p className="lg:text-xl text-sm text-white">
                 {t('guidanceProfessionals')}
               </p>
               <Link
@@ -123,10 +123,10 @@ const Banner = () => {
             }}
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
-              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5 text-white">
                 {t('personalizedPaths')}
               </h1>
-              <p className="lg:text-xl text-sm">
+              <p className="lg:text-xl text-sm text-white">
                 {t('discoverPaths')}
               </p>
               <Link
@@ -152,10 +152,10 @@ const Banner = () => {
             }}
           >
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-transparent  lg:p-6 p-2 rounded-2xl border-2 border-amber-400">
-              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5">
+              <h1 className="lg:text-4xl md:text-2xl text-lg font-bold lg:my-5 text-white">
                 {t('landDreamJob')}
               </h1>
-              <p className="lg:text-xl text-sm">
+              <p className="lg:text-xl text-sm text-white">
                 {t('applyTopCompanies')}
               </p>
               <Link

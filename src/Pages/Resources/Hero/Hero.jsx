@@ -15,7 +15,7 @@ const Hero = ({ onSearch }) => {
   // Function to clear the search input when the cross icon is clicked
   const handleClearSearch = () => {
     console.log('Clear search');
-    
+
     setValue('tag', ''); // Set the value of 'tag' to an empty string
     onSearch(''); // Call onSearch with an empty string to show all data again
     console.log(searchValue); // Should be an empty string
@@ -34,12 +34,12 @@ const Hero = ({ onSearch }) => {
           </div>
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg px-2">
-              <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+              <h1 className="text-3xl font-semibold   lg:text-4xl">
                 Search for Specific
                 <span className="text-blue-500 mx-2">Resources</span>
               </h1>
 
-              <p className="mt-3 text-gray-600 dark:text-gray-400">
+              <p className="mt-3  dark:text-gray-400">
                 Here you can find all the resources you need to get started with your career in tech.
                 <span className="font-medium text-blue-500 mx-1">Search your future</span>
                 now and get started.
@@ -57,16 +57,16 @@ const Hero = ({ onSearch }) => {
                     className="w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
                     placeholder="Resource tag"
                   />
-                  
+
                   {/* Cross icon to clear the search input */}
-                 
-                    <div
-                      onClick={handleClearSearch}
-                      className="absolute inset-y-0 right-4 flex items-center cursor-pointer"
-                    >
-                      <FaCut className="text-gray-500 hover:text-gray-700" />
-                    </div>
-              
+
+                  <div
+                    onClick={handleClearSearch}
+                    className="absolute inset-y-0 right-4 flex items-center cursor-pointer"
+                  >
+                    <FaCut className="text-gray-500 hover:text-gray-700" />
+                  </div>
+
                 </div>
 
                 <button

@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+
     fontFamily: {
       play: ['Playwrite NZ', 'cursive'],
     },
@@ -31,11 +32,20 @@ export default {
   ],
   daisyui: {
     themes: [
-      
-      "synthwave",
-      "winter"
+      {
+        synthwave: {
+          primary: "#d926a9",
+          secondary: "#1e40af",
+          "base-100": "#1a103d",
+        },
+        winter: {
+          primary: "#ffffff",
+          secondary: "#3b82f6",
+          "base-100": "#f8f9fa",
+        },
+      },
     ],
-    
+
   },
 }
 

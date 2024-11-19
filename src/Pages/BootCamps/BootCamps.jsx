@@ -64,10 +64,10 @@ const BootCamps = () => {
       <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
         <div className="w-full lg:w-[45%]">
           <div className="lg:max-w-lg">
-            <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-wide lg:text-4xl">
               Discover the Best Boot Camps to Accelerate Your Career
             </h1>
-            <p className="mt-4 text-gray-600 dark:text-gray-300">
+            <p className="mt-4 ">
               Our platform connects you with top-rated boot camps offering
               comprehensive training in various fields. Find the perfect boot
               camp to boost your career and gain valuable skills.
@@ -84,7 +84,7 @@ const BootCamps = () => {
               ].map((feature) => (
                 <div
                   key={feature}
-                  className="flex items-center text-gray-800 -px-3 dark:text-gray-200"
+                  className="flex items-center  -px-3 "
                 >
                   <svg
                     className="w-5 h-5 mx-3"
@@ -117,11 +117,11 @@ const BootCamps = () => {
       </div>
       <div className="w-full flex justify-center items-center my-3 py-5 ">
         <div className="lg:max-w-lg mx-auto text-center">
-          <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+          <h1 className="text-3xl font-semibold  lg:text-4xl">
             Subscribe To The <span className="text-blue-500">Newsletter</span>
           </h1>
 
-          <p className="mt-3 text-gray-600 dark:text-gray-400">
+          <p className="mt-3 ">
             Get the specific boot camp details and updates as soon as a new
             <span className="font-medium text-blue-500">
               {" "}
@@ -155,7 +155,7 @@ const BootCamps = () => {
         </div>
       </div>
 
-      <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl text-center mt-4 mb-9">
+      <h1 className="text-3xl font-semibold  lg:text-4xl text-center mt-4 mb-9">
         Explore Boot Camps <span className="text-blue-500">Available</span>
       </h1>
 
