@@ -42,6 +42,7 @@ import MyCourseTransactions from '../Pages/MentorDashboard/MyWork/MyCourseTransa
 import MyTransactions from '../Pages/MemberDashboard/MyTransactions/MyTransactions';
 import Feedback from '../Pages/MemberDashboard/Feedback/Feedback';
 import MyBookedSlot from '../Pages/MemberDashboard/MyBookedSlot/MyBookedSlot';
+import MyJobApplications from './../Pages/MemberDashboard/MyJobApplications/MyJobApplications';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -188,6 +189,9 @@ const router = createBrowserRouter([
       }, {
         path: 'my-booked-slots',
         element: <MyBookedSlot />
+      }, {
+        path: 'my-job-applications',
+        element: <MyJobApplications />
       }
 
     ],
