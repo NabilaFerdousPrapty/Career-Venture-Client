@@ -367,11 +367,11 @@ const Dashboard = () => {
               {(!role.isMentor && !role.isAdmin && !role.isMember && !isLoading) && (
                 <div>
                   <h1>
-                    You are not approved by the admin please wait for approval
+                    You are not blocked by the admin please wait for approval
                   </h1>
+
                   <p>
-                    If you are not approved by the admin within 24 hours please
-                    contact the admin
+                    Contact the admin for more information about your account status and approval
                   </p>
                 </div>
               )}
