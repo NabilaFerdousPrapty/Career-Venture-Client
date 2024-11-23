@@ -22,7 +22,7 @@
     "cloudinary": "^2.5.1",
     "date-fns": "^4.1.0",
     "emailjs": "^4.0.3",
-    "firebase": "^10.12.2",
+    "firebase": "^10.14.1",
     "i18next": "^23.16.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

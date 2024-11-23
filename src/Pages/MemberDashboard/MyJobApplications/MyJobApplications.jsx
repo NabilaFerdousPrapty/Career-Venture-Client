@@ -26,7 +26,7 @@ const MyJobApplications = () => {
     });
 
     return (
-        <div className="p-6 max-w-6xl mx-auto">
+        <div className="p-6 max-w-6xl mx-auto ">
             <h2 className="text-2xl font-semibold mb-6">My Job Applications</h2>
 
             {/* Job Applications Cards */}
