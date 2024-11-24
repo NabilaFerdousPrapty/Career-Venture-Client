@@ -19,37 +19,37 @@ const MyTransactions = () => {
 
     return (
         <div className="p-4">
-            <h2 className="text-xl font-bold mb-4">My Transactions</h2>
+            <h2 className="text-xl font-bold mb-4 text-primary text-center mt-2">My Transactions</h2>
 
             {/* Display transactions in a table */}
             {myTransactions.length > 0 ? (
                 <div className="overflow-x-auto">
                     <table className="table-auto border-collapse border border-amber-600 w-full">
                         <thead>
-                            <tr className="bg-stone-600">
-                                <th className="border border-amber-600 px-4 py-2">Transaction ID</th>
-                                <th className="border border-amber-600 px-4 py-2">Plan Name</th>
-                                <th className="border border-amber-600 px-4 py-2">Price</th>
-                                <th className="border border-amber-600 px-4 py-2">Date</th>
-                                <th className="border border-amber-600 px-4 py-2">Status</th>
+                            <tr className="bg-accent">
+                                <th className="border text-primary border-amber-600 px-4 py-2">Transaction ID</th>
+                                <th className="border text-primary border-amber-600 px-4 py-2">Plan Name</th>
+                                <th className="border text-primary border-amber-600 px-4 py-2">Price</th>
+                                <th className="border text-primary border-amber-600 px-4 py-2">Date</th>
+                                <th className="border text-primary border-amber-600 px-4 py-2">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             {myTransactions.map((transaction) => (
-                                <tr key={transaction._id} className="hover:bg-stone-800">
-                                    <td className="border border-amber-600 px-4 py-2">
+                                <tr key={transaction._id} className="hover:bg-stone-600">
+                                    <td className="border border-amber-600 text-primary px-4 py-2">
                                         {transaction.transactionId}
                                     </td>
-                                    <td className="border border-amber-600 px-4 py-2">
+                                    <td className="border border-amber-600 text-primary px-4 py-2">
                                         {transaction.planName}
                                     </td>
-                                    <td className="border border-amber-600 px-4 py-2">
+                                    <td className="border border-amber-600 text-primary px-4 py-2">
                                         ${transaction.price.toFixed(2)}
                                     </td>
-                                    <td className="border border-amber-600 px-4 py-2">
+                                    <td className="border text-primary border-amber-600 px-4 py-2">
                                         {transaction.date}
                                     </td>
-                                    <td className="border border-amber-600 px-4 py-2">
+                                    <td className="border text-primary border-amber-600 px-4 py-2">
                                         {transaction.status}
                                     </td>
                                 </tr>
@@ -58,7 +58,7 @@ const MyTransactions = () => {
                     </table>
                 </div>
             ) : (
-                <p className="text-gray-500">No transactions found.</p>
+                <p className="text-primary">No transactions found.</p>
             )}
         </div>
     );

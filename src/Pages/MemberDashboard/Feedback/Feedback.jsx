@@ -67,9 +67,9 @@ const Feedback = () => {
     };
 
     return (
-        <div className="p-4 border-2 border-amber-600 my-3 rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">Submit Your Feedback</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="p-4 border-2 border-amber-600 my-3 rounded-lg  bg-accent">
+            <h2 className="text-2xl font-bold mb-4 text-center text-primary">Submit Your Feedback</h2>
+            <form onSubmit={handleSubmit} className="space-y-4 ">
 
                 <div>
                     <label className="block font-medium">Review</label>
@@ -109,7 +109,7 @@ const Feedback = () => {
 
                 <button
                     type="submit"
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-700"
                 >
                     Submit Feedback
                 </button>

@@ -92,43 +92,43 @@ const UserManagement = () => {
   }
 
   return (
-    <div className="text-[#98BDE6]">
-      <h1 className="text-3xl font-bold my-5 text-center">User Management</h1>
+    <div className="">
+      <h1 className="text-3xl font-bold my-5 text-center text-primary">User Management</h1>
       <section className="container px-4 mx-auto">
-        <div className="flex flex-col">
-          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="flex flex-col  ">
+          <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 ">
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-              <div className="overflow-hidden xl:max-w-5xl lg:max-w-3xl md:max-w-2xl overflow-x-scroll max-w-sm border border-gray-200 dark:border-gray-700 md:rounded-lg">
+              <div className="overflow-hidden xl:max-w-5xl lg:max-w-3xl md:max-w-2xl overflow-x-scroll max-w-sm border border-gray-200 dark:border-gray-700 bg-accent md:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                  <thead className="bg-gray-50 dark:bg-gray-800">
+                  <thead className="bg-amber-400 hover:bg-amber-600 ">
                     <tr>
-                      <th className="py-3.5 px-4 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="py-3.5 px-4 text-sm font-normal text-left text-primary">
                         Index
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Name
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Email
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Photo
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Role
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Status
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Role Actions
                       </th>
-                      <th className="px-4 py-3.5 text-sm font-normal text-left text-gray-500 dark:text-gray-400">
+                      <th className="px-4 py-3.5 text-sm font-normal text-left text-primary">
                         Status Actions
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                  <tbody className="divide-y divide-gray-200 bg-accent">
                     {users.map((user, index) => (
                       <tr key={user.id}>
                         <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">

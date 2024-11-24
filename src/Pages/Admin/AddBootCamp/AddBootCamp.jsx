@@ -46,8 +46,8 @@ const AddBootCamp = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-900 text-white">
-            <h1 className="text-2xl font-bold mb-4">Add Bootcamp</h1>
+        <div className="p-6 bg-accent">
+            <h1 className="text-2xl font-bold mb-4 text-primary text-center">Add Bootcamp</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Bootcamp Details */}
                 <div>

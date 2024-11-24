@@ -117,7 +117,7 @@ const OpenningDetails = () => {
     if (isError) return <p>Error: {error.message}</p>;
 
     return (
-        <div className="max-w-5xl bg-[#3b3b4f] mx-auto rounded-lg shadow-md p-6">
+        <div className="max-w-5xl bg-accent mx-auto rounded-lg shadow-md p-6 my-3 mt-24">
             <img
                 className="object-cover w-full h-80 rounded-md"
                 src={openingData.jobImage}

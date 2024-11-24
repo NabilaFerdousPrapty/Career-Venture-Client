@@ -171,7 +171,7 @@ const BootCamps = () => {
         <button
           disabled={page <= 1}
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-          className={`px-4 py-2 text-white rounded ${page <= 1 ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+          className={`px-4 py-2 text-white rounded ${page <= 1 ? "bg-gray-400" : "bg-amber-500 hover:bg-amber-600"
             }`}
         >
           Previous
@@ -182,7 +182,7 @@ const BootCamps = () => {
         <button
           disabled={page >= totalPages}
           onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-          className={`px-4 py-2 text-white rounded ${page >= totalPages ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+          className={`px-4 py-2 text-white rounded ${page >= totalPages ? "bg-gray-400" : "bg-amber-500 hover:bg-amber-600"
             }`}
         >
           Next

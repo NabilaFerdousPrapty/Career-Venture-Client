@@ -8,8 +8,7 @@ import Dropdown from './../Pages/Shared/Navbar/Dropdown/Dropdown';
 
 
 function UpperNavbar() {
-    const { theme, toggleTheme } = useTheme();
-    const { t } = useTranslation();
+
     const [time, setTime] = useState(new Date().toLocaleTimeString());
 
     // Update time every second
@@ -21,33 +20,17 @@ function UpperNavbar() {
         return () => clearInterval(interval); // Cleanup on unmount
     }, []);
 
-    const handleLanguageSwitch = () => {
-        // Toggle between languages
-        const newLang = i18n.language === "en" ? "es" : "en"; // Example: toggle between English and Spanish
-        i18n.changeLanguage(newLang);
-    };
+
 
     return (
-        <nav className="bg-[#1e1e2f] text-white flex justify-end gap-6 items-center px-4 py-2 shadow-md">
-            <div className="flex items-center space-x-4">
-                {/* Theme toggle */}
-                <input
-                    type="checkbox"
-                    value={theme}
-                    className="toggle theme-controller"
-                    checked={theme === "synthwave"}
-                    onChange={toggleTheme} // Call the toggleTheme function on change
-                />
+        <nav className="bg-accent text-primary flex justify-end gap-6 items-center px-4 py-2 shadow-md">
 
-                {/* Language switch */}
-
-            </div>
 
             {/* Time */}
             <div className="hidden lg:flex items-center space-x-2">
                 <span className="font-semibold">{time}</span>
             </div>
-            <Options />
+
             <Dropdown />
 
             {/* Notification & Dropdown */}

@@ -116,81 +116,82 @@ const BeAMentor = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-bold mb-6">Become a Mentor</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block font-medium">Name</label>
+        <div className="container mx-auto p-6 bg-accent shadow-lg rounded-lg">
+            <h2 className="text-3xl font-bold mb-8 text-center text-primary">Become a Mentor</h2>
+            <form
+                onSubmit={handleSubmit}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Name</label>
                     <input
                         type="text"
                         name="name"
                         value={mentorData.name}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Location</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Location</label>
                     <input
                         type="text"
                         name="location"
                         value={mentorData.location}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Designation</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Designation</label>
                     <input
                         type="text"
                         name="designation"
                         value={mentorData.designation}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Profile Image URL</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Profile Image URL</label>
                     <input
                         type="text"
                         name="profile_image"
                         value={mentorData.profile_image}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Years of Experience</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Years of Experience</label>
                     <input
                         type="number"
                         name="years_of_experience"
                         value={mentorData.years_of_experience}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Social Media Links (Comma Separated)</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Social Media Links</label>
                     <input
                         type="text"
                         name="social_media_links"
-                        value={mentorData.social_media_links.join(', ')} // Join array values for display
+                        value={mentorData.social_media_links.join(', ')}
                         onChange={handleSocialMediaLinksChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
-
-                {/* Dropdown for Available Days */}
-                <div>
-                    <label className="block text-gray-700 mb-2">Select Available Days</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Select Available Days</label>
                     <select
                         value=""
                         onChange={handleDaySelect}
-                        className="w-full p-2 border rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                         <option value="">Select Day</option>
                         <option value="Monday">Monday</option>
@@ -201,64 +202,71 @@ const BeAMentor = () => {
                         <option value="Saturday">Saturday</option>
                         <option value="Sunday">Sunday</option>
                     </select>
-                    <div className="mt-2">
-                        <p className="text-sm">Selected days: {mentorData.available_days.join(', ')}</p>
-                    </div>
+                    <p className="mt-2 text-sm text-primary">
+                        Selected days: {mentorData.available_days.join(', ')}
+                    </p>
                 </div>
-
-                <div>
-                    <label className="block font-medium">Background and Qualifications</label>
+                <div className="flex flex-col md:col-span-2">
+                    <label className="block font-medium text-primary mb-2">Background and Qualifications</label>
                     <textarea
                         name="background_and_qualifications"
                         value={mentorData.background_and_qualifications}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Other Information</label>
+                <div className="flex flex-col md:col-span-2">
+                    <label className="block font-medium text-primary mb-2">Other Information</label>
                     <textarea
                         name="other_info"
                         value={mentorData.other_info}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Bio</label>
+                <div className="flex flex-col md:col-span-2">
+                    <label className="block font-medium text-primary mb-2">Bio</label>
                     <textarea
                         name="bio"
                         value={mentorData.bio}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Age</label>
+                <div className="flex flex-col">
+                    <label className="block font-medium text-primary mb-2">Age</label>
                     <input
                         type="number"
                         name="age"
                         value={mentorData.age}
                         onChange={handleInputChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">Skills (Comma Separated)</label>
+                <div className="flex flex-col md:col-span-2">
+                    <label className="block font-medium text-primary mb-2">Skills</label>
                     <input
                         type="text"
                         name="skills"
-                        value={mentorData.skills.join(', ')} // Join array values for display
+                        value={mentorData.skills.join(', ')}
                         onChange={handleSkillsChange}
-                        className="w-full p-2 border border-gray-300 rounded"
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                         required
                     />
                 </div>
-                <button type="submit" className="mt-4 p-2 bg-blue-500 text-white rounded">Submit</button>
+                <div className="md:col-span-3 text-center">
+                    <button
+                        type="submit"
+                        className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    >
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
+
     );
 };
 

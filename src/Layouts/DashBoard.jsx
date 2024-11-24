@@ -357,7 +357,7 @@ const Dashboard = () => {
       ) : (
         <div className="h-screen flex">
           <div
-            className={`fixed top-0 bg-gray-950 left-0 h-full w-64 p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            className={`fixed top-0 bg-accent left-0 h-full w-64 p-4 overflow-y-auto transition-transform duration-300 ease-in-out transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
               } lg:relative lg:translate-x-0`}
           >
             <Link to={"/"}>
@@ -388,7 +388,7 @@ const Dashboard = () => {
               )}
               {isLoading && <p><RotateLoader /></p>}
               <Link to={'/'} className="mt-1">
-                <div className="p-3 bg-gray-100 rounded-lg dark:bg-gray-800">
+                <div className="p-3 bg-stone-600 rounded-lg ">
                   <h2 className="text-sm font-medium text-gray-800 dark:text-white">
                     New feature available!
                   </h2>
