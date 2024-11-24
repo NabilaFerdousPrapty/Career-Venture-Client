@@ -8,47 +8,47 @@ import { BsWhatsapp } from "react-icons/bs";
 
 const ContactUs = () => {
   const form = useRef();
- const {user}=UseAuth();
+  const { user } = UseAuth();
   const sendEmail = (e) => {
     e.preventDefault();
 
     if (user) {
-        Swal.fire({
-            title: "Do you want to send the message?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Send",
-            denyButtonText: `Don't send`,
-          }).then((result) => {
-            if (result.isConfirmed) {
-              emailjs
-                .sendForm('service_1k1sydd', 'template_ge6ytd6', e.target, 'GM4bCJGbRZE0Yae_n')
-                .then(
-                  (result) => {
-                    console.log(result.text);
-                    Swal.fire("Sent!", "Your message has been sent successfully.", "success");
-                  },
-                  (error) => {
-                    console.log(error.text);
-                    Swal.fire("Error", "An error occurred while sending your message. Please try again.", "error");
-                  }
-                );
-            } else if (result.isDenied) {
-              Swal.fire("Message not sent", "", "info");
-            }
-          });
-    }else{
-        Swal.fire("You have to login first", "", "info");
+      Swal.fire({
+        title: "Do you want to send the message?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Send",
+        denyButtonText: `Don't send`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          emailjs
+            .sendForm('service_1k1sydd', 'template_ge6ytd6', e.target, 'GM4bCJGbRZE0Yae_n')
+            .then(
+              (result) => {
+                console.log(result.text);
+                Swal.fire("Sent!", "Your message has been sent successfully.", "success");
+              },
+              (error) => {
+                console.log(error.text);
+                Swal.fire("Error", "An error occurred while sending your message. Please try again.", "error");
+              }
+            );
+        } else if (result.isDenied) {
+          Swal.fire("Message not sent", "", "info");
+        }
+      });
+    } else {
+      Swal.fire("You have to login first", "", "info");
     }
   };
 
   return (
     <div id="contact">
-      <section className="min-h-screen rounded-xl shadow-inner border border-blue-400 mb-2">
+      <section className="min-h-screen rounded-xl shadow-inner border border-blue-400 mb-2 bg-accent my-5">
         <div className="container px-6 py-10 mx-auto">
           <div className="lg:flex lg:items-center lg:-mx-10">
             <div className="lg:w-1/2 lg:mx-10">
-              <h1 className="text-2xl font-semibold text-gray-800 capitalize dark:text-white lg:text-3xl">
+              <h1 className="text-2xl font-semibold text-primary capitalize lg:text-3xl">
                 Contact Career Venture
               </h1>
 
@@ -64,7 +64,7 @@ const ContactUs = () => {
                       type="text"
                       name="user_name"
                       placeholder="Your Name"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 border border-gray-200 rounded-md  dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
 
@@ -74,7 +74,7 @@ const ContactUs = () => {
                       type="email"
                       name="user_email"
                       placeholder="your.email@example.com"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 border border-gray-200 rounded-md  dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
                 </div>
@@ -83,12 +83,12 @@ const ContactUs = () => {
                   <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Message</label>
                   <textarea
                     name="message"
-                    className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-56 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 border border-gray-200 rounded-md  dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     placeholder="Your message"
                   ></textarea>
                 </div>
 
-                <button className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <button className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-500 rounded-md hover:bg-amber-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                   Send Message
                 </button>
               </form>
@@ -179,32 +179,32 @@ const ContactUs = () => {
                     <FaGithub className="w-8 h-8" />
                   </Link>
                   <Link
-                    
+
                     target="_blank"
                     className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
                   >
-                    <FaFacebookSquare className="w-8 h-8"  />
+                    <FaFacebookSquare className="w-8 h-8" />
                   </Link>
                   <Link
-                 
+
                     target="_blank"
                     className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
                   >
-                   <BsWhatsapp className="w-8 h-8"  />
+                    <BsWhatsapp className="w-8 h-8" />
                   </Link>
                   <Link
-                    
+
                     target="_blank"
                     className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
                   >
-                   <FaTwitter className="w-8 h-8"/>
+                    <FaTwitter className="w-8 h-8" />
                   </Link>
                   <Link
-                    
+
                     target="_blank"
                     className="mx-1.5 text-gray-400 transition-colors duration-300 transform hover:text-gray-500 dark:hover:text-gray-300"
                   >
-                   <FaInstagramSquare className="w-8 h-8" />
+                    <FaInstagramSquare className="w-8 h-8" />
                   </Link>
                 </div>
               </div>

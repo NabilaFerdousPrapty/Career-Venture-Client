@@ -69,7 +69,7 @@ const ResourceDetail = () => {
 
     return (
         <div>
-            <div className="max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <div className="max-w-5xl mx-auto overflow-hidden  rounded-lg shadow-md bg-accent">
                 <img
                     className="object-cover w-full "
                     src={resourceData.imageLink}
@@ -122,7 +122,7 @@ const ResourceDetail = () => {
                             {comments.map((comment, index) => (
                                 <li key={index} className="p-2 bg-gray-100 rounded dark:bg-gray-700">
                                     <p className="text-sm text-gray-700 dark:text-gray-300">
-                                        <strong className='flex justify-center items-center gap-2'><img className='h-4 w-4 rounded-3xl' src={comment.u_image} alt="" />{comment.user}:</strong> {comment.comment}</p>
+                                        <strong className='flex justify-center items-center gap-2'><img className='h-4 w-4 rounded-3xl' src={comment.u_image} alt="" />{comment.user}</strong> {comment.comment}</p>
                                     <span className="text-xs text-gray-500 dark:text-gray-400">{new Date(comment.date).toLocaleDateString()}</span>
                                 </li>
                             ))}
@@ -131,7 +131,7 @@ const ResourceDetail = () => {
                         {/* Comment Form */}
                         <form onSubmit={handleAddComment} className="mt-4">
                             <textarea
-                                className="w-full p-2 border rounded dark:bg-gray-700 dark:text-white"
+                                className="w-full p-2 border rounded "
                                 rows="4"
                                 placeholder="Write a comment..."
                                 value={comment}
@@ -140,7 +140,7 @@ const ResourceDetail = () => {
                             {commentError && <p className="text-red-500 text-sm">{commentError}</p>}
                             <button
                                 type="submit"
-                                className="px-4 py-2 mt-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600"
+                                className="px-4 py-2 mt-2 text-sm text-white  rounded bg-amber-500 hover:bg-amber-600 focus:outline-none"
                             >
                                 Submit Comment
                             </button>

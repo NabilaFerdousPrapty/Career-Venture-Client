@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
     <div>
-      <div className="mockup-window bg-base-300 border my-4">
+      <div className="mockup-window bg-base-300 border my-4 mt-5">
         <div className="bg-amber-200 flex justify-center px-4 py-16 rounded-md">
-          <section className="bg-[#130b30] p-3 rounded-2xl">
+          <section className="bg-accent p-3 rounded-2xl">
             <div className="container px-6 py-10 mx-auto">
               <div className="lg:flex lg:items-center">
                 <div className="w-full space-y-12 lg:w-1/2 ">
@@ -134,9 +135,11 @@ const AboutUs = () => {
                   advancing their careers and making a difference. Explore
                   opportunities for growth and collaboration.
                 </p>
-                <button className="mt-6 px-6 py-3 bg-amber-200 font-bold text-slate-900 rounded-lg hover:bg-amber-400 transition duration-200">
-                  Get Started
-                </button>
+                <Link to={'/bootCamps'}>
+                  <button className="mt-6 px-6 py-3 bg-amber-200 font-bold text-slate-900 rounded-lg hover:bg-amber-400 transition duration-200">
+                    Get Started
+                  </button>
+                </Link>
               </div>
             </div>
           </section>

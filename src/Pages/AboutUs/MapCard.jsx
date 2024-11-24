@@ -2,16 +2,16 @@ import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const MapCard = () => {
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-accent rounded-2xl">
             <div className="container px-6 py-12 mx-auto">
                 <div>
                     <p className="font-medium text-blue-500 dark:text-blue-400">Contact Us</p>
 
-                    <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
+                    <h1 className="mt-2 text-2xl font-semibold  md:text-3xl text-primary">
                         Get in Touch
                     </h1>
 
-                    <p className="mt-3 text-gray-500 dark:text-gray-400">
+                    <p className="mt-3 text-primary">
                         Our friendly team at Career Venture would love to hear from you.
                     </p>
                 </div>
