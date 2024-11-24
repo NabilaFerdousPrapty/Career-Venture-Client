@@ -5,10 +5,10 @@ const Features = () => {
 	return (
 		<div className='my-5 mt-14'>
 			<div className='text-center my-2  '>
-				<h1 className="lg:text-5xl my-5 md:text-3xl text-2xl font-play">
+				<h1 className="lg:text-5xl text-primary my-5 md:text-3xl text-2xl font-play">
 					The Features and Benefits of Our Platform
 				</h1>
-				<p className="lg:text-lg md:text-base text-sm">
+				<p className="lg:text-lg md:text-base text-primary text-sm">
 					Discover the advantages of using our platform to advance your career.
 				</p>
 			</div>

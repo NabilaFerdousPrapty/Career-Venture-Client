@@ -36,12 +36,18 @@ export default {
         synthwave: {
           primary: "#ffffff",
           secondary: "#bfbfbf",
-          "background": "#1a103d",
+          background: "#1a103d",
+          card_background: "#1e293b",
+          accent: '#1f2937'
+
         },
         winter: {
           primary: "#000000",
           secondary: "#36454F",
-          "background": "#f8f9fa",
+          background: "#f8f9fa",
+          card_background: "#e0f2fe",
+          accent: '#4c4a52'
+
         },
       },
     ],
