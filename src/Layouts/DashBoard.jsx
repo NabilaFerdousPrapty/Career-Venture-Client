@@ -14,9 +14,9 @@ import { TbReport } from "react-icons/tb";
 import { FcFeedback } from "react-icons/fc";
 import { IoSettings } from "react-icons/io5";
 import { FaHome, FaMoneyBillAlt } from "react-icons/fa";
-import { MdAddchart, MdAssignmentAdd, MdOutlineBrowserUpdated } from "react-icons/md";
+import { MdAddchart, MdAppShortcut, MdAssignmentAdd, MdOutlineBrowserUpdated } from "react-icons/md";
 import UpperNavbar from "./UpperNavbar";
-import { SiCodementor } from "react-icons/si"
+import { SiCodementor, SiWish } from "react-icons/si"
 import { AiOutlineTransaction } from "react-icons/ai";
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -265,7 +265,7 @@ const Dashboard = () => {
         to={"my-job-applications"}
         className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
 
-      ><GrResources />
+      ><MdAppShortcut />
         <span className="mx-2 text-sm font-medium">
           My Job Applications
         </span>
@@ -278,6 +278,16 @@ const Dashboard = () => {
       ><SiCodementor />
         <span className="mx-2 text-sm font-medium">
           Be a Mentor
+        </span>
+
+      </Link>
+      <Link
+        to={"myWishlist"}
+        className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
+
+      ><SiWish />
+        <span className="mx-2 text-sm font-medium">
+          My Wishlist
         </span>
 
       </Link>
