@@ -13,6 +13,7 @@ import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper/module
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosCommon from "../../../hooks/UseAxiosCommon/UseAxiosCommon";
 import { Link } from "react-router-dom";
+import useTheme from "../../../hooks/UseTheme/UseTheme";
 
 const Testimonial = () => {
   const axiosCommon = UseAxiosCommon();
@@ -23,7 +24,7 @@ const Testimonial = () => {
       return data;
     },
   });
-
+  const { theme, toggleTheme } = useTheme();
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -35,11 +36,11 @@ const Testimonial = () => {
   return (
     <div className="py-12">
       <div className="text-center mb-10">
-  <h1 className="text-4xl font-semibold text-gray-800 dark:text-white font-play">Hear From Our Community</h1>
-  <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-    See how Career Venture has helped individuals achieve their professional aspirations. Explore their success stories and insights on our career development programs.
-  </p>
-</div>
+        <h1 className={`text-4xl font-semibold text-primary  font-play`}>Hear From Our Community</h1>
+        <p className={`mt-4 text-lg  text-secondary `}>
+          See how Career Venture has helped individuals achieve their professional aspirations. Explore their success stories and insights on our career development programs.
+        </p>
+      </div>
 
       <Swiper
         effect={"coverflow"}
@@ -82,12 +83,12 @@ const Testimonial = () => {
                 readOnly
               />
               <p className="text-sm text-center text-gray-600 dark:text-gray-300 my-2">
-                {reviewer.review.slice(0,100)}...
+                {reviewer.review.slice(0, 100)}...
               </p>
               <Link to={`/testimonial/${reviewer._id}`}>
-              <button className="px-4 py-2 mt-2 text-sm  text-slate-600 font-semibold bg-[#b5d968] hover:bg-[#7ca428] rounded-lg  focus:outline-none ">
-                See Details
-              </button>
+                <button className="px-4 py-2 mt-2 text-sm  text-slate-600 font-semibold bg-[#b5d968] hover:bg-[#7ca428] rounded-lg  focus:outline-none ">
+                  See Details
+                </button>
               </Link>
             </div>
           </SwiperSlide>
