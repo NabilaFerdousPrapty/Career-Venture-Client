@@ -40,6 +40,8 @@ export default {
           card_background: "#1e293b",
           accent: '#1f2937'
 
+
+
         },
         winter: {
           primary: "#000000",

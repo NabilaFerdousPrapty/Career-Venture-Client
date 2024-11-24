@@ -1,4 +1,4 @@
-import { FaReddit } from 'react-icons/fa'; // Import the Reddit icon from react-icons
+import { FaFacebook, FaGit, FaGithub, FaReddit } from 'react-icons/fa'; // Import the Reddit icon from react-icons
 import logo from '../../../assets/logo2w.png';
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container px-6 py-6 mx-auto">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                     <div className="sm:col-span-2">
-                        <h1 className={`max-w-lg text-xl font-semibold tracking-tight xl:text-2xl`}>
+                        <h1 className={`max-w-lg text-xl text-primary font-semibold tracking-tight xl:text-2xl`}>
                             Subscribe to our newsletter for career tips and job updates.
                         </h1>
 
@@ -25,30 +25,30 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <p className="font-semibold">Quick Links</p>
+                        <p className="font-semibold text-primary">Quick Links</p>
                         <div className="flex flex-col items-start mt-5 space-y-2">
-                            <a href="#" className="transition-colors duration-300  hover:text-blue-500 hover:underline">
+                            <a href="#" className="transition-colors duration-300 text-primary  hover:text-blue-500 hover:underline">
                                 Home
                             </a>
-                            <a href="#" className="transition-colors duration-300 hover:text-blue-500 hover:underline">
+                            <a href="#" className="transition-colors duration-300 text-primary hover:text-blue-500 hover:underline">
                                 About Us
                             </a>
-                            <a href="#" className="transition-colors duration-300  hover:text-blue-500 hover:underline">
+                            <a href="#" className="transition-colors duration-300 text-primary  hover:text-blue-500 hover:underline">
                                 Our Services
                             </a>
                         </div>
                     </div>
 
                     <div>
-                        <p className="font-semibold text-gray-800">Career Resources</p>
+                        <p className="font-semibold text text-primary ">Career Resources</p>
                         <div className="flex flex-col items-start mt-5 space-y-2">
-                            <a href="#" className="transition-colors duration-300 hover:text-blue-500 hover:underline">
+                            <a href="#" className="transition-colors text-primary duration-300 hover:text-blue-500 hover:underline">
                                 Career Advice
                             </a>
-                            <a href="#" className="transition-colors duration-300  hover:text-blue-500 hover:underline">
+                            <a href="#" className="transition-colors duration-300 text-primary  hover:text-blue-500 hover:underline">
                                 Job Listings
                             </a>
-                            <a href="#" className="transition-colors duration-300  hover:text-blue-500 hover:underline">
+                            <a href="#" className="transition-colors duration-300 text-primary  hover:text-blue-500 hover:underline">
                                 Skills Development
                             </a>
                         </div>
@@ -63,8 +63,15 @@ const Footer = () => {
                     </a>
 
                     <div className="flex -mx-2">
-                        <a href="#" className="mx-2  transition-colors duration-300 hover:text-blue-500" aria-label="Reddit">
+                        <a href="#" className="mx-2  transition-colors duration-300 text-primary hover:text-blue-500" aria-label="Reddit">
                             <FaReddit className="w-5 h-5" />
+
+                        </a>
+                        <a href="#" className="mx-2 transition-colors duration-300 text-primary hover:text-blue-500" aria-label="Facebook">
+                            <FaFacebook className="w-5 h-5" />
+                        </a>
+                        <a href="#" className="mx-2 transition-colors duration-300 text-primary hover:text-blue-500" aria-label="Github">
+                            <FaGithub className="w-5 h-5" />
                         </a>
                     </div>
                 </div>
