@@ -73,7 +73,7 @@ const Mentors = () => {
 
                   className="relative mt-16 mb-32 sm:mb-24 transform transition-transform duration-300 hover:scale-105"
                 >
-                  <div className="rounded overflow-hidden shadow-md bg-stone-600 border-amber-700 border-x-2 border-b-2 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
+                  <div className="rounded overflow-hidden shadow-md bg-accent border-amber-700 border-x-2 border-b-2 transition-all duration-300 lg:h-[550px] flex flex-col justify-between">
                     <div className="absolute -mt-24 w-full flex justify-center">
                       <div className="h-36 w-36 ">
                         <img

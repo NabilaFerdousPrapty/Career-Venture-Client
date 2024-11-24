@@ -20,7 +20,7 @@ function Navbar() {
   };
 
   // Set the navbar background based on the theme
-  const navbarBg = theme === "synthwave" ? "bg-[#1e1737]" : "bg-[#4C4A52]";
+  const navbarBg = theme === "synthwave" ? "bg-[#09041f]" : "bg-[#4C4A52]";
 
   return (
     <nav className={`rounded-full mt-2 shadow fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${navbarBg}`}>

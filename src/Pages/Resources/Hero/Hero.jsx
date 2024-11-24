@@ -27,7 +27,7 @@ const Hero = ({ onSearch }) => {
         <div className="items-center lg:flex border border-amber-400 rounded-xl">
           <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
             <img
-              className="w-full h-full max-w-md rounded-xl"
+              className="w-full h-full max-w-md rounded-xl "
               src="https://i.ibb.co.com/2866CpT/43fdc93b807eaf0007e23d3392f9cf3f-removebg-preview.png"
               alt="email illustration vector art"
             />
@@ -54,7 +54,7 @@ const Hero = ({ onSearch }) => {
                     type="text"
                     value={searchValue || ''} // Watch and control the input value
                     onChange={(e) => setValue('tag', e.target.value)} // Manually set the value
-                    className="w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                    className="w-full px-4 py-2 text-gray-700 border rounded-md bg-accent dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
                     placeholder="Resource tag"
                   />
 

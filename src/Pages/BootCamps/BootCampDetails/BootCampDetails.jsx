@@ -98,26 +98,26 @@ const BootCampDetails = () => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <div className="overflow-hidden bg-accent rounded-lg shadow-md ">
         <img
           className="object-cover w-full h-full rounded-2xl"
           src={classImage}
           alt="Bootcamp"
         />
         <div className="p-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+          <h2 className="text-2xl font-bold text-primary">
             {name}
           </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-primary">
             {description}
           </p>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-primary">
             <strong>Duration:</strong> {duration}
           </p>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-primary">
             <strong>Price:</strong> ${price}
           </p>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-primary">
             <strong>Location:</strong> {location}
           </p>
 
@@ -146,13 +146,13 @@ const BootCampDetails = () => {
                 />
                 <a
                   href="#"
-                  className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
+                  className="mx-2 font-semibold text-primary hover:underline"
                   tabIndex="0"
                   role="link"
                 >
                   {mentor.name}
                 </a>
-                <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
+                <span className="mx-1 text-xs text-primary">
                   {mentor.experience} years - {mentor.expertise}
                 </span>
               </div>

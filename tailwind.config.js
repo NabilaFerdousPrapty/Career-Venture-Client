@@ -38,8 +38,7 @@ export default {
           secondary: "#bfbfbf",
           background: "#1a103d",
           card_background: "#1e293b",
-          accent: '#1f2937'
-
+          accent: '#1f2937',
 
 
         },
@@ -48,7 +47,8 @@ export default {
           secondary: "#36454F",
           background: "#f8f9fa",
           card_background: "#e0f2fe",
-          accent: '#4c4a52'
+          accent: '#4c4a52',
+
 
         },
       },

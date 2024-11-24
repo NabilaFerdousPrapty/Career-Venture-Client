@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const HeroSection = () => {
 
     return (
-        <div className="w-full h-full opacity-90 rounded-md" style={{
-            backgroundImage: "url('https://images.stockcake.com/public/f/d/8/fd8af3a2-0c15-4e04-a9c3-c39bb0ea9599_large/ascending-career-path-stockcake.jpg')",
+        <div className="w-full h-full bg-center rounded-2xl" style={{
+            backgroundImage: "url('https://png.pngtree.com/thumb_back/fh260/background/20220312/pngtree-personal-development-career-image_1061886.jpg')",
             backgroundSize: "cover"
         }}>
 
@@ -17,7 +17,7 @@ const HeroSection = () => {
             <header className="flex lg:flex-row flex-col gap-[50px] lg:gap-0 items-center lg:mt-3">
                 <div className="p-8 pb-[100px] w-full lg:w-[50%]">
                     <h1 className="text-[40px]  text-gray-50 lg:text-[60px] leading-[45px] lg:leading-[65px] font-[500]">
-                        Have the career you always wanted with us
+                        Have The Career You Always Wanted
                     </h1>
                     <p className="text-[16px] mt-2 ">
                         We provide the best resources for you to get the job of your dreams.We provide the best resources for you to get the job of your dreams.

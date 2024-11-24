@@ -85,7 +85,7 @@ const ResourcesCard = ({ resource, refetch }) => {
 
   return (
 
-    <div className="max-w-3xl overflow-hidden bg-stone-600 rounded-lg shadow-md  xl:h-[600px] lg:h-[680px]">
+    <div className="max-w-3xl overflow-hidden bg-accent rounded-lg shadow-md  h-[590px] flex flex-col ">
       {/* Use the imageLink from the fetched data */}
       <img
         className="object-cover w-full h-64"
@@ -93,10 +93,10 @@ const ResourcesCard = ({ resource, refetch }) => {
         alt={name}
       />
 
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <div>
           {/* Dynamically display the resource name */}
-          <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">
+          <span className="text-xs font-medium text-blue-600 uppercase ">
             {
               tags.map((tag) => (
                 <span key={tag} className="mr-1">
@@ -110,7 +110,7 @@ const ResourcesCard = ({ resource, refetch }) => {
             href={resourceLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline"
+            className="block mt-2 text-xl font-semibold  transition-colors duration-300 text-primary hover:text-blue-500 hover:underline"
             tabIndex="0"
             role="link"
           >
@@ -118,10 +118,11 @@ const ResourcesCard = ({ resource, refetch }) => {
           </a>
 
           {/* Resource description */}
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {description.slice(0, 100) || "No description available."}......
+          <p className="mt-2 text-sm text-primary">
+            {description.slice(0, 100) + "..." || "No description available."}
           </p>
         </div>
+        <div className="flex-grow"></div>
 
         <div className="mt-4">
           <div className="flex items-center">
@@ -129,23 +130,23 @@ const ResourcesCard = ({ resource, refetch }) => {
               {/* Author's avatar (if available, placeholder otherwise) */}
               <img
                 className="object-cover h-10 rounded-full"
-                src={author.image || "https://via.placeholder.com/150"}
+                src={author?.a_image || "https://via.placeholder.com/150"}
                 alt={author}
               />
-              <span className="mx-2 font-semibold text-gray-700 dark:text-gray-200">
+              <span className="mx-2 font-semibold text-primary">
                 {author.name || "Unknown Author"}
               </span>
             </div>
 
             {/* Display the creation date */}
-            <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">
+            <span className="mx-1 text-xs text-primary">
               {date}
             </span>
           </div>
         </div>
 
         {/* Additional details like upvotes/downvotes can be shown here */}
-        <div className="mt-4 flex justify-between">
+        <div className="mt-4 flex justify-between text-primary">
           <div>
             <span><button onClick={() => handleVoteClick("up", _id)}>👍</button> {upvote || 0}</span>
             <span><button onClick={() => handleVoteClick("down", _id)}>👎</button> {downvote || 0}</span>
@@ -157,9 +158,9 @@ const ResourcesCard = ({ resource, refetch }) => {
               </button>
             </Link>
           </div>
-          <div>
+          <div >
             {/* Comments count */}
-            <span>{comments ? comments.length : 0} Comments</span>
+            <span className='text-primary'>{comments ? comments.length : 0} Comments</span>
           </div>
         </div>
       </div>
