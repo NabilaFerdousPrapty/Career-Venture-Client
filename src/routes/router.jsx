@@ -43,6 +43,7 @@ import MyTransactions from '../Pages/MemberDashboard/MyTransactions/MyTransactio
 import Feedback from '../Pages/MemberDashboard/Feedback/Feedback';
 import MyBookedSlot from '../Pages/MemberDashboard/MyBookedSlot/MyBookedSlot';
 import MyJobApplications from './../Pages/MemberDashboard/MyJobApplications/MyJobApplications';
+import MyWishlist from '../Pages/User/MyWishlist/MyWishlist';
 const axiosCommon = UseAxiosCommon();
 
 const router = createBrowserRouter([
@@ -167,6 +168,9 @@ const router = createBrowserRouter([
       }, {
         path: 'application/:jobId/:id',
         element: <ApplicationDetails />
+      }, {
+        path: 'myWishlist',
+        element: <MyWishlist />
       },
       {
         path: 'profile',

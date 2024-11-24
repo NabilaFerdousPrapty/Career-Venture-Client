@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import UseAuth from "../../src/hooks/UseAuth/UseAuth";
 import UseAxiosSecure from "../../src/hooks/UseAxiosSecure/UseAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ bookingData }) => {
   const {
@@ -15,7 +16,7 @@ const CheckoutForm = ({ bookingData }) => {
 
   console.log(bookingData);
 
-
+  const navigate = useNavigate();
 
 
   const stripe = useStripe();
@@ -106,13 +107,16 @@ const CheckoutForm = ({ bookingData }) => {
             title: "Payment Successful",
             text: "Your payment has been successfully processed!",
           });
+          navigate("/dashBoard/my-transactions");
+
         }
+
       }
     }
   };
 
   return (
-    <div className="border-2 border-teal-300 rounded-xl my-4 px-2 py-8">
+    <div className="border-2 border-teal-300 rounded-xl my-4 px-2 py-8 text-primary">
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -121,7 +125,7 @@ const CheckoutForm = ({ bookingData }) => {
                 margin: "10px",
                 fontSize: "16px",
                 border: "1px solid #D1A054",
-                color: "#424770",
+                color: "#ad8a54",
                 "::placeholder": {
                   color: "#aab7c4",
                 },

@@ -100,7 +100,7 @@ const BootCampDetails = () => {
     <div className="max-w-7xl mx-auto">
       <div className="overflow-hidden bg-accent rounded-lg shadow-md ">
         <img
-          className="object-cover w-full h-full rounded-2xl"
+          className="object-cover w-full h-[450px] object-center rounded-2xl"
           src={classImage}
           alt="Bootcamp"
         />
