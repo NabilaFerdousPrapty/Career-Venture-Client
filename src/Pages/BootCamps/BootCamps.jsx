@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import SingleBootcamp from "./SingleBootcamp";
+import { FaHandPointRight } from "react-icons/fa";
 
 const BootCamps = () => {
   const [search, setSearch] = useState("");
@@ -63,8 +64,8 @@ const BootCamps = () => {
     <div className="container mx-auto lg:px-4 py-2 px-2">
       <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center bg-accent rounded-3xl my-4">
         <div className="w-full lg:w-[45%] text-primary">
-          <div className="lg:max-w-lg">
-            <h1 className="text-3xl font-semibold tracking-wide lg:text-4xl">
+          <div className="lg:max-w-lg bg-accent">
+            <h1 className="text-3xl font-semibold  tracking-wide lg:text-4xl">
               Discover the Best Boot Camps to Accelerate Your Career
             </h1>
             <p className="mt-4 ">
@@ -86,20 +87,7 @@ const BootCamps = () => {
                   key={feature}
                   className="flex items-center  -px-3 "
                 >
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                  <FaHandPointRight className="text-amber-600" />
                   <span className="mx-3">{feature}</span>
                 </div>
               ))}

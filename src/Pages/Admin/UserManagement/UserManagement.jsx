@@ -156,7 +156,7 @@ const UserManagement = () => {
                         <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                           {user.role !== "mentor" && (
                             <button
-                              className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded"
+                              className="bg-amber-500 hover:bg-amber-700 text-white font-bold py-1 px-3 rounded"
                               onClick={() => handleToggleRole(user.email, user.role)}
                             >
                               Toggle Role
@@ -166,7 +166,7 @@ const UserManagement = () => {
                         <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                           {user.role !== "admin" && (
                             <button
-                              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
+                              className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-1 px-3 rounded"
                               onClick={() => handleToggleStatus(user.email, user.status)}
                             >
                               Toggle Status

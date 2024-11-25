@@ -69,31 +69,36 @@ const TransactionOverview = () => {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto my-6">
+            <div className="flex items-center gap-x-3 max-w-md mx-auto mb-3">
+                <h2 className="text-lg font-medium text-primary">My Total Transaction </h2>
+                <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full"> {payments.length}</span>
+            </div>
+
             <table className="table-auto w-full border-collapse border border-gray-300">
                 <thead>
-                    <tr>
-                        <th className="border border-gray-300 px-4 py-2">Email</th>
-                        <th className="border border-gray-300 px-4 py-2">Price</th>
-                        <th className="border border-gray-300 px-4 py-2">Plan Name</th>
-                        <th className="border border-gray-300 px-4 py-2">Date</th>
-                        <th className="border border-gray-300 px-4 py-2">Status</th>
-                        <th className="border border-gray-300 px-4 py-2">Actions</th>
+                    <tr className='bg-gray-700 text-white'>
+                        <th className="border  border-gray-300 px-4 py-2">Email</th>
+                        <th className="border  border-gray-300 px-4 py-2">Price</th>
+                        <th className="border  border-gray-300 px-4 py-2">Plan Name</th>
+                        <th className="border  border-gray-300 px-4 py-2">Date</th>
+                        <th className="border  border-gray-300 px-4 py-2">Status</th>
+                        <th className="border  border-gray-300 px-4 py-2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {payments.map((payment) => (
-                        <tr key={payment._id}>
-                            <td className="border border-gray-300 px-4 py-2">{payment.email}</td>
-                            <td className="border border-gray-300 px-4 py-2">${payment.price}</td>
-                            <td className="border border-gray-300 px-4 py-2">{payment.planName}</td>
-                            <td className="border border-gray-300 px-4 py-2">{payment.date}</td>
-                            <td className="border border-gray-300 px-4 py-2">{payment.status}</td>
-                            <td className="border border-gray-300 px-4 py-2">
+                        <tr className='bg-accent' key={payment._id}>
+                            <td className="border text-primary border-gray-300 px-4 py-2">{payment.email}</td>
+                            <td className="border text-primary border-gray-300 px-4 py-2">${payment.price}</td>
+                            <td className="border text-primary border-gray-300 px-4 py-2">{payment.planName}</td>
+                            <td className="border text-primary border-gray-300 px-4 py-2">{payment.date}</td>
+                            <td className="border text-primary border-gray-300 px-4 py-2">{payment.status}</td>
+                            <td className="border text-primary border-gray-300 px-4 py-2">
                                 {payment.status === 'pending' && (
                                     <button
                                         onClick={() => approvePayment(payment._id)}
-                                        className="bg-green-500 text-white px-4 py-2 rounded-md"
+                                        className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-md"
                                     >
                                         Approve
                                     </button>

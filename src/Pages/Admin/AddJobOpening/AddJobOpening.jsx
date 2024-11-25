@@ -6,7 +6,7 @@ import UseAxiosSecure from '../../../hooks/UseAxiosSecure/UseAxiosSecure';
 import Swal from 'sweetalert2';
 
 const JobForm = () => {
-    
+
     const [applyBy, setApplyBy] = useState(new Date()); // State to manage the date
     const {
         register,
@@ -55,20 +55,19 @@ const JobForm = () => {
     };
 
     return (
-        <section className="max-w-4xl p-6 mx-auto border border-amber-600 rounded-md shadow-md">
-            <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">Job Posting</h2>
+        <section className="max-w-4xl lg:my-10 my-3 p-6 mx-auto border bg-accent border-amber-600 rounded-md shadow-md">
+            <h2 className="text-lg font-semibold text-primary capitalize ">Job Posting</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-1 gap-6 mt-4 lg:grid-cols-2">
                     <div>
-                        <label className="text-gray-700 dark:text-gray-200" htmlFor="title">Job Title</label>
+                        <label className="text-primary" htmlFor="title">Job Title</label>
                         <input
                             id="title"
                             {...register('title', { required: 'Job Title is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.title ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.title && <p className="text-red-500">{errors.title.message}</p>}
@@ -81,8 +80,7 @@ const JobForm = () => {
                             {...register('designation', { required: 'Designation is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.designation ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.designation && <p className="text-red-500">{errors.designation.message}</p>}
@@ -95,8 +93,7 @@ const JobForm = () => {
                             {...register('company', { required: 'Company is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.company ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.company && <p className="text-red-500">{errors.company.message}</p>}
@@ -109,8 +106,7 @@ const JobForm = () => {
                             {...register('location', { required: 'Location is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.location ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.location && <p className="text-red-500">{errors.location.message}</p>}
@@ -123,8 +119,7 @@ const JobForm = () => {
                             {...register('type', { required: 'Job Type is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.type ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.type && <p className="text-red-500">{errors.type.message}</p>}
@@ -138,8 +133,7 @@ const JobForm = () => {
                             {...register('experience', { required: 'Experience is required', min: 0 })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.experience ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.experience && <p className="text-red-500">{errors.experience.message}</p>}
@@ -153,8 +147,7 @@ const JobForm = () => {
                             {...register('salary', { required: 'Salary is required', min: 0 })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.salary ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.salary && <p className="text-red-500">{errors.salary.message}</p>}
@@ -167,8 +160,7 @@ const JobForm = () => {
                             {...register('jobImage', { required: 'Job Image URL is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.jobImage ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         />
                         {errors.jobImage && <p className="text-red-500">{errors.jobImage.message}</p>}
@@ -185,9 +177,9 @@ const JobForm = () => {
                                     setValue('applyBy', date); // Update the form value
                                 }}
                                 className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
-                                    dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                    focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
-                                    dark:focus:border-blue-300 focus:outline-none focus:ring`}
+                                ${errors.applyBy ? 'border-red-500' : 'border-gray-200'} 
+                                 focus:ring-opacity-40 
+                                dark:focus:border-blue-300 focus:outline-none focus:ring`}
                             />
                         </div>
                     </div>
@@ -199,8 +191,7 @@ const JobForm = () => {
                             {...register('description', { required: 'Description is required' })}
                             className={`block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md 
                                 ${errors.description ? 'border-red-500' : 'border-gray-200'} 
-                                dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 
-                                focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 
+                                 focus:ring-opacity-40 
                                 dark:focus:border-blue-300 focus:outline-none focus:ring`}
                         ></textarea>
                         {errors.description && <p className="text-red-500">{errors.description.message}</p>}

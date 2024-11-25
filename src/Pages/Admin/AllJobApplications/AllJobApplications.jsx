@@ -59,7 +59,24 @@ function AllJobApplications() {
     }
 
     return (
-        <div className="container mx-auto p-6 bg-[#1a103d] text-white">
+        <div className="container mx-auto p-6 bg-accent text-primary">
+            <div className="flex justify-center mt-10">
+                <img
+                    className="object-cover w-full rounded-xl lg:w-2/5"
+                    src="https://thumbs.dreamstime.com/b/job-application-2588230.jpg"
+                    alt="Job Applications"
+                />
+            </div>          <div className="container px-6 py-6 mx-auto text-center">
+                <div className="max-w-lg mx-auto">
+                    <h1 className="text-3xl font-semibold lg:text-4xl">
+                        Job Applications
+                    </h1>
+                    <p className="mt-6 text-gray-400">
+                        Here are all the job applications
+                    </p>
+                </div>
+            </div>
+
 
 
             <div className="p-4 rounded-lg shadow-md border-2 bg-gray-300 text-gray-950 border-[#1a103d]">
@@ -75,10 +92,10 @@ function AllJobApplications() {
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="bg-accent text-primary">
                             {applicationsWithDetails.map((application) => (
                                 <tr key={application._id} className="">
-                                    <td className="px-4 py-2 border-2 border-[#1a103d]">{application.applicant_name}</td>
+                                    <td className="px-4 py-2  border-2 border-[#1a103d]">{application.applicant_name}</td>
                                     <td className="px-4 py-2 border-2 border-[#1a103d]">{application.jobDetails?.title}</td>
                                     <td className="px-4 py-2 border-2 border-[#1a103d]">{application.jobDetails?.company}</td>
                                     <td className="px-4 py-2 border-2 border-[#1a103d]">

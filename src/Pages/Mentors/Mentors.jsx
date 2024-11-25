@@ -4,11 +4,20 @@ import { ClockLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
+import UseAuth from "../../hooks/UseAuth/UseAuth";
+import UseRole from "../../hooks/UseRole/UseRole";
+import Swal from "sweetalert2";
 
 const Mentors = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const axiosCommon = UseAxiosCommon();
   const limit = 6;
+  const { user, LogOut, loading } = UseAuth();
+
+  const [role, isuserRoleLoading, refetch] = UseRole(user?.email);
+  console.log(role.isAdmin);
+  console.log(role.isMentor);
+
 
   const {
     data: { mentors = [], totalPages } = {},
@@ -177,12 +186,32 @@ const Mentors = () => {
             </p>
 
             <div className="inline-flex w-full mt-6 sm:w-auto">
+
+
+
+
               <Link
-                to="/dashboard/ApplyForMentor"
-                className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+                to={(role?.isAdmin || role.isMentor) ? "#" : "/dashboard/ApplyForMentor"} // Prevent navigation for admin
+                onClick={(event) => {
+                  if (role?.isAdmin || role.isMentor) {
+                    event.preventDefault(); // Prevent the page from refreshing
+                    Swal.fire({
+                      icon: "error",
+                      title: "Access Denied",
+                      text: "Admins and mentors cannot apply to become a mentor.",
+                      confirmButtonText: "Okay",
+                    });
+                  }
+                }}
+                className={`inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 rounded-lg focus:ring focus:ring-opacity-80 ${role?.isAdmin
+                  ? "bg-gray-500 cursor-not-allowed focus:ring-gray-500" // Disabled style for admin
+                  : "bg-gray-800 hover:bg-gray-700 focus:ring-gray-300"
+                  }`}
               >
                 Become a Mentor
               </Link>
+
+
             </div>
           </div>
           <img className="rounded-3xl" src="https://artofmentoring.net/wp-content/uploads/2015/11/mentor.jpg" alt="" />
