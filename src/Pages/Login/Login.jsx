@@ -91,7 +91,7 @@ const Login = () => {
 
     return (
         <div className='flex justify-between items-center h-screen rounded-2xl'>
-            <div className="flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg bg-[#1c2940] lg:max-w-6xl ">
+            <div className="flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg bg-accent lg:max-w-6xl ">
                 <div
                     className="hidden bg-cover lg:block lg:w-1/2 bg-center rounded-lg"
                     style={{ backgroundImage: "url('https://i.ibb.co/JjS28wd/computer-security-with-login-password-padlock-removebg-preview.png')" }}
@@ -112,7 +112,7 @@ const Login = () => {
 
                     <button
                         onClick={handleGoogleSignIn}
-                        className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 w-full "
+                        className="flex items-center justify-center mt-4 text-white transition-colors duration-300 transform border rounded-lg dark:border-gray-700  bg-stone-600 w-full "
                     >
                         <div className="px-4 py-2">
                             <svg className="w-6 h-6" viewBox="0 0 40 40">
@@ -164,7 +164,7 @@ const Login = () => {
                             <input
                                 {...register("email", { required: true })}
                                 id="LoggingEmailAddress"
-                                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                                className="block w-full px-4 py-2 text-gray-700  border rounded-lg  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
                                 type="email"
                             />
                             {errors.email && <span>This field is required</span>}
@@ -189,14 +189,14 @@ const Login = () => {
                             <input
                                 {...register("password", { required: true })}
                                 id="loggingPassword"
-                                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                                className="block w-full px-4 py-2 text-gray-700  border rounded-lg  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
                                 type="password"
                             />
                             {errors.password && <span>This field is required</span>}
                         </div>
 
                         <div className="mt-6">
-                            <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                            <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg bg-amber-500 hover:bg-amber-400 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
                                 Sign In
                             </button>
                         </div>

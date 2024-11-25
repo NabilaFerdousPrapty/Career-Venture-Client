@@ -83,7 +83,7 @@ const RejectedMentors = () => {
                       </tr>
                     </thead>
 
-                    <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                    <tbody className="bg-accent divide-y divide-gray-200 dark:divide-gray-700 ">
                       {rejectedMentors.map((mentor) => (
                         <tr key={mentor._id}>
                           <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap border border-gray-800 ">

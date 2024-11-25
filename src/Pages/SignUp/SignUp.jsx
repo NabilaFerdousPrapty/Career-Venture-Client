@@ -4,7 +4,7 @@ import logo from "../../assets/logo2w.png";
 import Swal from "sweetalert2";
 import UseAuth from './../../hooks/UseAuth/UseAuth';
 import UseAxiosCommon from './../../hooks/UseAxiosCommon/UseAxiosCommon';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -141,8 +141,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className=" flex justify-between items-center  mx-1">
-      <div className="max-w-7xl w-screen flex justify-center   mx-auto rounded-2xl  shadow-lg bg-[#1c2940]  ">
+    <div className=" flex justify-between items-center  mx-1 ">
+      <div className=" w-screen flex justify-center   mx-auto rounded-2xl  shadow-lg bg-accent  ">
         <div
           className="hidden bg-cover lg:block lg:w-3/5 bg-center rounded-2xl"
           style={{
@@ -162,11 +162,11 @@ const SignUp = () => {
               Let’s get you all set up so you can verify your personal account
               and begin setting up your profile.
             </p>
-            <button onClick={handleGoogleSignIn}
-              href="#"
-              className="flex items-center justify-center mt-1 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 w-full"
+            <button
+              onClick={handleGoogleSignIn}
+              className="flex items-center justify-center mt-4 text-white transition-colors duration-300 transform border rounded-lg dark:border-gray-700  bg-stone-600 w-full "
             >
-              <div className="px-4 py-2 ">
+              <div className="px-4 py-2">
                 <svg className="w-6 h-6" viewBox="0 0 40 40">
                   <path
                     d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
@@ -205,7 +205,7 @@ const SignUp = () => {
                   type="text"
                   {...register("name", { required: true })}
                   placeholder="John show"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2  placeholder-gray-400  border border-gray-200 rounded-lg    focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.name && <span>This field is required</span>}
               </div>
@@ -218,7 +218,7 @@ const SignUp = () => {
                   type="email"
                   {...register("email", { required: true })}
                   placeholder="johnsnow@example.com"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2  placeholder-gray-400  border border-gray-200 rounded-lg    focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.email && <span>This field is required</span>}
               </div>
@@ -272,7 +272,7 @@ const SignUp = () => {
                   type="password"
                   {...register("password", { required: true })}
                   placeholder="Enter your password"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2  placeholder-gray-400  border border-gray-200 rounded-lg    focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.password && <span>This field is required</span>}
               </div>
@@ -285,7 +285,7 @@ const SignUp = () => {
                   type="password"
                   {...register("confirmPassword", { required: true })}
                   placeholder="Enter your password"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2  placeholder-gray-400  border border-gray-200 rounded-lg    focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
                 {errors.confirmPassword && <span>This field is required</span>}
               </div>
@@ -294,7 +294,7 @@ const SignUp = () => {
                 <button
                   disabled={isLoading}
                   type="submit"
-                  className=" flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                  className=" flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform  rounded-lg bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-50"
                 >
                   <span>
                     {isLoading ? "Creating account..." : "Sign up"}
@@ -314,6 +314,15 @@ const SignUp = () => {
                   </svg>
                 </button>
               </div>
+              <p className="mt-4 text-sm text-center text-gray-500 dark:text-gray-400">
+                Already have an account?{" "}
+                <Link
+                  to="/login"
+                  className="font-medium text-blue-600 dark:text-blue-400"
+                >
+                  Login
+                </Link>
+              </p>
             </form>
           </div>
         </div>

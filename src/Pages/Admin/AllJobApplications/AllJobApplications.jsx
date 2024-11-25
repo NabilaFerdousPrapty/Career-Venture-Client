@@ -63,7 +63,7 @@ function AllJobApplications() {
             <div className="flex justify-center mt-10">
                 <img
                     className="object-cover w-full rounded-xl lg:w-2/5"
-                    src="https://thumbs.dreamstime.com/b/job-application-2588230.jpg"
+                    src={"https://i.ibb.co.com/80BxxXR/job-application-2588230.jpg"}
                     alt="Job Applications"
                 />
             </div>          <div className="container px-6 py-6 mx-auto text-center">
