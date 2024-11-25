@@ -24,8 +24,11 @@ function AllJobApplications() {
             return response.data;
         },
     });
+    console.log(data);
+
 
     const { jobApplications, currentPage, totalPages } = data || {}; // Safely access the response data
+    console.log(jobApplications);
 
     useEffect(() => {
         if (jobApplications && jobApplications.length > 0) {

@@ -27,7 +27,7 @@ const DashboardHome = () => {
                         </button>
                     </div>
 
-                    <p className="mt-8 text-center text-gray-700 dark:text-white text-md md:text-xl">Notify me when App is launched :)</p>
+                    <p className="mt-8 text-center text-primary text-md md:text-xl">Notify me when App is launched :)</p>
                 </div>
             </section>
             <section className="bg-accent rounded-2xl border border-amber-500 my-6">

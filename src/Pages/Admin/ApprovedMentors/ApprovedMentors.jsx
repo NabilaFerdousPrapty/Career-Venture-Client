@@ -32,7 +32,7 @@ const ApprovedMentors = () => {
     <div>
       <section className="container px-4 mx-auto">
         <div className="flex items-center gap-x-3 max-w-md mx-auto my-4">
-          <h2 className="text-lg font-medium text-gray-800 dark:text-white">
+          <h2 className="text-lg font-medium text-primary">
             Approved Mentors
           </h2>
           <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">

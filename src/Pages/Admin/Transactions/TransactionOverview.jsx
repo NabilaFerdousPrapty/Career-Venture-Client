@@ -71,7 +71,9 @@ const TransactionOverview = () => {
     return (
         <div className="overflow-x-auto my-6">
             <div className="flex items-center gap-x-3 max-w-md mx-auto mb-3">
-                <h2 className="text-lg font-medium text-primary">My Total Transaction </h2>
+                <h2 className="text-lg font-medium text-primary">
+                    Career Venture&apos;s Total Transaction
+                </h2>
                 <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full"> {payments.length}</span>
             </div>
 

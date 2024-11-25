@@ -90,6 +90,7 @@ const OpenningDetails = () => {
             phone: data.phone,
             address: data.address,
             photo: user.photoURL,  // Photo URL from user object
+            status: "pending",
         };
 
         try {
