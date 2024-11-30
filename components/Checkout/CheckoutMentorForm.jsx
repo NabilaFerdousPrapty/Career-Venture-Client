@@ -169,9 +169,10 @@ const CheckoutMentorForm = ({ bookingData, onBookingSuccess }) => {
                             base: {
                                 margin: "10px",
                                 fontSize: "16px",
-                                color: "#424770",
+                                border: "1px solid #D1A054",
+                                color: "#000", // Black text for better contrast
                                 "::placeholder": {
-                                    color: "#aab7c4",
+                                    color: "#9CA3AF", // Neutral gray placeholder
                                 },
                             },
                             invalid: {
@@ -182,7 +183,7 @@ const CheckoutMentorForm = ({ bookingData, onBookingSuccess }) => {
                 />
                 <button
                     type="submit"
-                    className="btn btn-lg bg-[#17ACAC] text-center p-2 mt-4 w-full mx-auto text-white rounded-md"
+                    className="btn btn-lg bg-accent text-center p-2 mt-4 w-full mx-auto text-primary rounded-md"
                     disabled={!stripe || !clientSecret}
                 >
                     Pay

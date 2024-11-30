@@ -81,7 +81,7 @@ const PaymentPage = ({ bookingData }) => {
               <div className="card-header">
 
               </div>
-              <Elements stripe={stripePromise}>
+              <Elements className="bg-accent" stripe={stripePromise}>
                 <CheckoutForm bookingData={bookingData} />
               </Elements>
             </div>

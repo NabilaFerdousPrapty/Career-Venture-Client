@@ -159,8 +159,8 @@ const ApplicationDetails = () => {
     }
 
     return (
-        <div className={`container mx-auto p-6 border-2 ${themeStyles[theme] || themeStyles.light}`}>
-            <h1 className="text-2xl font-bold mb-6">Application Details</h1>
+        <div className={`container mx-auto p-6 border-2 bg-accent`}>
+            <h1 className="text-2xl font-bold mb-6 text-primary text-center mt-3">Application Details</h1>
 
             <Tabs>
                 <TabList>
@@ -170,33 +170,33 @@ const ApplicationDetails = () => {
 
                 <TabPanel>
                     <div className="flex flex-col gap-3">
-                        <h2 className="text-xl font-semibold mb-4">Applicant Information</h2>
-                        <p><strong>Name:</strong> {applicationDetails?.applicant_name}</p>
-                        <p><strong>Email:</strong> {applicationDetails?.email}</p>
-                        <p><strong>Phone:</strong> {applicationDetails?.phone}</p>
-                        <p><strong>Address:</strong> {applicationDetails?.address}</p>
-                        <p><strong>Resume:</strong> <a href={applicationDetails?.resumeLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 bg-slate-200 px-2 py-1 border-blue-900 border-2 rounded-2xl">View Resume</a></p>
-                        <p><strong>Portfolio:</strong> <a className="text-blue-500 bg-slate-200 px-2 py-1 border-blue-900 border-2 rounded-2xl" href={applicationDetails?.portfolio} target="_blank" rel="noopener noreferrer" >View Portfolio</a></p>
+                        <h2 className="text-xl font-semibold mb-4 text-primary" >Applicant Information</h2>
+                        <p className="text-primary"><strong>Name:</strong> {applicationDetails?.applicant_name}</p>
+                        <p className="text-primary"><strong>Email:</strong> {applicationDetails?.email}</p>
+                        <p className="text-primary"><strong>Phone:</strong> {applicationDetails?.phone}</p>
+                        <p className="text-primary"><strong>Address:</strong> {applicationDetails?.address}</p>
+                        <p><strong className="text-primary">Resume:</strong> <a href={applicationDetails?.resumeLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 bg-slate-200 px-2 py-1 border-blue-900 border-2 rounded-2xl">View Resume</a></p>
+                        <p><strong className="text-primary">Portfolio:</strong> <a className="text-blue-500 bg-slate-200 px-2 py-1 border-blue-900 border-2 rounded-2xl" href={applicationDetails?.portfolio} target="_blank" rel="noopener noreferrer" >View Portfolio</a></p>
                     </div>
                 </TabPanel>
 
                 <TabPanel>
-                    <h2 className="text-xl font-semibold mb-4">Job Information</h2>
-                    <p><strong>Job Title:</strong> {jobDetails?.title}</p>
-                    <p><strong>Company:</strong> {jobDetails?.company}</p>
-                    <p><strong>Description:</strong> {jobDetails?.description}</p>
+                    <h2 className="text-xl font-semibold mb-4 text-primary">Job Information</h2>
+                    <p className="text-primary"><strong>Job Title:</strong> {jobDetails?.title}</p>
+                    <p className="text-primary"><strong>Company:</strong> {jobDetails?.company}</p>
+                    <p className="text-primary"><strong>Description:</strong> {jobDetails?.description}</p>
                 </TabPanel>
             </Tabs>
 
             <div className="mt-6 flex space-x-4">
                 <button
-                    className="px-4 py-2 bg-green-600 text-white rounded-lg"
+                    className="px-4 py-2 bg-amber-500 text-white rounded-lg"
                     onClick={() => handleModalOpen("interview")}
                 >
                     Call for Interview
                 </button>
                 <button
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg"
+                    className="px-4 py-2 bg-amber-800 text-white rounded-lg"
                     onClick={() => handleModalOpen("reject")}
                 >
                     Reject with Feedback
@@ -204,9 +204,9 @@ const ApplicationDetails = () => {
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="fixed inset-0 z-10 flex items-center justify-center bg-accent text-primary ">
                     <div
-                        className={`rounded-lg p-6 w-96 ${theme === "synthwave" ? "bg-purple-900 text-white" : "bg-white text-black"
+                        className={`rounded-lg p-6 w-96 bg-accent text-primary"
                             }`}
                     >
                         {modalType === "interview" ? (
@@ -232,7 +232,7 @@ const ApplicationDetails = () => {
                                         Cancel
                                     </button>
                                     <button
-                                        className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                                        className="px-4 py-2 bg-amber-500 text-white rounded-lg"
                                         onClick={handleSubmit}
                                     >
                                         Confirm
@@ -251,13 +251,13 @@ const ApplicationDetails = () => {
                                 />
                                 <div className="mt-4 flex justify-end">
                                     <button
-                                        className="px-4 py-2 bg-gray-400 text-white rounded-lg mr-2"
+                                        className="px-4 py-2 bg-amber-500 text-white rounded-lg mr-2"
                                         onClick={handleModalClose}
                                     >
                                         Cancel
                                     </button>
                                     <button
-                                        className="px-4 py-2 bg-red-600 text-white rounded-lg"
+                                        className="px-4 py-2 bg-amber-700 text-white rounded-lg"
                                         onClick={handleSubmit}
                                     >
                                         Submit
